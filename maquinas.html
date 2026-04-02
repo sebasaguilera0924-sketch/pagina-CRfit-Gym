@@ -80,10 +80,125 @@ section.active{display:block}
  margin-top:25px;padding:15px 40px;border:none;border-radius:30px;background:#1db954;font-weight:bold;cursor:pointer
 }
 .back{margin-bottom:25px;background:none;border:none;color:#1db954;font-weight:bold;cursor:pointer}
-/* RESPONSIVE */
-@media(max-width:900px){
- header{justify-content:center}
- .product-view{grid-template-columns:1fr}
+/* ========================== */
+/* RESPONSIVE CATÁLOGO CRFIT */
+/* ========================== */
+@media(max-width:1024px){
+ header{
+   flex-direction:column;
+   align-items:flex-start;
+   gap:10px;
+   padding:10px 15px;
+ }
+ .logo span{
+   font-size:1.3rem;
+ }
+ nav{
+   flex-wrap:wrap;
+   gap:10px;
+ }
+ .search-box{
+   width:100%;
+   margin-top:8px;
+ }
+}
+@media(max-width:768px){
+ /* HEADER */
+ header{
+   justify-content:center;
+   text-align:center;
+ }
+ nav{
+   flex-direction:column;
+   align-items:center;
+ }
+ nav a, .msg-btn{
+   margin-left:0;
+   width:90%;
+   text-align:center;
+   margin-bottom:6px;
+ }
+ /* CARRUSEL */
+ .sale-carousel{
+   overflow-x:auto;
+   padding-bottom:10px;
+ }
+ .carousel-track{
+   flex-wrap:nowrap;
+ }
+ .carousel-card{
+   min-width:200px;
+   max-width:200px;
+ }
+ /* GRID PRODUCTOS */
+ .grid{
+   grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+   gap:15px;
+   padding:20px 10px 40px 10px;
+ }
+ .card, .card img{
+   width:100%;
+   height:auto;
+ }
+ /* PRODUCT VIEW */
+ .product-view{
+   grid-template-columns:1fr;
+   gap:20px;
+   padding:0 10px;
+ }
+ .product-view img{
+   width:100%;
+   height:auto;
+ }
+ .buy{
+   width:100%;
+   padding:12px 0;
+   font-size:16px;
+ }
+ /* TITULOS */
+ .section-title{
+   font-size:22px;
+   margin:25px 0 20px;
+ }
+}
+@media(max-width:480px){
+ header{
+   padding:8px 10px;
+ }
+ .logo img{
+   height:60px;
+ }
+ .logo span{
+   font-size:1.1rem;
+ }
+ .search-box input{
+   padding:10px 15px;
+   font-size:14px;
+ }
+ .section-title{
+   font-size:20px;
+ }
+ .carousel-card{
+   min-width:160px;
+   max-width:160px;
+ }
+ .grid{
+   grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+   gap:12px;
+ }
+ .card-content h3{
+   font-size:14px;
+ }
+ .price, .old{
+   font-size:13px;
+ }
+ .view-btn{
+   padding:10px 20px;
+   font-size:13px;
+ }
+ .buy{
+   font-size:14px;
+ }
 }
 </style>
 </head>
@@ -97,7 +212,7 @@ section.active{display:block}
 <input id="searchInput" placeholder="Buscar máquinas o equipos...">
 </div>
 <nav>
-<a href="pagina-inicio.html">Inicio</a>
+<a href="index.html">Inicio</a>
 <a href="rutinas.html">Rutinas</a>
 <a class="msg-btn" href="mensajes.html">Enviar mensaje</a>
 </nav>
