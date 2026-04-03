@@ -301,84 +301,132 @@ padding:25px;
 text-align:center;
 color:#777;
 }
-
 /* ========================= */
-/* 📱 RESPONSIVE PERFECTO */
+/* 📱 RESPONSIVE CELULAR PERFECTO */
 /* ========================= */
 @media(max-width:900px){
 
+/* HEADER */
 header{
 padding:0 15px;
-height:65px;
+height:60px;
 }
-
 .logo img{
-height:45px;
+height:40px;
 }
-
 .menu-toggle{
 display:block;
 }
-
 nav{
 position:fixed;
-top:65px;
+top:60px;
 left:0;
 width:100%;
-height:calc(100vh - 65px);
-background:rgba(0,0,0,.95);
+height:calc(100vh - 60px);
+background:rgba(0,0,0,0.95);
 backdrop-filter:blur(30px);
 display:none;
 flex-direction:column;
 padding:25px;
 z-index:200;
+overflow-y:auto;
 }
-
 nav.active{
 display:flex;
 }
-
 nav ul{
 flex-direction:column;
 gap:20px;
 }
 
 /* HERO */
-.hero h1{
-font-size:1.8rem;
+.hero{
+height:80vh;
+padding-top:60px;
 }
-
+.hero h1{
+font-size:2rem;
+}
 .hero p{
+font-size:14px;
+line-height:1.4;
+max-width:90%;
+margin:auto;
+}
+.hero a{
+padding:12px 28px;
 font-size:14px;
 }
 
 /* SECCIONES */
 section{
-padding:70px 15px;
+padding:60px 15px;
+}
+section h2{
+font-size:1.6rem;
+margin-bottom:35px;
 }
 
-/* SLIDER MOBILE FIX */
+/* SOBRE-CARDS */
+.sobre-cards{
+grid-template-columns:1fr;
+gap:20px;
+}
+.sobre-card{
+padding:18px;
+border-radius:22px;
+}
+
+/* SLIDERS */
 .slider{
 height:auto;
+overflow-x:hidden;
+padding-bottom:15px;
 }
-
 .slide{
-position:relative;
+position:relative !important;
 transform:none !important;
 opacity:1 !important;
-margin-bottom:15px;
 width:100%;
+margin-bottom:15px;
+padding:20px;
 }
-
 .arrow{
 display:none;
 }
 
 /* BOTONES */
 .ver-comentarios{
-width:80%;
+width:90%;
+margin:30px auto 0;
+font-size:14px;
+}
+
+/* MODAL TARJETA */
+.modal-card{
+width:95%;
+padding:22px;
+max-width:320px;
+}
+
+/* BURBUJAS */
+.bg-bubbles span{
+width:60px;
+height:60px;
+}
+
+/* INPUTS MODAL */
+.modal-card input{
+padding:12px;
+border-radius:12px;
+font-size:14px;
+}
+.btn-login{
+padding:12px;
+font-size:14px;
 }
 }
+
 /* MODAL */
 .modal{
 position:fixed;
@@ -515,7 +563,7 @@ animation:float 10s infinite;
 <!-- HERO -->
 <div class="hero">
 <video autoplay muted loop playsinline preload="auto">
-<source src="video-gym.mp4" type="video/mp4">
+<source src="" type="video/mp4">
 </video>
 <div class="hero-content">
 <h1>Entrená fuerte. CRFit Gym</h1>

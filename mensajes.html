@@ -55,11 +55,11 @@ cursor:pointer;
 .chat{
 flex:1;
 overflow-y:auto;
-padding:20px;
+padding:15px;
 display:flex;
 flex-direction:column;
-gap:14px;
-scroll-behavior:smooth;
+gap:12px;
+scroll-behavior:smooth; /* Mantiene scroll suave */
 }
 
 /* MENSAJES */
@@ -88,10 +88,34 @@ box-shadow:0 6px 20px rgba(34,197,94,0.3);
 .input-area{
 display:flex;
 gap:10px;
-padding:15px;
+padding:10px 12px;
 background:rgba(0,0,0,0.6);
 backdrop-filter:blur(25px);
 border-top:1px solid rgba(255,255,255,0.05);
+position:relative; /* Mantiene el input fijo abajo */
+z-index:50;
+}
+.input-area input{
+flex:1;
+padding:12px;
+border-radius:20px;
+border:none;
+background:rgba(255,255,255,0.07);
+color:white;
+outline:none;
+}
+.input-area button{
+padding:0 16px;
+border:none;
+border-radius:20px;
+background:linear-gradient(135deg,#22c55e,#16a34a);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:.2s;
+}
+.input-area button:hover{
+    transform:scale(1.05);
 }
 
 input{
@@ -159,20 +183,19 @@ color:white;
 
 /* OCULTAR SIDEBAR EN MÓVIL */
 @media(max-width:768px){
-.sidebar{
-position:fixed;
-right:-260px;
-top:0;
-height:100%;
-z-index:10;
+.chat{
+padding:12px;
 }
-
-.sidebar.active{
-right:0;
+.input-area{
+padding:8px;
 }
-
-.menu-btn{
-display:block;
+.input-area input{
+padding:10px;
+font-size:14px;
+}
+.input-area button{
+padding:0 12px;
+font-size:14px;
 }
 }
 
@@ -281,24 +304,21 @@ function typeMessage(text){
 const div = document.createElement("div");
 div.className="msg bot";
 chat.appendChild(div);
-
-let words = text.split(" ");
-let i=0;
+let words = text.split(" "), i=0;
 
 let interval = setInterval(()=>{
 div.innerHTML += words[i] + " ";
-chat.scrollTop = chat.scrollHeight;
+div.scrollIntoView({behavior:"smooth", block:"end"}); // Scroll solo al mensaje
 i++;
-
 if(i>=words.length) clearInterval(interval);
-
 },40);
 
 if(currentChat){
-currentChat.messages.push({text, type:"bot"});
+currentChat.messages.push({text,type:"bot"});
 saveChats();
 }
 }
+
 
 /* =========================
   🚀 ENVIAR
