@@ -99,8 +99,9 @@ padding:10px 12px;
 background:rgba(0,0,0,0.6);
 backdrop-filter:blur(25px);
 border-top:1px solid rgba(255,255,255,0.05);
-position:relative; /* Mantiene el input fijo abajo */
+position:sticky; /* Mantiene el input fijo abajo */
 z-index:50;
+bottom: 0;
 }
 .input-area input{
 flex:1;
@@ -388,7 +389,13 @@ const div = document.createElement("div");
 div.className = "msg " + type;
 div.innerHTML = text;
 chat.appendChild(div);
-chat.scrollTop = chat.scrollHeight;
+
+/* 🔥 SOLO SCROLL SI YA ESTÁ ABAJO */
+const isNearBottom = chat.scrollHeight - chat.scrollTop <= chat.clientHeight + 50;
+
+if(isNearBottom){
+   chat.scrollTop = chat.scrollHeight;
+}
 
 if(save && currentChat){
 currentChat.messages.push({text,type});
@@ -396,16 +403,25 @@ saveChats();
 }
 }
 
+
 /* ANIMACIÓN ESCRIBIR */
+
 function typeMessage(text){
 const div = document.createElement("div");
 div.className="msg bot";
 chat.appendChild(div);
+
 let words = text.split(" "), i=0;
 
 let interval = setInterval(()=>{
 div.innerHTML += words[i] + " ";
-div.scrollIntoView({behavior:"smooth", block:"end"}); // Scroll solo al mensaje
+
+const isNearBottom = chat.scrollHeight - chat.scrollTop <= chat.clientHeight + 50;
+
+if(isNearBottom){
+   chat.scrollTop = chat.scrollHeight;
+}
+
 i++;
 if(i>=words.length) clearInterval(interval);
 },40);
@@ -415,6 +431,7 @@ currentChat.messages.push({text,type:"bot"});
 saveChats();
 }
 }
+
 
 
 /* =========================
