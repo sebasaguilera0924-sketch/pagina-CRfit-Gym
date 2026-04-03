@@ -17,18 +17,27 @@ body{
 background: radial-gradient(circle at top,#1c1c1e,#0a0a0a 80%);
 color:white;
 }
+html, body{
+    height: 100%;
+    overflow-x: hidden;
+}
+/* evita zoom y scroll raro en el cel */
+input, textarea{
+    font-size: 16px;
+}
 
 /* HEADER */
 header{
-position:sticky;
+position:fixed;
 top:0;
+left:0;
+width:100%;
 z-index:100;
 background:rgba(20,20,20,.7);
 backdrop-filter:blur(30px);
 padding:15px;
 border-bottom:1px solid rgba(255,255,255,.05);
 }
-
 .top{
 display:flex;
 justify-content:space-between;
@@ -111,7 +120,7 @@ z-index:200;
 
 /* GRID */
 .container{
-padding:25px;
+padding: 120px 25px 25px;
 max-width:1200px;
 margin:auto;
 }
@@ -306,10 +315,36 @@ pointer-events:none;
 
 
 /* RESPONSIVE */
-@media(max-width:600px){
+@media(max-width:768px){
+
+/* HEADER más compacto */
+header{
+padding:10px;
+}
+
+/* buscador fijo */
+.search-bar{
+position:sticky;
+top:70px;
+z-index:90;
+}
+
+/* categorías scroll suave */
+.categories{
+padding-bottom:5px;
+}
+
+/* productos mejor acomodados */
 .products{
 grid-template-columns:repeat(2,1fr);
+gap:15px;
 }
+
+/* carrito más cómodo */
+.cart{
+max-width:100%;
+}
+
 }
 </style>
 </head>
@@ -507,6 +542,17 @@ window.location.href="carrito.html";
 }
 
 render(productos);
+
+const searchInput = document.querySelector(".search-bar input");
+
+searchInput.addEventListener("focus", ()=>{
+document.body.style.position = "fixed";
+document.body.style.width = "100%";
+});
+
+searchInput.addEventListener("blur", ()=>{
+document.body.style.position = "";
+});
 
 </script>
 

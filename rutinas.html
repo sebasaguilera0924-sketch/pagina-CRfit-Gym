@@ -6,11 +6,13 @@
 <title>Rutinas | CRFit Gym</title>
 
 <style>
+
+/* RESET */
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:-apple-system, BlinkMacSystemFont, "San Francisco", Arial;
+font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
 scroll-behavior:smooth;
 }
 
@@ -31,16 +33,24 @@ position:sticky;
 top:0;
 z-index:100;
 border-bottom:1px solid rgba(29,185,84,0.2);
+box-shadow:0 5px 20px rgba(0,0,0,0.4);
 }
 
 header h2{
 color:#1db954;
+font-size:22px;
+}
+
+/* NAV */
+nav{
+display:flex;
+align-items:center;
+gap:20px;
 }
 
 nav a{
 color:#aaa;
 text-decoration:none;
-margin-left:20px;
 font-size:14px;
 transition:.3s;
 }
@@ -58,6 +68,14 @@ color:black;
 font-weight:bold;
 }
 
+/* MENU BTN */
+.menu-btn{
+display:none;
+font-size:26px;
+cursor:pointer;
+color:#1db954;
+}
+
 /* HERO */
 .hero{
 height:450px;
@@ -66,6 +84,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
+overflow:hidden;
 }
 
 .hero video{
@@ -80,6 +99,7 @@ position:absolute;
 width:100%;
 height:100%;
 background:rgba(0,0,0,0.65);
+backdrop-filter:blur(2px);
 }
 
 .hero-content{
@@ -116,6 +136,8 @@ border-radius:20px;
 overflow:hidden;
 transition:.4s;
 border:1px solid rgba(29,185,84,0.15);
+backdrop-filter:blur(20px);
+cursor:pointer;
 }
 
 .card:hover{
@@ -143,7 +165,6 @@ color:#aaa;
 font-size:14px;
 }
 
-/* BOTÓN VERDE PRO */
 .card-content a{
 display:inline-block;
 margin-top:12px;
@@ -154,13 +175,6 @@ border-radius:25px;
 font-size:13px;
 text-decoration:none;
 font-weight:bold;
-transition:.3s;
-box-shadow:0 5px 15px rgba(29,185,84,0.3);
-}
-
-.card-content a:hover{
-transform:scale(1.08);
-box-shadow:0 8px 25px rgba(29,185,84,0.5);
 }
 
 /* INFO */
@@ -190,118 +204,35 @@ padding:25px;
 color:#777;
 }
 
-/* RESPONSIVE */
+/* ================= MOBILE ================= */
 @media(max-width:768px){
 
-/* HEADER */
 header{
-flex-direction:column;
-align-items:flex-start;
-padding:12px 20px;
+padding:12px 16px;
 }
 
-nav{
-width:100%;
-margin-top:10px;
-display:flex;
-flex-direction:column;
-gap:8px;
-}
-
-nav a{
-display:block;
-margin:0;
-font-size:14px;
-}
-
-/* HERO */
-.hero{
-height:250px;
-}
-
-.hero h1{
-font-size:1.6rem;
-}
-
-.hero p{
-font-size:13px;
-}
-
-/* CARDS */
-.cards{
-grid-template-columns:1fr;
-gap:15px;
-padding:0 10px;
-}
-
-.card img{
-height:180px;
-}
-
-.card-content h3{
-font-size:16px;
-}
-
-.card-content p{
-font-size:13px;
-}
-
-.card-content a{
-padding:8px 14px;
-font-size:12px;
-}
-
-/* INFO SECTION */
-.info{
-margin:15px 10px;
-padding:20px 15px;
-border-radius:20px;
-}
-
-.info h2{
+header h2{
 font-size:18px;
 }
 
-.info p{
-font-size:13px;
-line-height:1.4;
-}
-}
-/* MENU HAMBURGUESA */
-.menu-btn{
-display:none;
-font-size:26px;
-cursor:pointer;
-color:#1db954;
-}
-
-/* Móvil */
-@media(max-width:768px){
-
-header{
-flex-direction:row;
-justify-content:space-between;
-align-items:center;
-padding:12px 20px;
-}
-
+/* MENU */
 .menu-btn{
 display:block;
 }
 
 nav{
 position:fixed;
-top:60px;
-right:-250px;
-width:200px;
-background:rgba(0,0,0,0.95);
+top:65px;
+right:-260px;
+width:220px;
 height:100%;
-display:flex;
+background:rgba(10,10,10,0.98);
+backdrop-filter:blur(20px);
 flex-direction:column;
 gap:15px;
-padding:20px;
-transition:0.3s;
-z-index:100;
+padding:25px 20px;
+transition:.3s;
+z-index:200;
 }
 
 nav.show{
@@ -310,19 +241,14 @@ right:0;
 
 nav a{
 font-size:16px;
-color:#fff;
-text-align:left;
+color:white;
+padding:10px;
+border-radius:10px;
 }
 
 /* HERO */
 .hero{
-height:250px;
-}
-
-.hero video{
-object-fit:cover;
-width:100%;
-height:100%;
+height:280px;
 }
 
 .hero h1{
@@ -337,41 +263,14 @@ font-size:13px;
 .cards{
 grid-template-columns:1fr;
 gap:15px;
-padding:0 10px;
 }
 
-.card img{
-height:180px;
+/* BOTON FULL */
+.music-btn{
+width:100%;
+text-align:center;
 }
 
-.card-content h3{
-font-size:16px;
-}
-
-.card-content p{
-font-size:13px;
-}
-
-.card-content a{
-padding:8px 14px;
-font-size:12px;
-}
-
-/* INFO */
-.info{
-margin:15px 10px;
-padding:20px 15px;
-border-radius:20px;
-}
-
-.info h2{
-font-size:18px;
-}
-
-.info p{
-font-size:13px;
-line-height:1.4;
-}
 }
 
 </style>
@@ -381,26 +280,33 @@ line-height:1.4;
 
 <header>
 <h2>CRFit Gym</h2>
-<span class="menu-btn" onclick="toggleMenu()">=</span>
-<nav>
+
+<span class="menu-btn" onclick="toggleMenu()">☰</span>
+
+<nav id="nav-menu">
 <a href="index.html">Inicio</a>
 <a href="#info">Cómo entrenar</a>
 <a href="musica.html" class="music-btn">🎧 Música</a>
 </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-<video autoplay muted loop>
-<source src="video-gym2.mp4">
+
+<video autoplay muted loop playsinline preload="auto">
+<source src="video-gym2.mp4" type="video/mp4">
 </video>
+
 <div class="hero-overlay"></div>
 
 <div class="hero-content">
 <h1>Entrena Como Profesional</h1>
 <p>Rutinas diseñadas para transformar tu cuerpo</p>
 </div>
+
 </section>
 
+<!-- CARDS -->
 <main class="container">
 
 <div class="cards">
@@ -410,7 +316,7 @@ line-height:1.4;
 <div class="card-content">
 <h3>Brazos</h3>
 <p>Bíceps y tríceps para volumen.</p>
-<a href="#">Ver rutina</a>
+<a>Ver rutina</a>
 </div>
 </div>
 
@@ -419,7 +325,7 @@ line-height:1.4;
 <div class="card-content">
 <h3>Pecho</h3>
 <p>Fuerza y estética.</p>
-<a href="#">Ver rutina</a>
+<a>Ver rutina</a>
 </div>
 </div>
 
@@ -428,7 +334,7 @@ line-height:1.4;
 <div class="card-content">
 <h3>Espalda</h3>
 <p>Potencia muscular.</p>
-<a href="#">Ver rutina</a>
+<a>Ver rutina</a>
 </div>
 </div>
 
@@ -437,7 +343,7 @@ line-height:1.4;
 <div class="card-content">
 <h3>Piernas</h3>
 <p>Fuerza total.</p>
-<a href="#">Ver rutina</a>
+<a>Ver rutina</a>
 </div>
 </div>
 
@@ -446,7 +352,7 @@ line-height:1.4;
 <div class="card-content">
 <h3>Hombros</h3>
 <p>Amplitud y estabilidad.</p>
-<a href="#">Ver rutina</a>
+<a>Ver rutina</a>
 </div>
 </div>
 
@@ -454,16 +360,16 @@ line-height:1.4;
 
 </main>
 
+<!-- INFO -->
 <section id="info" class="info">
 <h2>Cómo entrenar correctamente</h2>
 
-<p><b>Incrementar músculo:</b> El entrenamiento de fuerza ayuda a aumentar masa muscular. Combine esto con buena alimentación.</p>
-<p><b>Fuerza:</b> Más peso + mismas repeticiones = más fuerza.</p>
+<p><b>Incrementar músculo:</b> El entrenamiento de fuerza ayuda a aumentar masa muscular.</p>
+<p><b>Fuerza:</b> Más peso = más fuerza.</p>
 <p><b>Tonificación:</b> Menos peso + más repeticiones.</p>
-<p><b>Progresión:</b> Aumente dificultad cuando sea fácil.</p>
-<p><b>Recomendación:</b> 15 a 20 repeticiones por serie.</p>
-<p><b>Intensidad:</b> Empiece suave y suba progresivamente.</p>
-<p><b>Dolor:</b> Normal al inicio, ajuste si dura mucho.</p>
+<p><b>Progresión:</b> Aumente dificultad constantemente.</p>
+<p><b>Recomendación:</b> 15 a 20 repeticiones.</p>
+<p><b>Intensidad:</b> Empiece suave y suba.</p>
 
 </section>
 
@@ -472,9 +378,13 @@ line-height:1.4;
 </footer>
 
 <script>
+
+/* REDIRECCIÓN */
 function ir(tipo){
 window.location.href=`rutina-${tipo}.html`;
+}
 
+/* MENU */
 const menuBtn = document.querySelector(".menu-btn");
 const navMenu = document.getElementById("nav-menu");
 
@@ -482,7 +392,7 @@ function toggleMenu(){
 navMenu.classList.toggle("show");
 }
 
-// Cerrar menú al tocar fuera
+/* Cerrar al tocar fuera */
 document.addEventListener("click", (e)=>{
 if(window.innerWidth <= 768){
 if(!navMenu.contains(e.target) && !menuBtn.contains(e.target)){
@@ -490,7 +400,7 @@ navMenu.classList.remove("show");
 }
 }
 });
-}
+
 </script>
 
 </body>

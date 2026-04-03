@@ -17,9 +17,15 @@ font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
 body{
 background: radial-gradient(circle at top, #1c1c1e, #0b0b0c 75%);
 color:white;
-height:100vh;
 display:flex;
+min-height:100dvh;
 overflow:hidden;
+}
+html, body{
+    height: 100%;
+}
+body.menu-open{
+    overflow:hidden
 }
 
 /* MAIN */
@@ -27,6 +33,7 @@ overflow:hidden;
 flex:1;
 display:flex;
 flex-direction:column;
+height: 100%;
 }
 
 /* HEADER */
@@ -180,10 +187,17 @@ text-align:left;
 background:rgba(34,197,94,0.2);
 color:white;
 }
-
+.menu-btn{
+display:none;
+font-size: 22px;
+cursor: pointer;
+}
 /* OCULTAR SIDEBAR EN MÓVIL */
 /* RESPONSIVE CELULAR */
-@media(max-width:768px){}
+@media(max-width:768px){
+.menu-btn{
+    display: block;
+}
 
 /* HEADER */
 header{
@@ -194,11 +208,6 @@ padding:12px 16px;
 width: 100%;
 }
 
-.menu-btn{
-display:block;
-font-size: 22px;
-cursor: pointer;
-}
 /* MAIN se adapta al ancho completo */
 .main{
     flex:1;
@@ -241,30 +250,50 @@ z-index:50;
     font-size: 14px;
     padding: 0 14px
 }
-/* SIDEBAR */
+/* SIDEBAR MOBILE FIX */
+@media(max-width:768px){
+
 .sidebar{
 position: fixed;
 top: 0;
-right: -260px; 
+right: -260px;
 height: 100%;
-width:240px;
+width: 240px;
+
 padding:20px;
+
 background: rgba(15, 15, 15, 0.95);
 backdrop-filter: blur(30px);
+
+display:flex;
 flex-direction: column;
-transition: 3s;
-z-index: 100;
+gap:12px;
+
+transition: .3s ease;
+z-index: 200;
 }
-.slidebar.show{
-    right: 0; /* visible */
+
+/* 🔥 CORREGIDO (antes estaba mal escrito) */
+.sidebar.show{
+right: 0;
 }
+
+} }
+
 .sidebar h2{
     font-size: 16px;
 }
-.slidebar button,
-.slidebar a{
-    font-size: 14px;
-    padding: 10px
+.sidebar a, .sidebar button{
+padding:12px;
+border-radius:12px;
+font-size:15px;
+transition:.2s;
+}
+
+.sidebar a:active,
+.sidebar button:active{
+transform:scale(0.96);
+background:rgba(34,197,94,0.2);
 }
 
 /* ANIM */
@@ -575,6 +604,7 @@ const menuBtn = document.querySelector(".menu-btn");
 
 function toggleMenu(){
 sidebar.classList.toggle("show");
+document.body.classList.toggle("menu-open")
 }
 
 // Cerrar menu al hacer clic fuera del sidebar

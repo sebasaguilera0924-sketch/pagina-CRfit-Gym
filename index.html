@@ -194,16 +194,27 @@ transform:scale(1.03);
 position:absolute;
 top:50%;
 transform:translateY(-50%);
-width:45px;
-height:45px;
+width:42px;
+height:42px;
 border:none;
 border-radius:50%;
-background:rgba(255,255,255,0.1);
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(10px);
+color:white;
+font-size:18px;
 cursor:pointer;
+z-index:10;
+
+box-shadow:0 5px 20px rgba(0,0,0,0.5);
+transition:.25s;
 }
 
-.arrow.left{left:-60px;}
-.arrow.right{right:-60px;}
+.arrow:active{
+transform:translateY(-50%) scale(0.9);
+}
+
+.arrow.left{left:10px;}
+.arrow.right{right:10px;}
 
 /* LOGIN */
 .modal{
@@ -300,22 +311,6 @@ transform:scale(1.05);
 /* MOBILE */
 @media(max-width:900px){
 
-.comentario-card{
-padding:22px;
-}
-
-.stars{
-font-size:16px;
-}
-
-.btn-comentario{
-width:90%;
-}
-
-}
-/* MOBILE */
-@media(max-width:900px){
-
 .menu-toggle{display:block;}
 
 nav{
@@ -339,10 +334,27 @@ flex-direction:column;
 gap:20px;
 }
 
-.arrow{display:none;}
+/* 🔥 ARREGLA EL CARRUSEL EN CELULAR */
+.slider{
+overflow:hidden;
+padding:0 5px;
+}
 
+/* Flechas visibles y bien posicionadas */
+.arrow{
+width:38px;
+height:38px;
+font-size:16px;
+}
+
+/* Slides más cómodos en celular */
+.slide{
+padding:25px 15px;
+}
+
+/* HERO */
 .hero{
-padding-top:160px;
+padding-top:150px;
 }
 
 }
@@ -540,7 +552,24 @@ sec.classList.add("visible");
 }
 });
 });
+document.querySelectorAll(".slides").forEach(slider=>{
+let startX = 0;
 
+slider.addEventListener("touchstart",e=>{
+startX = e.touches[0].clientX;
+});
+
+slider.addEventListener("touchend",e=>{
+let endX = e.changedTouches[0].clientX;
+
+if(startX - endX > 50){
+slider.parentElement.querySelector(".arrow.right").click();
+}
+if(endX - startX > 50){
+slider.parentElement.querySelector(".arrow.left").click();
+}
+});
+});
 </script>
 
 </body>
