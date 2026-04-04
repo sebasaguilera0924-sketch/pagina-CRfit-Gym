@@ -311,7 +311,7 @@ to{opacity:1;}
 
 <header>
 <h3>CRFit IA</h3>
-<span class="menu-btn" onclick="toggleMenu()">☰</span>
+<span class="menu-btn" onclick="toggleMenu(event)">☰</span>
 </header>
 
 <div class="chat" id="chat"></div>
@@ -419,7 +419,7 @@ div.innerHTML += words[i] + " ";
 const isNearBottom = chat.scrollHeight - chat.scrollTop <= chat.clientHeight + 50;
 
 if(isNearBottom){
-   chat.scrollTop = chat.scrollHeight;
+chat.scrollTop = chat.scrollHeight;
 }
 
 i++;
@@ -619,7 +619,8 @@ typeMessage("🔥 Bienvenido a CRFit IA");
 const sidebar = document.getElementById("sidebar");
 const menuBtn = document.querySelector(".menu-btn");
 
-function toggleMenu(){
+function toggleMenu(e){
+    e.stopPropagation();
 sidebar.classList.toggle("show");
 document.body.classList.toggle("menu-open")
 }
@@ -627,8 +628,12 @@ document.body.classList.toggle("menu-open")
 // Cerrar menu al hacer clic fuera del sidebar
 document.addEventListener("click", (e)=>{
 if(window.innerWidth <= 768){
-if(!sidebar.contains(e.target) && !menuBtn.contains(e.target)){
-sidebar.classList.remove("show");
+if(
+!sidebar.contains(e.target) &&
+!e.target.closest(".menu-btn")
+){
+    sidebar.classList.remove("show");
+document.body.classList.remove("menu-open");
 }
 }
 });
