@@ -352,35 +352,34 @@ font-size:16px;
 padding:25px 15px;
 } 
 }
-/* ===== HERO VIDEO PRO ===== */
+/* HERO PRO (igual que tu otra página) */
 .hero{
+height:100vh;
 position:relative;
-min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 overflow:hidden;
-padding:120px 20px 60px;
 }
 
 /* VIDEO */
-.hero-bg-video{
+.hero video{
 position:absolute;
-top:50%;
-left:50%;
+top:0;
+left:0;
 width:100%;
 height:100%;
-transform:translate(-50%,-50%);
-object-fit:cover;
+object-fit:cover; /* 🔥 clave para que se vea bien SIEMPRE */
 z-index:-2;
 }
 
 /* OSCURECER */
 .hero-overlay{
 position:absolute;
-inset:0;
-background:rgba(0,0,0,0.55);
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
 z-index:-1;
 }
 
@@ -388,34 +387,24 @@ z-index:-1;
 .hero-content{
 position:relative;
 z-index:2;
-max-width:800px;
-}
-
-.hero-content h1{
-font-size:clamp(2.5rem,5vw,3.5rem);
-}
-
-.hero-content p{
-margin-top:15px;
-color:#ddd;
 }
 
 /* 📱 CELULAR PERFECTO */
-@media(max-width:900px){
+@media(max-width:768px){
 
 .hero{
-min-height:90vh; /* 🔥 90% como querías */
-padding-top:140px;
+height:90vh; /* 🔥 no tan gigante pero full pantalla */
 }
 
-.hero-bg-video{
-width:100%;
-height:100%;
-object-fit:cover; /* llena sin bordes negros */
+.hero h1{
+font-size:1.8rem;
+}
+
+.hero p{
+font-size:14px;
 }
 
 }
-
 </style>
 </head>
 
@@ -457,7 +446,7 @@ object-fit:cover; /* llena sin bordes negros */
 <!-- HERO CON VIDEO -->
 <section class="hero">
 
-<video autoplay muted loop playsinline class="hero-bg-video">
+<video autoplay muted loop playsinline preload="auto">
 <source src="video-gym1.mp4" type="video/mp4">
 </video>
 
@@ -468,7 +457,6 @@ object-fit:cover; /* llena sin bordes negros */
 <p>Rutinas, música y productos fitness en un solo lugar</p>
 <a onclick="go('rutinas.html')">Comenzar</a>
 </div>
-
 </section>
 
 <!-- SOBRE -->
