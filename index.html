@@ -364,7 +364,7 @@ font-size:13px;
 }
 /* HERO PRO */
 .hero{
-height:100vh;
+height:450px;
 position:relative;
 display:flex;
 align-items:center;
@@ -375,6 +375,7 @@ overflow:hidden;
 
 /* VIDEO */
 .hero video{
+pointer-events: none;
 position:absolute;
 top:0;
 left:0;
@@ -402,15 +403,15 @@ z-index:2;
 @media(max-width:768px){
 
 .hero{
-height:90h; /* 🔥 no tan gigante pero full pantalla */
+height:280px; /* 🔥 no tan gigante pero full pantalla */
 }
-
-/* aqui esta */
-.hero video{
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
-} }
+.hero h1{
+    font-size: 1.6rem;
+}
+.hero p{
+    font-size: 13px;
+}
+}
 </style>
 </head>
 
