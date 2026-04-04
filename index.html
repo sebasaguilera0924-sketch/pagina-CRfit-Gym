@@ -6,159 +6,193 @@
 <title>CRFit Gym</title>
 
 <style>
+
 /* ===== RESET ===== */
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
 }
 
-/* ===== BODY ===== */
-body{
-background:linear-gradient(180deg,#0a0a0a,#111);
-color:white;
+html,body{
+width:100%;
+min-height:100%;
 overflow-x:hidden;
+background:#000; /* 🔥 fondo negro real */
+color:white;
 }
 
-/* ===== HEADER ===== */
+/* ===== HEADER (glass + clean) ===== */
 header{
 position:fixed;
 top:0;
+left:0;
 width:100%;
-height:75px;
+height:70px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:0 25px;
-background:rgba(15,15,15,0.6);
-backdrop-filter:blur(25px);
-border-bottom:1px solid rgba(255,255,255,0.05);
+padding:0 18px;
 z-index:1000;
+
+background:rgba(10,10,10,0.7);
+backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 .logo{
 display:flex;
 align-items:center;
-gap:12px;
+gap:10px;
 }
-.logo img{height:70px;}
-.logo strong{font-size:20px;}
 
+.logo img{
+height:75px;
+width: auto;
+object-fit: contain;
+}
+.logo strong{font-size:18px;font-weight:600;}
+
+/* NAV */
 nav ul{
 display:flex;
-gap:25px;
+gap:18px;
 list-style:none;
 }
 
 nav a{
-color:#aaa;
+color:rgba(255,255,255,0.7);
 text-decoration:none;
 font-weight:500;
-position:relative;
+transition:.2s;
 }
 
-nav a::after{
-content:"";
-position:absolute;
-bottom:-5px;
-left:0;
-width:0%;
-height:2px;
-background:#22c55e;
-transition:.3s;
+nav a:hover{
+color:white;
+transform:translateY(-1px);
 }
 
-nav a:hover{color:white;}
-nav a:hover::after{width:100%;}
-
-/* USER */
-.user-area{
-display:flex;
-align-items:center;
-gap:10px;
+.menu-toggle{
+display:none;
+font-size:28px;
+cursor:pointer;
+color:white;
 }
 
-/* BOTONES PRO */
+/* ===== BOTONES (SPOTIFY STYLE) ===== */
 .btn-login{
-padding:8px 18px;
+padding:9px 16px;
 border-radius:999px;
 border:none;
 cursor:pointer;
-font-weight:600;
-background:linear-gradient(135deg,#22c55e,#16a34a);
+font-weight:700;
 color:white;
-box-shadow:0 5px 20px rgba(34,197,94,.3);
-transition:.3s;
+
+background:#1db954; /* verde Spotify */
+box-shadow:0 8px 25px rgba(29,185,84,0.25);
+
+transition:all .2s ease;
 }
-.btn-login:hover{transform:scale(1.05);}
+
+.btn-login:hover{
+transform:scale(1.08);
+box-shadow:0 12px 30px rgba(29,185,84,0.4);
+}
+
+.btn-login:active{
+transform:scale(0.95);
+}
 
 .btn-logout{
-padding:7px 16px;
+padding:8px 14px;
 border-radius:999px;
 border:none;
-cursor:pointer;
-font-size:13px;
-font-weight:600;
-background:#1db954;
+background:rgba(255,255,255,0.12);
 color:white;
-transition:.3s;
 }
-.btn-logout:hover{transform:scale(1.1);}
 
-/* ===== HERO (ARREGLADO) ===== */
+/* ===== HERO VIDEO PERFECTO MOBILE ===== */
 .hero{
-margin-top:70px;
-height:100vh;
-width:100%;
+opacity: 1 !important;
+transform: none !important;
 position:relative;
+width:100%;
+height:100svh; /* 🔥 clave para móvil */
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 overflow:hidden;
+
 }
 
+/* video full cover real */
 .hero video{
 position:absolute;
-top:0;
-left:0;
+inset:0;
 width:100%;
 height:100%;
 object-fit:cover;
+z-index: 0;
+pointer-events: none;
+display: block;
+
 object-position:center;
-z-index:-2;
+filter:contrast(1.1) saturate(1.1);
 }
 
+/* overlay suave */
 .hero::after{
 content:"";
 position:absolute;
 inset:0;
-background:rgba(0,0,0,0.6);
-z-index:-1;
+background:linear-gradient(to bottom,rgba(0,0,0,.3),rgba(0,0,0,.85));
 }
 
-.hero h1{font-size:clamp(2.2rem,5vw,3.2rem);}
-.hero p{margin-top:10px;color:#ccc;}
+/* contenido */
+.hero > div{
+position:relative;
+z-index:2;
+padding:20px;
+max-width:600px;
+}
 
+.hero h1{
+font-size:clamp(28px,5vw,54px);
+font-weight:800;
+}
+
+.hero p{
+opacity:.75;
+margin-top:10px;
+}
+
+/* botón hero */
 .hero a{
 display:inline-block;
-margin-top:25px;
-padding:15px 35px;
+margin-top:18px;
+padding:12px 22px;
 border-radius:999px;
-background:#22c55e;
+background:#1db954;
 color:white;
 text-decoration:none;
-box-shadow:0 10px 30px rgba(34,197,94,.4);
-transition:.3s;
+font-weight:700;
+transition:.2s;
 }
-.hero a:hover{transform:scale(1.07);}
 
-/* ===== SECTIONS ===== */
+.hero a:hover{
+transform:scale(1.08);
+}
+
+/* ===== SECCIONES ===== */
 section{
-padding:80px 20px;
+padding:80px 18px;
 max-width:1100px;
 margin:auto;
+opacity:0;
+transform:translateY(30px);
+transition:.6s ease;
 }
 
 section.visible{
@@ -166,41 +200,56 @@ opacity:1;
 transform:translateY(0);
 }
 
-section h2{text-align:center;margin-bottom:50px;}
+section h2{
+text-align:center;
+font-size:28px;
+margin-bottom:40px;
+font-weight:700;
+}
 
-/* ===== CARDS ===== */
+/* ===== TARJETAS (clean premium) ===== */
 .sobre-cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:18px;
 }
 
 .sobre-card{
-background:rgba(255,255,255,0.05);
-padding:25px;
-border-radius:25px;
-backdrop-filter:blur(20px);
+background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:22px;
+padding:24px;
+backdrop-filter:blur(18px);
+
+transition:all .25s ease;
+}
+
+.sobre-card:hover{
+transform:translateY(-6px) scale(1.02);
+background:rgba(255,255,255,0.1);
 }
 
 /* ===== SLIDER ===== */
 .slider{
 position:relative;
 overflow:hidden;
+width:100%;
 }
 
 .slides{
 display:flex;
-transition:.4s;
+transition:transform .5s cubic-bezier(.4,0,.2,1);
 }
 
 .slide{
 min-width:100%;
-padding:35px;
-border-radius:25px;
+padding:30px;
+border-radius:20px;
 background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
 text-align:center;
-opacity:.4;
-transform:scale(.9);
+opacity:.6;
+transform:scale(.96);
 transition:.3s;
 }
 
@@ -209,68 +258,75 @@ opacity:1;
 transform:scale(1);
 }
 
-/* ===== FLECHAS PRO ===== */
+/* ===== COMENTARIOS ===== */
+.comentario-card{
+background:rgba(255,255,255,0.06);
+padding:26px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+/* ===== ARROWS ===== */
 .arrow{
 position:absolute;
 top:50%;
 transform:translateY(-50%);
-width:45px;
-height:45px;
+width:42px;
+height:42px;
 border-radius:50%;
 border:none;
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(10px);
+background:rgba(255,255,255,0.1);
 color:white;
-font-size:18px;
 cursor:pointer;
-box-shadow:0 5px 25px rgba(0,0,0,0.6);
-transition:.25s;
+transition:.2s;
 }
 
 .arrow:hover{
+background:#1db954;
 transform:translateY(-50%) scale(1.15);
-background:#22c55e;
 }
 
 .arrow.left{left:10px;}
 .arrow.right{right:10px;}
 
-/* ===== COMENTARIOS ===== */
-.comentario-card{
-background:rgba(255,255,255,0.06);
-padding:30px;
-border-radius:25px;
-}
-
+/* ===== BOTÓN COMENTARIO ===== */
 .btn-comentario{
 display:block;
 margin:40px auto;
 width:220px;
 padding:12px;
 border-radius:999px;
-background:#22c55e;
+background:#1db954;
 text-align:center;
 color:white;
 text-decoration:none;
+
+transition:.2s;
 }
 
-/* ===== LOGIN ===== */
+.btn-comentario:hover{
+transform:scale(1.08);
+}
+
+/* ===== MODAL LOGIN ===== */
 .modal{
 position:fixed;
 inset:0;
 display:none;
 justify-content:center;
 align-items:center;
-background:rgba(0,0,0,0.8);
+background:rgba(0,0,0,0.75);
+backdrop-filter:blur(12px);
 z-index:2000;
 }
 
 .modal-card{
 background:#111;
-padding:30px;
-border-radius:25px;
+border:1px solid rgba(255,255,255,0.08);
+padding:25px;
+border-radius:22px;
 width:90%;
-max-width:350px;
+max-width:340px;
 }
 
 .modal-card input{
@@ -279,6 +335,9 @@ padding:12px;
 margin-top:10px;
 border-radius:10px;
 border:none;
+outline:none;
+background:#1a1a1a;
+color:white;
 }
 
 .modal-card button{
@@ -287,91 +346,59 @@ width:100%;
 padding:12px;
 border:none;
 border-radius:10px;
-background:#22c55e;
+background:#1db954;
 color:white;
+font-weight:700;
 }
 
+/* ===== FOOTER ===== */
 footer{
 text-align:center;
-padding:25px 15px;
-color:#777;
-background:#0a0a0a;
-border-top:1px solid rgba(255,255,255,0.05);
+padding:25px;
+color:rgba(255,255,255,0.5);
+border-top:1px solid rgba(255,255,255,0.08);
 margin-top:60px;
 }
 
-/* ===== MOBILE ===== */
-.menu-toggle{
-display:none;
-font-size:26px;
-cursor:pointer;
-}
-
+/* ===== RESPONSIVE PERFECTO ===== */
 @media(max-width:768px){
 
-.menu-toggle{display:block;}
+.menu-toggle{
+display:block;
+}
 
 nav{
 position:fixed;
-top:75px;
+top:70px;
 left:0;
 width:100%;
 height:0;
 overflow:hidden;
-background:#000;
-transition:.3s;
+background:rgba(0,0,0,0.95);
+transition:.3s ease;
 }
 
 nav.active{
-height:100vh;
-padding:20px;
+height:calc(100vh - 70px);
 }
 
 nav ul{
 flex-direction:column;
-gap:20px;
+align-items:center;
+gap:22px;
+padding-top:40px;
 }
 
-.arrow{
-width:38px;
-height:38px;
+nav a{
+font-size:18px;
 }
-}
-
-/* ===== HERO MOBILE FIX ===== */
-@media(max-width:768px){
 
 .hero{
-height:100vh;
+height:100svh;
 }
 
-.hero video{
-object-fit:cover;
-object-position:center;
-}
 }
 
-/* 📱 VERTICAL (ARREGLADO PRO) */
-@media (max-width:768px) and (orientation:portrait){
-
-.hero{
-height:100vh;
-}
-
-.hero video{
-object-fit:cover;
-object-position:center;
-}
-}
-
-/* 📱 HORIZONTAL */
-@media (max-width:768px) and (orientation:landscape){
-
-.hero video{
-object-fit:cover;
-object-position:center;
-}
-}
 
 
 </style>
@@ -574,6 +601,5 @@ sec.classList.add("visible");
 });
 
 </script>
-
 </body>
 </html>
