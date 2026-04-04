@@ -124,14 +124,16 @@ overflow:hidden;
 
 .hero video{
 position:absolute;
-top:0;
-left:0;
+top:50%;
+left:50%;
 
-width:100%;
-height:100%;
+transform: translate(-50%, -50%);
+width: 100%;
+height: 100%;
 
-object-fit:cover;
-z-index:-2;
+object-fit: cover;
+background: black;
+z-index: -2;
 }
 .hero::after{
 content:"";
@@ -331,16 +333,31 @@ gap:20px;
 }
 
 .hero{
-    height: 90vh;
-    min-height: 300px;
+    height: 100vh;
+    min-height: 500px;
 }
 .hero video{
-    object-fit: cover;
+    width: 120%;
+    height: 120%;
 }
 
 .arrow{
 width:38px;
 height:38px;
+}
+}
+/* 📱 CELULAR VERTICAL = video completo */
+@media (max-width:768px) and (orientation:portrait){
+.hero video{
+object-fit:contain;
+background:black;
+}
+}
+
+/* 📱 CELULAR HORIZONTAL = pantalla llena */
+@media (max-width:768px) and (orientation:landscape){
+.hero video{
+object-fit:cover;
 }
 }
 
