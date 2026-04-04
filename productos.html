@@ -32,9 +32,9 @@ position:fixed;
 top:0;
 left:0;
 width:100%;
-z-index:100;
-background:rgba(20,20,20,.7);
-backdrop-filter:blur(30px);
+z-index:1000;
+background:rgba(20,20,20,.55);
+backdrop-filter:blur(40px);
 padding:15px;
 border-bottom:1px solid rgba(255,255,255,.05);
 }
@@ -42,6 +42,7 @@ border-bottom:1px solid rgba(255,255,255,.05);
 display:flex;
 justify-content:space-between;
 align-items:center;
+gap: 10px
 }
 
 .brand{
@@ -53,16 +54,46 @@ gap:10px;
 .brand img{
 height:40px;
 }
-
 .menu a{
-margin-left:15px;
-text-decoration:none;
+position:relative;
+padding:8px 14px;
+border-radius:12px;
 color:#ccc;
+text-decoration:none;
 font-size:14px;
+
+transition:.25s;
 }
 
+/* TEXTO */
 .menu a:hover{
 color:#22c55e;
+}
+
+/* LÍNEA ANIMADA PRO */
+.menu a::after{
+content:"";
+position:absolute;
+left:10px;
+bottom:4px;
+
+width:0%;
+height:2px;
+
+background:linear-gradient(90deg,#22c55e,#4ade80);
+border-radius:2px;
+
+transition:.3s;
+}
+
+/* ACTIVACIÓN */
+.menu a:hover::after{
+width:70%;
+}
+
+/* EFECTO CLICK iOS */
+.menu a:active{
+transform:scale(0.95);
 }
 
 /* BUSCADOR */
@@ -73,9 +104,10 @@ margin-top:12px;
 .search-bar input{
 width:100%;
 padding:14px;
-border-radius:18px;
+border-radius:20px;
 border:none;
 background:rgba(255,255,255,0.06);
+backdrop-filter: 25s;
 color:white;
 outline:none;
 }
@@ -86,9 +118,14 @@ display:flex;
 gap:10px;
 margin-top:12px;
 overflow-x:auto;
+scroll-snap-type: mandatory;
+padding-bottom: 5px;
 }
 
 .categories button{
+flex-shrink: 0;
+scroll-snap-align: start;
+
 padding:10px 18px;
 border-radius:999px;
 border:none;
@@ -120,7 +157,7 @@ z-index:200;
 
 /* GRID */
 .container{
-padding: 120px 25px 25px;
+padding: 190px 25px 30px;
 max-width:1200px;
 margin:auto;
 }
@@ -321,28 +358,27 @@ pointer-events:none;
 header{
 padding:10px;
 }
-
-/* buscador fijo */
-.search-bar{
-position:sticky;
-top:70px;
-z-index:90;
+.container{
+    padding: 210px 15px 30px;
 }
-
-/* categorías scroll suave */
-.categories{
-padding-bottom:5px;
+/* menu mas usable*/
+.menu a{
+    font-size: 13px;
+    padding: 6px 10px;
 }
 
 /* productos mejor acomodados */
 .products{
-grid-template-columns:repeat(2,1fr);
-gap:15px;
+padding: 12px;
+}
+.product img{
+    height: 120px;
 }
 
 /* carrito más cómodo */
 .cart{
 max-width:100%;
+border-left: none;
 }
 
 }
