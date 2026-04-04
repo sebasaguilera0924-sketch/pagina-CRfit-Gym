@@ -350,53 +350,44 @@ font-size:16px;
 /* Slides más cómodos en celular */
 .slide{
 padding:25px 15px;
+} 
 }
-
-/* HERO */
-.hero{
-padding-top:150px;
-}
-
-}
-/* ===== HERO VIDEO FONDO ===== */
+/* ===== HERO VIDEO PRO ===== */
 .hero{
 position:relative;
 min-height:100vh;
-height: auto;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 overflow:hidden;
-padding:120px 20px;
+padding:120px 20px 60px;
 }
 
-/* VIDEO DE FONDO */
+/* VIDEO */
 .hero-bg-video{
 position:absolute;
-top:0;
-left:0;
+top:50%;
+left:50%;
 width:100%;
 height:100%;
-object-fit:contain;
-background:black;
+transform:translate(-50%,-50%);
+object-fit:cover;
 z-index:-2;
 }
-/* OSCURECER VIDEO */
+
+/* OSCURECER */
 .hero-overlay{
 position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
+inset:0;
 background:rgba(0,0,0,0.55);
 z-index:-1;
 }
 
-/* TEXTO ENCIMA */
+/* TEXTO */
 .hero-content{
 position:relative;
-z-index:1;
+z-index:2;
 max-width:800px;
 }
 
@@ -409,29 +400,21 @@ margin-top:15px;
 color:#ddd;
 }
 
-.hero-content a{
-display:inline-block;
-margin-top:20px;
-padding:15px 35px;
-border-radius:999px;
-background:#22c55e;
-color:white;
-text-decoration:none;
-}
-
-/* MOBILE */
+/* 📱 CELULAR PERFECTO */
 @media(max-width:900px){
 
 .hero{
-padding-top:120px;
+min-height:90vh; /* 🔥 90% como querías */
+padding-top:140px;
 }
 
-.hero-content{
-padding:0 15px;
-}
+.hero-bg-video{
+width:100%;
+height:100%;
+object-fit:cover; /* llena sin bordes negros */
 }
 
-
+}
 
 </style>
 </head>
@@ -472,8 +455,7 @@ padding:0 15px;
 
 <!-- HERO -->
 <!-- HERO CON VIDEO -->
-<!-- HERO CON VIDEO DE FONDO -->
-<div class="hero hero-bg">
+<section class="hero">
 
 <video autoplay muted loop playsinline class="hero-bg-video">
 <source src="video-gym1.mp4" type="video/mp4">
@@ -487,7 +469,7 @@ padding:0 15px;
 <a onclick="go('rutinas.html')">Comenzar</a>
 </div>
 
-</div>
+</section>
 
 <!-- SOBRE -->
 <section>
