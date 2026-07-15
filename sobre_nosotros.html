@@ -3,365 +3,604 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CRFit Gym - Sobre Nosotros</title>
+<title>Sobre Nosotros | CRFit Gym</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+:root{
+--verde:#1DB954;
+--verde-oscuro:#14a349;
+--negro:#0a0a0a;
+--panel:#141414;
+--panel-borde:#232323;
+--texto-tenue:#9a9a9a;
+--eyebrow:.72rem;
+}
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
+}
+html{
+scroll-behavior:smooth;
 }
 body{
-background:#0b0b0b;
-color:white;
+font-family:'Inter',Helvetica,sans-serif;
+background:var(--negro);
+color:#fff;
+overflow-x:hidden;
 }
-/* ===== HEADER IGUAL AL INICIO ===== */
+h1,h2,h3{
+font-family:'Bebas Neue',Arial,sans-serif;
+letter-spacing:.5px;
+}
+/* ===== HEADER ===== */
 header{
 position:fixed;
 top:0;
 left:0;
 width:100%;
-height:80px;
+height:78px;
 padding:0 50px;
 display:flex;
 align-items:center;
 justify-content:space-between;
-background:rgba(0,0,0,.6);
-backdrop-filter:blur(10px);
+background:rgba(10,10,10,.55);
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
+border-bottom:1px solid rgba(255,255,255,.06);
 z-index:1000;
+transition:background .3s ease, border-color .3s ease;
+}
+header.scrolled{
+background:rgba(10,10,10,.9);
+border-bottom-color:rgba(255,255,255,.1);
 }
 .logo{
 display:flex;
 align-items:center;
-gap:15px;
+gap:14px;
 }
 .logo img{
-height:150px;
-transform:translateY(18px);
+height:44px;
+width:auto;
+display:block;
+}
+.logo strong{
+font-family:'Bebas Neue',Arial,sans-serif;
+font-size:1.3rem;
+letter-spacing:1px;
+color:#fff;
 }
 nav ul{
 list-style:none;
 display:flex;
-gap:30px;
+gap:38px;
 }
 nav a{
-color:white;
+position:relative;
+color:#e6e6e6;
 text-decoration:none;
-font-weight:bold;
+font-weight:600;
+font-size:.92rem;
+letter-spacing:.3px;
+padding:6px 0;
+transition:color .25s ease;
+}
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:0;
+width:0%;
+height:2px;
+background:var(--verde);
+transition:width .25s ease;
 }
 nav a:hover{
-color:#1db954;
+color:var(--verde);
 }
-/* ===== HERO ===== */
+nav a:hover::after,
+nav a.activo::after{
+width:100%;
+}
+.menu-toggle{
+display:none;
+font-size:26px;
+cursor:pointer;
+background:none;
+border:none;
+color:#fff;
+}
+/* ===== HERO con scroll-scrub ===== */
 .hero{
+position:relative;
 height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-background:
-linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.9)),
-url('ss.sobreNs.jpg') center/cover no-repeat;
+overflow:hidden;
+}
+.hero-media{
+position:absolute;
+inset:-10% -10%;
+background:url('ss.sobreNs.jpg') center/cover no-repeat;
+will-change:transform, filter;
+transform:scale(1.05);
+transition:filter .2s linear;
+}
+.hero-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(10,10,10,.55) 55%, rgba(10,10,10,.97) 100%);
+z-index:1;
+}
+.hero-content{
+position:relative;
+z-index:2;
+will-change:transform, opacity;
+padding:0 20px;
+}
+.hero-content .eyebrow{
+display:inline-block;
+font-size:var(--eyebrow);
+text-transform:uppercase;
+letter-spacing:3px;
+color:var(--verde);
+font-weight:700;
+margin-bottom:18px;
 }
 .hero h1{
-font-size:3rem;
+font-size:5.2rem;
+line-height:.95;
+color:#fff;
+}
+.hero p.sub{
+margin-top:18px;
+color:#c9c9c9;
+font-size:1.05rem;
+max-width:520px;
+margin-left:auto;
+margin-right:auto;
+}
+.scroll-hint{
+position:absolute;
+bottom:36px;
+left:50%;
+transform:translateX(-50%);
+z-index:2;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:8px;
+color:var(--texto-tenue);
+font-size:.75rem;
+letter-spacing:2px;
+text-transform:uppercase;
+opacity:.8;
+}
+.scroll-hint span{
+width:1px;
+height:34px;
+background:linear-gradient(to bottom, var(--verde), transparent);
+animation:bajar 1.8s ease-in-out infinite;
+}
+@keyframes bajar{
+0%{transform:scaleY(0); transform-origin:top;}
+50%{transform:scaleY(1); transform-origin:top;}
+51%{transform-origin:bottom;}
+100%{transform:scaleY(0); transform-origin:bottom;}
 }
 /* ===== SECCIONES ===== */
 section{
-padding:120px 50px;
-max-width:1300px;
+padding:130px 50px;
+max-width:1280px;
 margin:auto;
 }
+.reveal{
+opacity:0;
+transform:translateY(28px);
+transition:opacity .7s ease, transform .7s ease;
+}
+.reveal.visible{
+opacity:1;
+transform:translateY(0);
+}
 /* ===== SOBRE ===== */
-.sobre-main{
-display:flex;
-flex-direction:column;
-gap:40px;
+.eyebrow-block{
+font-size:var(--eyebrow);
+text-transform:uppercase;
+letter-spacing:3px;
+color:var(--verde);
+font-weight:700;
+margin-bottom:14px;
+display:block;
 }
 .sobre-card{
-background:#161616;
-padding:40px;
-border-radius:20px;
+background:var(--panel);
+border:1px solid var(--panel-borde);
+padding:50px;
+border-radius:18px;
+margin-bottom:50px;
 }
 .sobre-card h2{
-color:#1DB954;
-margin-bottom:20px;
+font-size:2.4rem;
+margin-bottom:18px;
+color:#fff;
 }
 .sobre-card p{
-color:#bbb;
-line-height:1.6;
+color:var(--texto-tenue);
+line-height:1.75;
+font-size:1.05rem;
+max-width:800px;
 }
 /* GRID */
 .info-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
+gap:26px;
 }
 .info-box{
-background:#161616;
-padding:30px;
-border-radius:20px;
-transition:.3s;
-text-align:center;
+position:relative;
+background:var(--panel);
+border:1px solid var(--panel-borde);
+padding:36px 30px;
+border-radius:16px;
+transform-style:preserve-3d;
+perspective:800px;
+transition:transform .5s cubic-bezier(.22,1,.36,1), border-color .3s ease, background .3s ease;
+overflow:hidden;
+}
+.info-box.is-active{
+transition:transform .08s linear;
+}
+.info-box::before{
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(29,185,84,.16), transparent 55%);
+opacity:0;
+transition:opacity .3s ease;
+pointer-events:none;
+}
+.info-box:hover::before{
+opacity:1;
 }
 .info-box:hover{
-transform:translateY(-10px);
-box-shadow:0 10px 30px rgba(0,0,0,.6);
+border-color:rgba(29,185,84,.4);
+background:#171717;
+}
+.info-box .num{
+font-family:'Bebas Neue',sans-serif;
+font-size:.85rem;
+color:var(--verde);
+letter-spacing:2px;
+display:block;
+margin-bottom:14px;
 }
 .info-box h3{
-color:#1DB954;
-margin-bottom:10px;
+font-size:1.5rem;
+margin-bottom:12px;
+color:#fff;
 }
-/* ===== LIBRO ===== */
-.sobre{
-padding:100px 50px;
+.info-box p{
+color:var(--texto-tenue);
+line-height:1.6;
+font-size:.95rem;
 }
+/* ===== LIBRO / NEGOCIO ===== */
 .contenedor{
 display:flex;
 align-items:center;
-gap:60px;
+gap:70px;
 flex-wrap:wrap;
 }
-.libro img{
-width:450px;
-border-radius:15px;
-transition:.5s;
-box-shadow:0 20px 60px rgba(0,0,0,0.8);
+.libro{
+flex:1 1 380px;
+max-width:440px;
+perspective:1200px;
 }
-.libro img:hover{
-transform:scale(1.05);
+.libro-tilt{
+position:relative;
+width:100%;
+border-radius:16px;
+transform-style:preserve-3d;
+transition:transform .6s cubic-bezier(.22,1,.36,1), box-shadow .6s ease;
+box-shadow:0 25px 60px rgba(0,0,0,.7);
+}
+.libro-tilt.is-active{
+transition:transform .08s linear;
+}
+.libro-tilt img{
+width:100%;
+display:block;
+border-radius:16px;
+transform:translateZ(0);
+}
+.libro-tilt::after{
+content:"";
+position:absolute;
+inset:0;
+border-radius:16px;
+background:radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(255,255,255,.28), transparent 45%);
+opacity:0;
+transition:opacity .3s ease;
+pointer-events:none;
+}
+.libro-tilt.is-active::after{
+opacity:1;
+}
+.libro-tilt:hover{
+box-shadow:0 35px 80px rgba(0,0,0,.85), 0 0 40px rgba(29,185,84,.15);
 }
 .texto{
-max-width:500px;
+flex:1 1 380px;
+max-width:520px;
 }
 .texto h2{
-color:#1DB954;
+font-size:2.3rem;
+color:#fff;
 margin-bottom:20px;
 }
 .texto p{
-color:#bbb;
+color:var(--texto-tenue);
+line-height:1.75;
+font-size:1rem;
 }
-/* BOTÓN */
+.firma{
+display:block;
+margin-top:18px;
+color:#7d7d7d;
+font-size:.9rem;
+font-style:italic;
+}
 .btn{
-padding:12px 25px;
-background:#1DB954;
+padding:14px 30px;
+background:var(--verde);
 border-radius:30px;
 text-decoration:none;
-color:black;
+color:#0a0a0a;
 display:inline-block;
-margin-top:15px;
-font-weight:bold;
+margin-top:26px;
+font-weight:700;
+font-size:.92rem;
+letter-spacing:.3px;
+transition:box-shadow .3s ease, transform .3s ease, background .3s ease;
 }
 .btn:hover{
-box-shadow:0 0 20px #1DB954;
+background:var(--verde-oscuro);
+box-shadow:0 0 26px rgba(29,185,84,.5);
+transform:translateY(-2px);
 }
 /* ===== FOOTER ===== */
 footer{
-padding:30px;
+padding:36px;
 text-align:center;
-background:#121212;
-color:#888;
+background:#0f0f0f;
+border-top:1px solid var(--panel-borde);
+color:#777;
+font-size:.85rem;
+letter-spacing:.3px;
 }
-/* ===== RESPONSIVE PERFECTO ===== */
+/* ===== RESPONSIVE ===== */
 @media(max-width:1024px){
-header{
-padding:0 30px;
-}
-section{
-padding:100px 30px;
-}
-.libro img{
-width:350px;
-}
+header{padding:0 30px;}
+section{padding:100px 30px;}
+.hero h1{font-size:3.6rem;}
 }
 @media(max-width:768px){
-/* HEADER */
-header{
-height:70px;
-padding:0 20px;
-}
-.logo img{
-height:90px;
-transform:translateY(10px);
-}
-.logo strong{
-font-size:14px;
-}
-/* NAV RESPONSIVE */
+header{height:68px;padding:0 20px;}
+.logo img{height:36px;}
 nav{
 position:fixed;
-top:70px;
+top:68px;
 left:-100%;
 width:100%;
-height:100vh;
-background:#0b0b0b;
+height:calc(100vh - 68px);
+background:#0a0a0a;
 display:flex;
 justify-content:center;
 align-items:center;
-transition:.4s;
+transition:left .4s ease;
 z-index:999;
 }
-nav.active{
-left:0;
+nav.active{left:0;}
+nav ul{flex-direction:column;gap:30px;text-align:center;}
+nav a{font-size:1.2rem;}
+.menu-toggle{display:block;}
+.hero h1{font-size:2.6rem;}
+.hero p.sub{font-size:.95rem;}
+section{padding:80px 20px;}
+.sobre-card{padding:28px;}
+.sobre-card h2{font-size:1.8rem;}
+.info-grid{grid-template-columns:1fr;}
+.contenedor{flex-direction:column;text-align:center;gap:34px;}
+.texto{max-width:100%;}
+.btn{width:100%;max-width:260px;}
 }
-nav ul{
-flex-direction:column;
-gap:30px;
-text-align:center;
-}
-nav a{
-font-size:20px;
-}
-/* BOTÓN HAMBURGUESA */
-.menu-toggle{
-display:block;
-font-size:28px;
-cursor:pointer;
-}
-/* HERO */
-.hero{
-height:80vh;
-padding:0 20px;
-}
-.hero h1{
-font-size:2rem;
-}
-/* SECCIONES */
-section{
-padding:80px 20px;
-}
-/* SOBRE */
-.sobre-card{
-padding:25px;
-}
-.sobre-card h2{
-font-size:1.5rem;
-}
-/* GRID */
-.info-grid{
-grid-template-columns:1fr;
-}
-/* LIBRO */
-.contenedor{
-flex-direction:column;
-text-align:center;
-gap:30px;
-}
-.libro img{
-width:100%;
-max-width:300px;
-}
-.texto{
-max-width:100%;
-}
-.texto h2{
-font-size:1.5rem;
-}
-.texto p{
-font-size:14px;
-}
-/* BOTÓN */
-.btn{
-width:100%;
-max-width:250px;
-}
-/* FOOTER */
-footer{
-font-size:13px;
-padding:20px;
-}
-}
-/* ===== EXTRA PEQUEÑOS ===== */
 @media(max-width:480px){
-.hero h1{
-font-size:1.6rem;
+.hero h1{font-size:2.1rem;}
+nav a{font-size:1.05rem;}
+.sobre-card{padding:22px;}
+.texto p{font-size:.9rem;}
 }
-.logo img{
-height:75px;
-}
-nav a{
-font-size:18px;
-}
-.sobre-card{
-padding:20px;
-}
-.texto p{
-font-size:13px;
-}
+@media (prefers-reduced-motion: reduce){
+*{animation:none !important; transition:none !important;}
 }
 </style>
 </head>
 <body>
 <!-- HEADER -->
-<header>
+<header id="siteHeader">
 <div class="logo">
-<img src="logoCRfit.png">
+<img src="logoCRfit.png" alt="CRFit Gym">
 <strong>CRFit Gym</strong>
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
 </div>
-<nav>
+<button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú">☰</button>
+<nav id="siteNav">
 <ul>
 <li><a href="index.html">Inicio</a></li>
 <li><a href="rutinas.html">Rutinas</a></li>
 <li><a href="productos.html">Tienda</a></li>
 <li><a href="catalogo.html">Productos</a></li>
-<li><a href="sobre_nosotros.html">Sobre nosotros</a></li>
+<li><a href="sobre_nosotros.html" class="activo">Sobre nosotros</a></li>
 </ul>
 </nav>
 </header>
 <!-- HERO -->
-<div class="hero">
+<div class="hero" id="hero">
+<div class="hero-media" id="heroMedia"></div>
+<div class="hero-overlay"></div>
+<div class="hero-content" id="heroContent">
+<span class="eyebrow">Nuestra historia</span>
 <h1>Sobre Nosotros</h1>
+<p class="sub">Rutinas, disciplina y una comunidad que entrena con propósito.</p>
+</div>
+<div class="scroll-hint"><span></span>Scroll</div>
 </div>
 <!-- SOBRE -->
-<section class="sobre-main">
-<div class="sobre-card">
-<h2>¿Quiénes somos?</h2>
+<section>
+<div class="sobre-card reveal">
+<span class="eyebrow-block">Quiénes somos</span>
+<h2>Entrenamiento con dirección</h2>
 <p>
-Somos CRfit, un sitio de rutinas y ejercicios, tenemos una tienda de productos fit y otra tienda de maquinas de ejercicios.
+Somos CRFit: un sitio de rutinas y ejercicios que además cuenta con una tienda de productos fit
+y una tienda de máquinas de ejercicio, todo pensado para acompañarte en cada etapa de tu progreso.
 </p>
 </div>
 <div class="info-grid">
-<div class="info-box">
+<div class="info-box reveal">
+<span class="num">01</span>
 <h3>Misión</h3>
-<p>Transformar vidas a través de nuestro conocimiento de rutinas y alimentos fit.</p>
+<p>Transformar vidas a través de nuestro conocimiento de rutinas y alimentación fit.</p>
 </div>
-<div class="info-box">
+<div class="info-box reveal">
+<span class="num">02</span>
 <h3>Visión</h3>
-<p>Ser un mejor sitio web de gym para las personas que esten interesadas en tener rutinas y comprar productos.</p>
+<p>Ser el sitio de referencia para quienes buscan rutinas confiables y productos de calidad.</p>
 </div>
-<div class="info-box">
+<div class="info-box reveal">
+<span class="num">03</span>
 <h3>Valores</h3>
-<p>Disciplina, constancia y mentalidad fuerte.</p>
+<p>Disciplina, constancia y mentalidad fuerte en cada entrenamiento.</p>
 </div>
 </div>
 </section>
-<!-- LIBRO -->
-<section class="sobre">
-<div class="contenedor">
+<!-- NEGOCIO -->
+<section>
+<div class="contenedor reveal">
 <div class="libro">
-<img src="ss.libro.png">
+<div class="libro-tilt" id="libroTilt">
+<img src="ss.libro.png" alt="CRFit Gym">
+</div>
 </div>
 <div class="texto">
-<h2>Nuestro Negocio-CRfit Gym</h2>
+<span class="eyebrow-block">Nuestro negocio</span>
+<h2>CRFit Gym</h2>
 <p>
-CR fit es una pagina de Gym, nos enfocamos en su comodidad para saber mas sobre rutinas, productos y ejercicios.
-Actualmente estamos desarrollando nuevos apartados en el sitio web, con el tiempo vamos a seguir mejorando y vamos a traer
-nuevos productos y mejor IA de ejercicio.
--Sebastian Salazar
+CRFit es una página de gimnasio enfocada en tu comodidad: rutinas, productos y ejercicios en un
+solo lugar. Estamos desarrollando nuevos apartados y, con el tiempo, seguiremos mejorando para
+traer nuevos productos y una mejor IA de ejercicio.
 </p>
-<a href="rutinas.html" class="btn">Proximamente</a>
+<span class="firma">— Sebastian Salazar</span>
+<a href="rutinas.html" class="btn">Próximamente</a>
 </div>
 </div>
 </section>
 <!-- FOOTER -->
 <footer>
-<p>© 2026 CRFit Gym-Sebatian Salazar</p>
+<p>© 2026 Aguilera Fit Gym — Sebastian Salazar</p>
 </footer>
 <script>
+// Menú móvil
 function toggleMenu(){
-document.querySelector("nav").classList.toggle("active");
+document.getElementById('siteNav').classList.toggle('active');
 }
+// Header: fondo sólido al hacer scroll
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+header.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive:true });
+// ===== Scroll-scrub del hero =====
+const heroMedia = document.getElementById('heroMedia');
+const heroContent = document.getElementById('heroContent');
+const heroEl = document.getElementById('hero');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function updateHeroScrub(){
+if(reduceMotion) return;
+const heroHeight = heroEl.offsetHeight;
+const progress = Math.min(Math.max(window.scrollY / heroHeight, 0), 1);
+// La imagen se escala y se oscurece a medida que se hace scroll
+const scale = 1.05 + progress * 0.35;
+const translateY = progress * 60;
+const blur = progress * 4;
+const brightness = 1 - progress * 0.55;
+heroMedia.style.transform = `scale(${scale}) translateY(${translateY}px)`;
+heroMedia.style.filter = `brightness(${brightness}) blur(${blur}px)`;
+// El texto se desvanece y sube ligeramente
+heroContent.style.transform = `translateY(${progress * -80}px)`;
+heroContent.style.opacity = 1 - progress * 1.3;
+}
+window.addEventListener('scroll', () => {
+requestAnimationFrame(updateHeroScrub);
+}, { passive:true });
+updateHeroScrub();
+// ===== Tilt 3D + brillo al tocar/pasar el mouse sobre imágenes y tarjetas =====
+function activarTilt(el, intensidad){
+if(reduceMotion) return;
+function mover(x, y){
+const rect = el.getBoundingClientRect();
+const px = (x - rect.left) / rect.width;   // 0 a 1
+const py = (y - rect.top) / rect.height;   // 0 a 1
+const rotY = (px - 0.5) * intensidad;
+const rotX = (0.5 - py) * intensidad;
+el.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02,1.02,1.02)`;
+el.style.setProperty('--gx', `${px * 100}%`);
+el.style.setProperty('--gy', `${py * 100}%`);
+el.classList.add('is-active');
+}
+function resetear(){
+el.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+el.classList.remove('is-active');
+}
+el.addEventListener('mousemove', (e) => mover(e.clientX, e.clientY));
+el.addEventListener('mouseleave', resetear);
+el.addEventListener('touchmove', (e) => {
+const t = e.touches[0];
+if(t) mover(t.clientX, t.clientY);
+}, { passive:true });
+el.addEventListener('touchend', resetear);
+el.addEventListener('touchcancel', resetear);
+}
+activarTilt(document.getElementById('libroTilt'), 14);
+document.querySelectorAll('.info-box').forEach(box => activarTilt(box, 6));
+// ===== Parallax del hero según el cursor (desktop) =====
+if(!reduceMotion && window.matchMedia('(hover:hover)').matches){
+heroEl.addEventListener('mousemove', (e) => {
+const rect = heroEl.getBoundingClientRect();
+const px = (e.clientX - rect.left) / rect.width - 0.5;
+const py = (e.clientY - rect.top) / rect.height - 0.5;
+heroMedia.style.marginLeft = `${px * -30}px`;
+heroMedia.style.marginTop = `${py * -20}px`;
+});
+heroEl.addEventListener('mouseleave', () => {
+heroMedia.style.marginLeft = '0px';
+heroMedia.style.marginTop = '0px';
+});
+}
+// ===== Reveal al hacer scroll =====
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+entry.target.classList.add('visible');
+observer.unobserve(entry.target);
+}
+});
+}, { threshold:0.15 });
+revealEls.forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
