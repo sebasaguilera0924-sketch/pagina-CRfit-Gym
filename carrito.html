@@ -6,465 +6,465 @@
 <title>Carrito | Aguilera Fit Shop</title>
 <style>
 *{
- margin:0;
- padding:0;
- box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 :root{
- --bg:#0a0a0b;
- --bg-alt:#101012;
- --card:#18181b;
- --card-hover:#202023;
- --border:rgba(255,255,255,.08);
- --border-strong:rgba(255,255,255,.14);
- --text:#f3f2ee;
- --muted:#8d8d92;
- --accent:#22c55e;
- --accent-dark:#158a44;
- --accent-light:#4ade80;
- --danger:#f87171;
- --warning:#fbbf24;
+--bg:#0a0a0b;
+--bg-alt:#101012;
+--card:#18181b;
+--card-hover:#202023;
+--border:rgba(255,255,255,.08);
+--border-strong:rgba(255,255,255,.14);
+--text:#f3f2ee;
+--muted:#8d8d92;
+--accent:#22c55e;
+--accent-dark:#158a44;
+--accent-light:#4ade80;
+--danger:#f87171;
+--warning:#fbbf24;
 }
 html,body{
- min-height:100%;
- background:var(--bg);
- color:var(--text);
- font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
- -webkit-font-smoothing:antialiased;
+min-height:100%;
+background:var(--bg);
+color:var(--text);
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+-webkit-font-smoothing:antialiased;
 }
 body{
- padding-top:82px;
+padding-top:82px;
 }
 button,input,select{
- font-family:inherit;
+font-family:inherit;
 }
 button{
- cursor:pointer;
+cursor:pointer;
 }
 /* ================= HEADER ================= */
 header{
- position:fixed;
- top:0;
- left:0;
- width:100%;
- height:82px;
- z-index:1000;
- display:flex;
- align-items:center;
- justify-content:space-between;
- padding:0 28px;
- background:rgba(10,10,11,.82);
- backdrop-filter:blur(22px) saturate(140%);
- -webkit-backdrop-filter:blur(22px) saturate(140%);
- border-bottom:1px solid var(--border);
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:82px;
+z-index:1000;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 28px;
+background:rgba(10,10,11,.82);
+backdrop-filter:blur(22px) saturate(140%);
+-webkit-backdrop-filter:blur(22px) saturate(140%);
+border-bottom:1px solid var(--border);
 }
 .brand{
- display:flex;
- align-items:center;
- gap:12px;
+display:flex;
+align-items:center;
+gap:12px;
 }
 .brand img{
- height:46px;
- width:auto;
- object-fit:contain;
+height:46px;
+width:auto;
+object-fit:contain;
 }
 .brand-text strong{
- display:block;
- font-size:16px;
+display:block;
+font-size:16px;
 }
 .brand-text span{
- color:var(--accent);
- font-size:11px;
- text-transform:uppercase;
- letter-spacing:.1em;
+color:var(--accent);
+font-size:11px;
+text-transform:uppercase;
+letter-spacing:.1em;
 }
 .back-btn{
- padding:11px 18px;
- border-radius:100px;
- border:1px solid var(--border);
- background:rgba(255,255,255,.05);
- color:var(--text);
- font-weight:600;
- transition:.2s;
+padding:11px 18px;
+border-radius:100px;
+border:1px solid var(--border);
+background:rgba(255,255,255,.05);
+color:var(--text);
+font-weight:600;
+transition:.2s;
 }
 .back-btn:hover{
- border-color:var(--accent);
- color:var(--accent);
+border-color:var(--accent);
+color:var(--accent);
 }
 /* ================= MAIN ================= */
 .page{
- width:min(1250px,100%);
- margin:auto;
- padding:35px 24px 70px;
+width:min(1250px,100%);
+margin:auto;
+padding:35px 24px 70px;
 }
 .page-header{
- margin-bottom:28px;
+margin-bottom:28px;
 }
 .page-header h1{
- font-size:clamp(28px,4vw,42px);
- margin-bottom:7px;
+font-size:clamp(28px,4vw,42px);
+margin-bottom:7px;
 }
 .page-header h1 span{
- color:var(--accent);
+color:var(--accent);
 }
 .page-header p{
- color:var(--muted);
- font-size:14px;
+color:var(--muted);
+font-size:14px;
 }
 .checkout-layout{
- display:grid;
- grid-template-columns:minmax(0,1.35fr) minmax(320px,.65fr);
- gap:24px;
- align-items:start;
+display:grid;
+grid-template-columns:minmax(0,1.35fr) minmax(320px,.65fr);
+gap:24px;
+align-items:start;
 }
 /* ================= CARRITO ================= */
 .cart-box,
 .summary-box{
- background:var(--bg-alt);
- border:1px solid var(--border);
- border-radius:22px;
+background:var(--bg-alt);
+border:1px solid var(--border);
+border-radius:22px;
 }
 .cart-box{
- padding:22px;
+padding:22px;
 }
 .section-title{
- display:flex;
- justify-content:space-between;
- align-items:center;
- margin-bottom:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
 }
 .section-title h2{
- font-size:18px;
+font-size:18px;
 }
 .cart-count{
- color:var(--muted);
- font-size:13px;
+color:var(--muted);
+font-size:13px;
 }
 .cart-items{
- display:flex;
- flex-direction:column;
- gap:14px;
+display:flex;
+flex-direction:column;
+gap:14px;
 }
 .cart-item{
- display:grid;
- grid-template-columns:90px 1fr auto;
- gap:16px;
- align-items:center;
- padding:14px;
- background:var(--card);
- border:1px solid var(--border);
- border-radius:18px;
+display:grid;
+grid-template-columns:90px 1fr auto;
+gap:16px;
+align-items:center;
+padding:14px;
+background:var(--card);
+border:1px solid var(--border);
+border-radius:18px;
 }
 .cart-image{
- width:90px;
- height:90px;
- border-radius:14px;
- background:rgba(255,255,255,.04);
- display:flex;
- align-items:center;
- justify-content:center;
- overflow:hidden;
+width:90px;
+height:90px;
+border-radius:14px;
+background:rgba(255,255,255,.04);
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
 }
 .cart-image img{
- width:100%;
- height:100%;
- object-fit:contain;
- padding:8px;
+width:100%;
+height:100%;
+object-fit:contain;
+padding:8px;
 }
 .cart-info h3{
- font-size:15px;
- margin-bottom:6px;
+font-size:15px;
+margin-bottom:6px;
 }
 .cart-category{
- color:var(--accent-light);
- font-size:11px;
- text-transform:uppercase;
- letter-spacing:.08em;
- margin-bottom:8px;
+color:var(--accent-light);
+font-size:11px;
+text-transform:uppercase;
+letter-spacing:.08em;
+margin-bottom:8px;
 }
 .cart-price{
- color:var(--accent-light);
- font-weight:800;
- font-size:15px;
+color:var(--accent-light);
+font-weight:800;
+font-size:15px;
 }
 .item-actions{
- margin-top:12px;
- display:flex;
- align-items:center;
- gap:12px;
- flex-wrap:wrap;
+margin-top:12px;
+display:flex;
+align-items:center;
+gap:12px;
+flex-wrap:wrap;
 }
 .quantity{
- display:flex;
- align-items:center;
- gap:10px;
- padding:5px;
- background:rgba(255,255,255,.05);
- border:1px solid var(--border);
- border-radius:11px;
+display:flex;
+align-items:center;
+gap:10px;
+padding:5px;
+background:rgba(255,255,255,.05);
+border:1px solid var(--border);
+border-radius:11px;
 }
 .quantity button{
- width:30px;
- height:30px;
- border:none;
- border-radius:8px;
- background:rgba(255,255,255,.07);
- color:white;
- font-size:17px;
+width:30px;
+height:30px;
+border:none;
+border-radius:8px;
+background:rgba(255,255,255,.07);
+color:white;
+font-size:17px;
 }
 .quantity button:hover{
- background:var(--accent);
+background:var(--accent);
 }
 .quantity span{
- min-width:20px;
- text-align:center;
- font-weight:700;
+min-width:20px;
+text-align:center;
+font-weight:700;
 }
 .remove-btn{
- border:none;
- background:none;
- color:var(--muted);
- font-size:12px;
+border:none;
+background:none;
+color:var(--muted);
+font-size:12px;
 }
 .remove-btn:hover{
- color:var(--danger);
+color:var(--danger);
 }
 .item-subtotal{
- text-align:right;
- font-weight:800;
- white-space:nowrap;
+text-align:right;
+font-weight:800;
+white-space:nowrap;
 }
 /* ================= VACÍO ================= */
 .empty-cart{
- display:none;
- text-align:center;
- padding:70px 20px;
+display:none;
+text-align:center;
+padding:70px 20px;
 }
 .empty-cart.show{
- display:block;
+display:block;
 }
 .empty-icon{
- font-size:55px;
- margin-bottom:18px;
+font-size:55px;
+margin-bottom:18px;
 }
 .empty-cart h2{
- margin-bottom:8px;
+margin-bottom:8px;
 }
 .empty-cart p{
- color:var(--muted);
- margin-bottom:24px;
+color:var(--muted);
+margin-bottom:24px;
 }
 .primary-btn{
- width:100%;
- padding:15px;
- border:none;
- border-radius:14px;
- background:linear-gradient(135deg,var(--accent),var(--accent-light));
- color:#07130a;
- font-size:15px;
- font-weight:800;
- transition:.2s;
+width:100%;
+padding:15px;
+border:none;
+border-radius:14px;
+background:linear-gradient(135deg,var(--accent),var(--accent-light));
+color:#07130a;
+font-size:15px;
+font-weight:800;
+transition:.2s;
 }
 .primary-btn:hover{
- transform:translateY(-1px);
- box-shadow:0 12px 30px rgba(34,197,94,.25);
+transform:translateY(-1px);
+box-shadow:0 12px 30px rgba(34,197,94,.25);
 }
 .primary-btn:active{
- transform:scale(.98);
+transform:scale(.98);
 }
 /* ================= RESUMEN ================= */
 .summary-box{
- position:sticky;
- top:105px;
- padding:24px;
+position:sticky;
+top:105px;
+padding:24px;
 }
 .summary-box h2{
- font-size:19px;
- margin-bottom:22px;
+font-size:19px;
+margin-bottom:22px;
 }
 .summary-row{
- display:flex;
- justify-content:space-between;
- gap:20px;
- color:var(--muted);
- font-size:14px;
- margin-bottom:13px;
+display:flex;
+justify-content:space-between;
+gap:20px;
+color:var(--muted);
+font-size:14px;
+margin-bottom:13px;
 }
 .summary-total{
- display:flex;
- justify-content:space-between;
- align-items:center;
- border-top:1px solid var(--border);
- padding-top:18px;
- margin-top:18px;
- margin-bottom:22px;
- font-size:19px;
- font-weight:800;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-top:1px solid var(--border);
+padding-top:18px;
+margin-top:18px;
+margin-bottom:22px;
+font-size:19px;
+font-weight:800;
 }
 .summary-total span:last-child{
- color:var(--accent-light);
- font-size:23px;
+color:var(--accent-light);
+font-size:23px;
 }
 .security{
- margin-top:16px;
- padding:13px;
- border-radius:12px;
- background:rgba(34,197,94,.07);
- border:1px solid rgba(34,197,94,.15);
- color:var(--muted);
- font-size:12px;
- line-height:1.5;
+margin-top:16px;
+padding:13px;
+border-radius:12px;
+background:rgba(34,197,94,.07);
+border:1px solid rgba(34,197,94,.15);
+color:var(--muted);
+font-size:12px;
+line-height:1.5;
 }
 /* ================= FORMULARIO ================= */
 .customer-form{
- margin-top:24px;
- padding-top:22px;
- border-top:1px solid var(--border);
+margin-top:24px;
+padding-top:22px;
+border-top:1px solid var(--border);
 }
 .customer-form h3{
- margin-bottom:15px;
- font-size:16px;
+margin-bottom:15px;
+font-size:16px;
 }
 .form-group{
- margin-bottom:11px;
+margin-bottom:11px;
 }
 .form-group input,
 .form-group select{
- width:100%;
- padding:14px;
- border-radius:12px;
- border:1px solid var(--border);
- background:var(--card);
- color:var(--text);
- outline:none;
- font-size:16px;
+width:100%;
+padding:14px;
+border-radius:12px;
+border:1px solid var(--border);
+background:var(--card);
+color:var(--text);
+outline:none;
+font-size:16px;
 }
 .form-group input:focus,
 .form-group select:focus{
- border-color:var(--accent);
- box-shadow:0 0 0 3px rgba(34,197,94,.12);
+border-color:var(--accent);
+box-shadow:0 0 0 3px rgba(34,197,94,.12);
 }
 .payment-fields{
- display:none;
- flex-direction:column;
- gap:11px;
- margin-bottom:12px;
+display:none;
+flex-direction:column;
+gap:11px;
+margin-bottom:12px;
 }
 .payment-fields.show{
- display:flex;
+display:flex;
 }
 /* ================= CONFIRMACIÓN ================= */
 .success-screen{
- display:none;
- width:min(650px,calc(100% - 30px));
- margin:60px auto;
- padding:40px 28px;
- text-align:center;
- background:var(--bg-alt);
- border:1px solid var(--border);
- border-radius:26px;
+display:none;
+width:min(650px,calc(100% - 30px));
+margin:60px auto;
+padding:40px 28px;
+text-align:center;
+background:var(--bg-alt);
+border:1px solid var(--border);
+border-radius:26px;
 }
 .success-screen.show{
- display:block;
+display:block;
 }
 .success-icon{
- width:75px;
- height:75px;
- margin:0 auto 20px;
- border-radius:50%;
- display:flex;
- align-items:center;
- justify-content:center;
- background:var(--accent);
- color:#07130a;
- font-size:35px;
- font-weight:bold;
+width:75px;
+height:75px;
+margin:0 auto 20px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:var(--accent);
+color:#07130a;
+font-size:35px;
+font-weight:bold;
 }
 .success-screen h2{
- font-size:27px;
- margin-bottom:10px;
+font-size:27px;
+margin-bottom:10px;
 }
 .success-screen p{
- color:var(--muted);
- line-height:1.6;
- margin-bottom:20px;
+color:var(--muted);
+line-height:1.6;
+margin-bottom:20px;
 }
 .order-number{
- padding:13px;
- margin:20px 0;
- border-radius:12px;
- background:var(--card);
- color:var(--accent-light);
- font-weight:700;
+padding:13px;
+margin:20px 0;
+border-radius:12px;
+background:var(--card);
+color:var(--accent-light);
+font-weight:700;
 }
 /* ================= TOAST ================= */
 .toast{
- position:fixed;
- left:50%;
- bottom:25px;
- transform:translate(-50%,20px);
- background:var(--card);
- border:1px solid var(--border);
- padding:13px 20px;
- border-radius:100px;
- opacity:0;
- pointer-events:none;
- transition:.3s;
- z-index:5000;
- font-size:13px;
+position:fixed;
+left:50%;
+bottom:25px;
+transform:translate(-50%,20px);
+background:var(--card);
+border:1px solid var(--border);
+padding:13px 20px;
+border-radius:100px;
+opacity:0;
+pointer-events:none;
+transition:.3s;
+z-index:5000;
+font-size:13px;
 }
 .toast.show{
- opacity:1;
- transform:translate(-50%,0);
+opacity:1;
+transform:translate(-50%,0);
 }
 /* ================= RESPONSIVE ================= */
 @media(max-width:900px){
- .checkout-layout{
-   grid-template-columns:1fr;
- }
- .summary-box{
-   position:static;
- }
+.checkout-layout{
+  grid-template-columns:1fr;
+}
+.summary-box{
+  position:static;
+}
 }
 @media(max-width:600px){
- body{
-   padding-top:72px;
- }
- header{
-   height:72px;
-   padding:0 15px;
- }
- .brand img{
-   height:38px;
- }
- .brand-text strong{
-   font-size:14px;
- }
- .brand-text span{
-   font-size:9px;
- }
- .back-btn{
-   padding:9px 13px;
-   font-size:12px;
- }
- .page{
-   padding:24px 14px 50px;
- }
- .cart-box,
- .summary-box{
-   padding:16px;
- }
- .cart-item{
-   grid-template-columns:70px 1fr;
- }
- .cart-image{
-   width:70px;
-   height:70px;
- }
- .item-subtotal{
-   grid-column:2;
-   text-align:left;
- }
+body{
+  padding-top:72px;
+}
+header{
+  height:72px;
+  padding:0 15px;
+}
+.brand img{
+  height:38px;
+}
+.brand-text strong{
+  font-size:14px;
+}
+.brand-text span{
+  font-size:9px;
+}
+.back-btn{
+  padding:9px 13px;
+  font-size:12px;
+}
+.page{
+  padding:24px 14px 50px;
+}
+.cart-box,
+.summary-box{
+  padding:16px;
+}
+.cart-item{
+  grid-template-columns:70px 1fr;
+}
+.cart-image{
+  width:70px;
+  height:70px;
+}
+.item-subtotal{
+  grid-column:2;
+  text-align:left;
+}
 }
 </style>
 </head>
@@ -474,11 +474,11 @@ header{
 <img src="logoCRfit.png" alt="Aguilera Fit Shop">
 <div class="brand-text">
 <strong>Aguilera Fit Shop</strong>
-<span>CRFit Gym</span>
+<span>Ag Fit Gym</span>
 </div>
 </div>
 <button class="back-btn" onclick="volverTienda()">
-   ← Seguir comprando
+  ← Seguir comprando
 </button>
 </header>
 <main class="page" id="checkoutPage">
@@ -498,7 +498,7 @@ header{
 <h2>Tu carrito está vacío</h2>
 <p>Agregá productos desde Aguilera Fit Shop.</p>
 <button class="primary-btn" onclick="volverTienda()">
-         Ir a la tienda
+        Ir a la tienda
 </button>
 </div>
 </section>
@@ -525,82 +525,82 @@ header{
 <h3>Datos del cliente</h3>
 <div class="form-group">
 <input
-             id="nombre"
-             type="text"
-             required
-             placeholder="Nombre completo">
+            id="nombre"
+            type="text"
+            required
+            placeholder="Nombre completo">
 </div>
 <div class="form-group">
 <input
-             id="correo"
-             type="email"
-             required
-             placeholder="Correo electrónico">
+            id="correo"
+            type="email"
+            required
+            placeholder="Correo electrónico">
 </div>
 <div class="form-group">
 <input
-             id="telefono"
-             type="tel"
-             required
-             placeholder="Teléfono">
+            id="telefono"
+            type="tel"
+            required
+            placeholder="Teléfono">
 </div>
 <div class="form-group">
 <input
-             id="direccion"
-             type="text"
-             required
-             placeholder="Dirección de entrega">
+            id="direccion"
+            type="text"
+            required
+            placeholder="Dirección de entrega">
 </div>
 <div class="form-group">
 <select
-             id="metodoPago"
-             required
-             onchange="cambiarPago()">
+            id="metodoPago"
+            required
+            onchange="cambiarPago()">
 <option value="">
-               Seleccionar método de pago
+              Seleccionar método de pago
 </option>
 <option value="tarjeta">
-               Tarjeta
+              Tarjeta
 </option>
 <option value="sinpe">
-               SINPE Móvil
+              SINPE Móvil
 </option>
 <option value="entrega">
-               Pago contra entrega
+              Pago contra entrega
 </option>
 </select>
 </div>
 <div class="payment-fields" id="tarjetaCampos">
 <div class="form-group">
 <input
-               id="numeroTarjeta"
-               inputmode="numeric"
-               placeholder="Número de tarjeta">
+              id="numeroTarjeta"
+              inputmode="numeric"
+              placeholder="Número de tarjeta">
 </div>
 <div class="form-group">
 <input
-               id="nombreTarjeta"
-               placeholder="Nombre en la tarjeta">
+              id="nombreTarjeta"
+              placeholder="Nombre en la tarjeta">
 </div>
 <div class="form-group">
 <input
-               id="fechaTarjeta"
-               placeholder="MM/AA">
+              id="fechaTarjeta"
+              placeholder="MM/AA">
 </div>
 <div class="form-group">
 <input
-               id="cvv"
-               inputmode="numeric"
-               placeholder="CVV">
+              id="cvv"
+              inputmode="numeric"
+              placeholder="CVV">
 </div>
 </div>
 <button class="primary-btn" type="submit">
-           Confirmar compra
+          Confirmar compra
 </button>
 </div>
 </form>
 <div class="security">
-       🔒 Tus datos se utilizan únicamente para procesar esta compra.
+      🔒 Tus datos se utilizan únicamente para procesar esta compra.
 </div>
 </aside>
 </div>
@@ -609,734 +609,315 @@ header{
 <div class="success-icon">✓</div>
 <h2>¡Compra confirmada!</h2>
 <p>
-   Tu pedido fue registrado correctamente.
-   Gracias por comprar en Aguilera Fit Shop.
+  Tu pedido fue registrado correctamente.
+  Gracias por comprar en Aguilera Fit Shop.
 </p>
 <div class="order-number" id="orderNumber"></div>
 <button class="primary-btn" onclick="volverTienda()">
-   Volver a la tienda
+  Volver a la tienda
 </button>
 </section>
 <div class="toast" id="toast"></div>
-
 <script>
 /* =========================================================
-  CONFIGURACIÓN
+ CONFIGURACIÓN
+ -----------------------------------------------------------
+ ⚠️ IMPORTANTE: ORDERS_KEY debe ser EXACTAMENTE la misma
+ clave que usa index.html para leer los pedidos en el
+ perfil de usuario ("aguileraOrders"). Antes esta página
+ guardaba en una clave distinta por usuario y con el campo
+ "orderId" en vez de "id", por lo que los pedidos nunca
+ aparecían en el perfil. Ya está corregido.
 ========================================================= */
 const CART_KEY = "aguileraCart";
-const ORDERS_PREFIX = "aguileraOrders_";
-const USER_KEY = "aguileraUser";
-
+const ORDERS_KEY = "aguileraOrders"; // misma clave que index.html
 /* =========================================================
-  CATÁLOGO
-  Debe tener los mismos IDs y precios que productos.html
+ CATÁLOGO
+ Debe tener los mismos IDs y precios que productos.html
 ========================================================= */
 const PRODUCTS = [
- {
-   id:1,
-   nombre:"Proteína Whey",
-   categoria:"proteinas",
-   precio:32000,
-   img:"v_producto.png",
-   stock:40
- },
- {
-   id:2,
-   nombre:"Proteína Dos Pinos",
-   categoria:"proteinas",
-   precio:28000,
-   img:"v_producto2.webp",
-   stock:40
- },
- {
-   id:3,
-   nombre:"Barras de Proteína Bar",
-   categoria:"proteinas",
-   precio:10000,
-   img:"v_producto3.webp",
-   stock:10
- },
- {
-   id:4,
-   nombre:"Creatina Plus",
-   categoria:"creatina",
-   precio:20000,
-   img:"v_productos4.png",
-   stock:8
- },
- {
-   id:5,
-   nombre:"Galletas Fit",
-   categoria:"snacks",
-   precio:8000,
-   img:"https://m.media-amazon.com/images/I/71SE-CKOJYL.jpg",
-   stock:40
- },
- {
-   id:6,
-   nombre:"Galletas Nutri Snacks",
-   categoria:"snacks",
-   precio:8000,
-   img:"v_producto6.png",
-   stock:40
- },
- {
-   id:7,
-   nombre:"Galletas Nutri Snacks",
-   categoria:"snacks",
-   precio:4500,
-   img:"v_producto7.png",
-   stock:40
- },
- {
-   id:8,
-   nombre:"Cereal fit vainilla",
-   categoria:"snacks",
-   precio:3500,
-   img:"v_producto8.png",
-   stock:40
- },
- {
-   id:9,
-   nombre:"Chocolate Fit",
-   categoria:"snacks",
-   precio:3500,
-   img:"v_producto9.png",
-   stock:40
- },
- {
-   id:10,
-   nombre:"Barras Energéticas",
-   categoria:"snacks",
-   precio:17000,
-   img:"v_producto10.png",
-   stock:40
- },
- {
-   id:11,
-   nombre:"Creatina ",
-   categoria:"alimentos",
-   precio:22000,
-   img:"v_producto11.png",
-   stock:40
- },
- {
-   id:12,
-   nombre:"FitNess Cereal Chocolate",
-   categoria:"alimentos",
-   precio:5000,
-   img:"v_producto12.png",
-   stock:20
- },
- {
-   id:13,
-   nombre:"FitNess Cereal Vainilla",
-   categoria:"alimentos",
-   precio:5000,
-   img:"v_producto13.png",
-   stock:20
- },
- {
-   id:14,
-   nombre:"Barras de Proteína",
-   categoria:"proteinas",
-   precio:8000,
-   img:"v_producto14.webp",
-   stock:40
- },
- {
-   id:15,
-   nombre:"Cereal de Proteina",
-   categoria:"alimentos",
-   precio:8000,
-   img:"v_producto15.png",
-   stock:40
- },
- {
-   id:16,
-   nombre:"Proteina whey advance",
-   categoria:"proteinas",
-   precio:20000,
-   img:"v_producto16.png",
-   stock:40
- },
- {
-   id:17,
-   nombre:"Barra Tosh Fresa",
-   categoria:"snacks",
-   precio:2000,
-   img:"v_producto17.png",
-   stock:40
- },
- {
-   id:18,
-   nombre:"Barra Tosh Zero Fresa",
-   categoria:"snacks",
-   precio:4000,
-   img:"v_producto18.png",
-   stock:40
- },
- {
-   id:19,
-   nombre:"Barra Fit frida",
-   categoria:"snacks",
-   precio:2500,
-   img:"v_producto19.png",
-   stock:40
- },
- {
-   id:20,
-   nombre:"Bebida Suerox",
-   categoria:"bebidas",
-   precio:5000,
-   img:"v_producto20.png",
-   stock:40
- }
-];
+{ id:1,  nombre:"Proteína Whey", categoria:"proteinas", precio:32000, img:"v_producto.png", stock:40 },
 
+{ id:2,  nombre:"Proteína Dos Pinos", categoria:"proteinas", precio:28000, img:"v_producto2.webp", stock:40 },
+
+{ id:3,  nombre:"Barras de Proteína Bar", categoria:"proteinas", precio:10000, img:"v_producto3.webp", stock:10 },
+
+{ id:4,  nombre:"Creatina Plus", categoria:"creatina", precio:20000, img:"v_producto4.png", stock:8 },
+
+{ id:5,  nombre:"Galletas Fit", categoria:"snacks", precio:8000, img:"https://m.media-amazon.com/images/I/71SE-CKOJYL.jpg", stock:40 },
+
+{ id:6,  nombre:"Galletas Nutri Snacks", categoria:"snacks", precio:8000, img:"v_producto6.png", stock:40 },
+
+{ id:7,  nombre:"Galletas Nutri Snacks", categoria:"snacks", precio:4500, img:"v_producto7.png", stock:40 },
+
+{ id:8,  nombre:"Cereal fit vainilla", categoria:"snacks", precio:3500, img:"v_producto8.png", stock:40 },
+
+{ id:9,  nombre:"Chocolate Fit", categoria:"snacks", precio:3500, img:"v_producto9.png", stock:40 },
+
+{ id:10, nombre:"Barras Energéticas", categoria:"snacks", precio:17000, img:"v_producto10.png", stock:40 },
+
+{ id:11, nombre:"Creatina ", categoria:"alimentos", precio:22000, img:"v_producto11.png", stock:40 },
+
+{ id:12, nombre:"FitNess Cereal Chocolate", categoria:"alimentos", precio:5000, img:"v_producto12.png", stock:20 },
+
+{ id:13, nombre:"FitNess Cereal Vainilla", categoria:"alimentos", precio:5000, img:"v_producto13.png", stock:20 },
+
+{ id:14, nombre:"Barras de Proteína", categoria:"proteinas", precio:8000, img:"v_producto14.webp", stock:40 },
+
+{ id:15, nombre:"Cereal de Proteina", categoria:"alimentos", precio:8000, img:"v_producto15.png", stock:40 },
+
+{ id:16, nombre:"Proteina whey advance", categoria:"proteinas", precio:20000, img:"v_producto16.png", stock:40 },
+{ id:17, nombre:"Barra Tosh Fresa", categoria:"snacks", precio:2000, img:"v_producto17.png", stock:40 },
+
+{ id:18, nombre:"Barra Tosh Zero Fresa", categoria:"snacks", precio:4000, img:"v_producto18.png", stock:40 },
+
+{ id:19, nombre:"Barra Fit frida", categoria:"snacks", precio:2500, img:"v_producto19.png", stock:40 },
+
+{ id:20, nombre:"Bebida Suerox", categoria:"bebidas", precio:5000, img:"v_producto20.png", stock:40 }
+];
 /* =========================================================
-  ESTADO
+ ESTADO
 ========================================================= */
 let cart = [];
-
 /* =========================================================
-  CARGAR Y GUARDAR CARRITO
+ CARGAR Y GUARDAR CARRITO
 ========================================================= */
 function loadCart(){
- try{
-   const data = localStorage.getItem(CART_KEY);
-   cart = data
-     ? JSON.parse(data)
-     : [];
-   if(!Array.isArray(cart)){
-     cart = [];
-   }
- }catch(error){
-   console.error("Error cargando carrito:",error);
-   cart = [];
- }
+try{
+  const data = localStorage.getItem(CART_KEY);
+  cart = data ? JSON.parse(data) : [];
+  if(!Array.isArray(cart)) cart = [];
+}catch(error){
+  console.error("Error cargando carrito:", error);
+  cart = [];
 }
-
+}
 function saveCart(){
- localStorage.setItem(
-   CART_KEY,
-   JSON.stringify(cart)
- );
+localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
-
 function getProduct(id){
- return PRODUCTS.find(
-   product => product.id === Number(id)
- );
+return PRODUCTS.find(product => product.id === Number(id));
 }
-
 /* =========================================================
-  FORMATO DE PRECIO
+ FORMATO DE PRECIO
 ========================================================= */
 function formatPrice(price){
- return "₡" +
-   Number(price).toLocaleString("es-CR");
+return "₡" + Number(price).toLocaleString("es-CR");
 }
-
 /* =========================================================
-  RENDERIZAR CARRITO
+ RENDERIZAR CARRITO
 ========================================================= */
 function renderCart(){
- const container =
-   document.getElementById("cartItems");
- const empty =
-   document.getElementById("emptyCart");
- const summary =
-   document.getElementById("summaryBox");
- const validCart =
-   cart.filter(item => getProduct(item.id));
- cart = validCart;
- const totalCantidad =
-   cart.reduce(
-     (sum,item) =>
-       sum + Number(item.cantidad || 0),
-     0
-   );
- document.getElementById("cartCount")
-   .textContent =
-   `${totalCantidad} producto${totalCantidad === 1 ? "" : "s"}`;
- document.getElementById("summaryCount")
-   .textContent =
-   totalCantidad;
-
- if(cart.length === 0){
-   container.innerHTML = "";
-   empty.classList.add("show");
-   summary.style.display = "none";
-   return;
- }
-
- empty.classList.remove("show");
- summary.style.display = "block";
-
- container.innerHTML =
-   cart.map(item => {
-     const product =
-       getProduct(item.id);
-     const subtotal =
-       product.precio *
-       item.cantidad;
-
-     return `
+const container = document.getElementById("cartItems");
+const empty = document.getElementById("emptyCart");
+const summary = document.getElementById("summaryBox");
+const validCart = cart.filter(item => getProduct(item.id));
+cart = validCart;
+const totalCantidad = cart.reduce((sum, item) => sum + Number(item.cantidad || 0), 0);
+document.getElementById("cartCount").textContent = `${totalCantidad} producto${totalCantidad === 1 ? "" : "s"}`;
+document.getElementById("summaryCount").textContent = totalCantidad;
+if(cart.length === 0){
+  container.innerHTML = "";
+  empty.classList.add("show");
+  summary.style.display = "none";
+  return;
+}
+empty.classList.remove("show");
+summary.style.display = "block";
+container.innerHTML = cart.map(item => {
+  const product = getProduct(item.id);
+  const subtotal = product.precio * item.cantidad;
+  return `
 <article class="cart-item">
 <div class="cart-image">
-<img
-           src="${product.img}"
-           alt="${product.nombre}">
+<img src="${product.img}" alt="${product.nombre}">
 </div>
-
 <div class="cart-info">
-<div class="cart-category">
-           ${product.categoria}
-</div>
-<h3>
-           ${product.nombre}
-</h3>
-<div class="cart-price">
-           ${formatPrice(product.precio)}
-</div>
-
+<div class="cart-category">${product.categoria}</div>
+<h3>${product.nombre}</h3>
+<div class="cart-price">${formatPrice(product.precio)}</div>
 <div class="item-actions">
 <div class="quantity">
-<button
-               onclick="changeQuantity(${product.id},-1)">
-               −
-</button>
-<span>
-               ${item.cantidad}
-</span>
-<button
-               onclick="changeQuantity(${product.id},1)">
-               +
-</button>
+<button onclick="changeQuantity(${product.id},-1)">−</button>
+<span>${item.cantidad}</span>
+<button onclick="changeQuantity(${product.id},1)">+</button>
 </div>
-
-<button
-             class="remove-btn"
-             onclick="removeProduct(${product.id})">
-             Eliminar
-</button>
+<button class="remove-btn" onclick="removeProduct(${product.id})">Eliminar</button>
 </div>
 </div>
-
-<div class="item-subtotal">
-         ${formatPrice(subtotal)}
-</div>
+<div class="item-subtotal">${formatPrice(subtotal)}</div>
 </article>
-     `;
-   }).join("");
-
- updateTotals();
+  `;
+}).join("");
+updateTotals();
 }
-
 /* =========================================================
-  CAMBIAR CANTIDAD
+ CAMBIAR CANTIDAD
 ========================================================= */
-function changeQuantity(id,change){
- const item =
-   cart.find(
-     product =>
-       Number(product.id) === Number(id)
-   );
- const product =
-   getProduct(id);
-
- if(!item || !product){
-   return;
- }
-
- const newQuantity =
-   Number(item.cantidad) +
-   change;
-
- if(newQuantity <= 0){
-   removeProduct(id);
-   return;
- }
-
- if(newQuantity > product.stock){
-   showToast(
-     "No hay más unidades disponibles"
-   );
-   return;
- }
-
- item.cantidad =
-   newQuantity;
-
- saveCart();
- renderCart();
+function changeQuantity(id, change){
+const item = cart.find(product => Number(product.id) === Number(id));
+const product = getProduct(id);
+if(!item || !product) return;
+const newQuantity = Number(item.cantidad) + change;
+if(newQuantity <= 0){
+  removeProduct(id);
+  return;
 }
-
+if(newQuantity > product.stock){
+  showToast("No hay más unidades disponibles");
+  return;
+}
+item.cantidad = newQuantity;
+saveCart();
+renderCart();
+}
 /* =========================================================
-  ELIMINAR PRODUCTO
+ ELIMINAR PRODUCTO
 ========================================================= */
 function removeProduct(id){
- cart =
-   cart.filter(
-     item =>
-       Number(item.id) !== Number(id)
-   );
-
- saveCart();
- renderCart();
- showToast(
-   "Producto eliminado del carrito"
- );
+cart = cart.filter(item => Number(item.id) !== Number(id));
+saveCart();
+renderCart();
+showToast("Producto eliminado del carrito");
 }
-
 /* =========================================================
-  TOTALES
+ TOTALES
 ========================================================= */
 function calculateTotal(){
- return cart.reduce(
-   (sum,item) => {
-     const product =
-       getProduct(item.id);
-     if(!product){
-       return sum;
-     }
-     return sum +
-       product.precio *
-       Number(item.cantidad);
-   },
-   0
- );
+return cart.reduce((sum, item) => {
+  const product = getProduct(item.id);
+  if(!product) return sum;
+  return sum + product.precio * Number(item.cantidad);
+}, 0);
 }
-
 function updateTotals(){
- const total =
-   calculateTotal();
-
- document.getElementById("subtotal")
-   .textContent =
-   formatPrice(total);
-
- document.getElementById("total")
-   .textContent =
-   formatPrice(total);
+const total = calculateTotal();
+document.getElementById("subtotal").textContent = formatPrice(total);
+document.getElementById("total").textContent = formatPrice(total);
 }
-
 /* =========================================================
-  MÉTODO DE PAGO
+ MÉTODO DE PAGO
 ========================================================= */
 function cambiarPago(){
- const metodo =
-   document.getElementById(
-     "metodoPago"
-   ).value;
-
- const campos =
-   document.getElementById(
-     "tarjetaCampos"
-   );
-
- const inputs =
-   campos.querySelectorAll("input");
-
- if(metodo === "tarjeta"){
-   campos.classList.add("show");
-   inputs.forEach(
-     input =>
-       input.required = true
-   );
- }else{
-   campos.classList.remove("show");
-   inputs.forEach(
-     input => {
-       input.required = false;
-       input.value = "";
-     }
-   );
- }
+const metodo = document.getElementById("metodoPago").value;
+const campos = document.getElementById("tarjetaCampos");
+const inputs = campos.querySelectorAll("input");
+if(metodo === "tarjeta"){
+  campos.classList.add("show");
+  inputs.forEach(input => input.required = true);
+}else{
+  campos.classList.remove("show");
+  inputs.forEach(input => {
+    input.required = false;
+    input.value = "";
+  });
 }
-
-/* =========================================================
-  USUARIO ACTUAL
-========================================================= */
-function getUserId(){
- try{
-   const raw =
-     localStorage.getItem(
-       USER_KEY
-     );
-
-   const user =
-     raw
-       ? JSON.parse(raw)
-       : null;
-
-   if(user?.usuario){
-     return "u_" +
-       user.usuario;
-   }
-
-   if(user?.correo){
-     return "u_" +
-       user.correo;
-   }
-
- }catch(error){
-   console.error(
-     "Error leyendo usuario",
-     error
-   );
- }
-
- return "guest";
 }
-
 /* =========================================================
-  CREAR PEDIDO
+ CREAR PEDIDO
+ -----------------------------------------------------------
+ Genera el pedido en el MISMO formato que index.html espera
+ leer desde "aguileraOrders":
+   { id, fecha, estado, productos:[{nombre, imagen, cantidad, precioUnitario}], total }
 ========================================================= */
 function createOrder(){
- const productos =
-   cart.map(item => {
-     const product =
-       getProduct(item.id);
-
-     const cantidad =
-       Number(item.cantidad);
-
-     const subtotal =
-       product.precio *
-       cantidad;
-
-     return {
-       id:product.id,
-       nombre:
-         product.nombre,
-       imagen:
-         product.img,
-       precioUnitario:
-         product.precio,
-       cantidad,
-       subtotal
-     };
-   });
-
- const total =
-   productos.reduce(
-     (sum,item) =>
-       sum +
-       item.subtotal,
-     0
-   );
-
- return {
-   orderId:
-     "ORD-" +
-     Date.now() +
-     "-" +
-     Math.random()
-       .toString(36)
-       .slice(2,7)
-       .toUpperCase(),
-   fecha:
-     new Date()
-       .toISOString(),
-   productos,
-   subtotalGeneral:
-     total,
-   total,
-   estado:
-     "Confirmado"
- };
+const productos = cart.map(item => {
+  const product = getProduct(item.id);
+  const cantidad = Number(item.cantidad);
+  return {
+    nombre: product.nombre,
+    imagen: product.img,
+    precioUnitario: product.precio,
+    cantidad
+  };
+});
+const total = productos.reduce(
+  (sum, item) => sum + item.precioUnitario * item.cantidad,
+  0
+);
+return {
+  id: Date.now(),
+  fecha: new Date().toISOString(),
+  productos,
+  total,
+  estado: "Confirmado"
+};
 }
-
 /* =========================================================
-  GUARDAR PEDIDO
+ GUARDAR PEDIDO
+ -----------------------------------------------------------
+ Guarda el pedido en localStorage["aguileraOrders"], la
+ misma clave que lee index.html en la pestaña "Pedidos"
+ del perfil de usuario.
 ========================================================= */
 function saveOrder(order){
- const key =
-   ORDERS_PREFIX +
-   getUserId();
-
- let orders = [];
-
- try{
-   const raw =
-     localStorage.getItem(key);
-
-   orders =
-     raw
-       ? JSON.parse(raw)
-       : [];
-
-   if(!Array.isArray(orders)){
-     orders = [];
-   }
-
- }catch(error){
-   orders = [];
- }
-
- orders.unshift(order);
-
- localStorage.setItem(
-   key,
-   JSON.stringify(orders)
- );
+let orders = [];
+try{
+  const raw = localStorage.getItem(ORDERS_KEY);
+  orders = raw ? JSON.parse(raw) : [];
+  if(!Array.isArray(orders)) orders = [];
+}catch(error){
+  orders = [];
 }
-
+orders.unshift(order);
+localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
+}
 /* =========================================================
-  FINALIZAR COMPRA
+ FINALIZAR COMPRA
 ========================================================= */
 function finalizarCompra(event){
- event.preventDefault();
-
- if(cart.length === 0){
-   showToast(
-     "Tu carrito está vacío"
-   );
-   return;
- }
-
- const order =
-   createOrder();
-
- saveOrder(order);
-
- /* Vaciar carrito */
- localStorage.removeItem(
-   CART_KEY
- );
-
- /* Limpiar datos viejos */
- sessionStorage.removeItem(
-   "carrito"
- );
-
- cart = [];
-
- document.getElementById(
-   "checkoutPage"
- ).style.display =
-   "none";
-
- const success =
-   document.getElementById(
-     "successScreen"
-   );
-
- success.classList.add(
-   "show"
- );
-
- document.getElementById(
-   "orderNumber"
- ).textContent =
-   "Pedido: " +
-   order.orderId;
-
- window.scrollTo({
-   top:0,
-   behavior:"smooth"
- });
+event.preventDefault();
+if(cart.length === 0){
+  showToast("Tu carrito está vacío");
+  return;
 }
-
+const order = createOrder();
+saveOrder(order);
+/* Vaciar carrito */
+localStorage.removeItem(CART_KEY);
+/* Limpiar datos viejos */
+sessionStorage.removeItem("carrito");
+cart = [];
+document.getElementById("checkoutPage").style.display = "none";
+const success = document.getElementById("successScreen");
+success.classList.add("show");
+document.getElementById("orderNumber").textContent = "Pedido: #" + order.id;
+window.scrollTo({ top:0, behavior:"smooth" });
+}
 /* =========================================================
-  VOLVER A LA TIENDA
+ VOLVER A LA TIENDA
 ========================================================= */
 function volverTienda(){
- window.location.href =
-   "productos.html";
+window.location.href = "productos.html";
 }
-
 /* =========================================================
-  TOAST
+ TOAST
 ========================================================= */
 let toastTimer;
-
 function showToast(message){
- const toast =
-   document.getElementById(
-     "toast"
-   );
-
- toast.textContent =
-   message;
-
- toast.classList.add(
-   "show"
- );
-
- clearTimeout(
-   toastTimer
- );
-
- toastTimer =
-   setTimeout(
-     () =>
-       toast.classList.remove(
-         "show"
-       ),
-     2500
-   );
+const toast = document.getElementById("toast");
+toast.textContent = message;
+toast.classList.add("show");
+clearTimeout(toastTimer);
+toastTimer = setTimeout(() => toast.classList.remove("show"), 2500);
 }
-
 /* =========================================================
-  SINCRONIZAR ENTRE PESTAÑAS
+ SINCRONIZAR ENTRE PESTAÑAS
 ========================================================= */
-window.addEventListener(
- "storage",
- event => {
-   if(
-     event.key ===
-     CART_KEY
-   ){
-     loadCart();
-     renderCart();
-   }
- }
-);
-
+window.addEventListener("storage", event => {
+if(event.key === CART_KEY){
+  loadCart();
+  renderCart();
+}
+});
 /* =========================================================
-  INICIALIZACIÓN
+ INICIALIZACIÓN
 ========================================================= */
 function init(){
- loadCart();
- renderCart();
+loadCart();
+renderCart();
 }
-
 init();
-
-function guardarPedido() {
- const productos = JSON.parse(
-   sessionStorage.getItem("carrito") || "[]"
- );
- if (productos.length === 0) {
-   alert("No hay productos para comprar");
-   return;
- }
- const pedidos = JSON.parse(
-   localStorage.getItem("aguileraPedidos") || "[]"
- );
- const total = productos.reduce((suma, producto) => {
-   return suma + (producto.precio * producto.cantidad);
- }, 0);
- const nuevoPedido = {
-   id: "AF-" + Date.now(),
-   fecha: new Date().toISOString(),
-   estado: "Procesando",
-   productos: productos,
-   total: total
- };
- pedidos.unshift(nuevoPedido);
- localStorage.setItem(
-   "aguileraPedidos",
-   JSON.stringify(pedidos)
- );
- localStorage.removeItem("aguileraCart");
- sessionStorage.removeItem("carrito");
- alert("¡Compra realizada correctamente!");
- window.location.href = "index.html";
-}
 </script>
 </body>
 </html>
