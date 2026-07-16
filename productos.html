@@ -429,102 +429,121 @@
   1. FUENTE ÚNICA DE DATOS: catálogo de productos
 --------------------------------------------------------------------- */
 const PRODUCTS = [
- { id:1,  nombre:"Proteína Whey", categoria:"proteinas", precio:32000, img:"v_producto6.png", stock:40,
+ { id:1,  nombre:"Proteína Whey", categoria:"proteinas", precio:32000, img:"v_producto.png", stock:40,
    descripcion:"Proteína de alta calidad para apoyar la recuperación muscular después de entrenar.",
    detalle:"Whey concentrada con 24g de proteína por porción, ideal para consumir después del entrenamiento o como complemento diario de tu dieta.",
    rating:4.8, resenas:124, badge:"Más vendido",
    tamano:"900 g", porciones:"30 porciones", sabor:"Chocolate", uso:"1 scoop post-entreno" },
+
  { id:2,  nombre:"Proteína Dos Pinos", categoria:"proteinas", precio:28000, img:"v_producto2.webp", stock:40,
    descripcion:"Proteína nacional de buen sabor, pensada para el consumo diario.",
    detalle:"Producto costarricense con buena solubilidad y sabor suave, perfecto para combinar con leche o agua.",
    rating:4.5, resenas:63,
    tamano:"850 g", porciones:"28 porciones", sabor:"Vainilla", uso:"1 scoop al día" },
- { id:3,  nombre:"Barras de Proteína Fresa", categoria:"proteinas", precio:18000, img:"v_producto3.webp", stock:10,
+
+ { id:3,  nombre:"Barras de Proteína Bar", categoria:"proteinas", precio:10000, img:"v_producto3.webp", stock:10,
    descripcion:"Snack práctico con proteína para llevar a cualquier lado.",
    detalle:"Caja de barras individuales con proteína, ideales como snack entre comidas o antes de entrenar.",
    rating:4.6, resenas:41,
    tamano:"Caja x12", porciones:"12 unidades", sabor:"Fresa", uso:"1 barra como snack" },
+
  { id:4,  nombre:"Creatina Plus", categoria:"creatina", precio:20000, img:"v_producto4.png", stock:8,
    descripcion:"Creatina monohidratada para fuerza y rendimiento.",
    detalle:"Fórmula pura de creatina monohidratada que ayuda a mejorar la fuerza y el rendimiento en entrenamientos de alta intensidad.",
    rating:4.9, resenas:98, badge:"Popular",
    tamano:"300 g", porciones:"60 porciones", sabor:"Sin sabor", uso:"1 cucharada al día" },
- { id:5,  nombre:"Galletas Fit", categoria:"snacks", precio:3500, img:"https://m.media-amazon.com/images/I/71SE-CKOJYL.jpg", stock:40,
+
+ { id:5,  nombre:"Galletas Fit", categoria:"snacks", precio:8000, img:"https://m.media-amazon.com/images/I/71SE-CKOJYL.jpg", stock:40,
    descripcion:"Galletas ligeras, ideales para un antojo saludable.",
    detalle:"Galletas horneadas con menos azúcar, perfectas para acompañar el café o como snack rápido.",
    rating:4.3, resenas:22,
    tamano:"120 g", sabor:"Avena y miel", uso:"Snack entre comidas" },
- { id:6,  nombre:"Galletas Nutri Snacks", categoria:"snacks", precio:3500, img:"v_producto7.png", stock:40,
+
+ { id:6,  nombre:"Galletas Nutri Snacks", categoria:"snacks", precio:5000, img:"v_producto5.png", stock:40,
    descripcion:"Snack crujiente bajo en azúcar para tu rutina diaria.",
    detalle:"Presentación individual, fáciles de llevar en el bolso del gimnasio o la oficina.",
    rating:4.2, resenas:18,
    tamano:"100 g", sabor:"Chocolate", uso:"Snack entre comidas" },
- { id:7,  nombre:"Galletas Nutri Snacks", categoria:"snacks", precio:3500, img:"v_producto.png", stock:40,
+
+ { id:7,  nombre:"Galletas Nutri Snacks", categoria:"snacks", precio:4500, img:"v_producto7.png", stock:40,
    descripcion:"Snack crujiente bajo en azúcar, sabor coco.",
    detalle:"Misma línea Nutri Snacks en presentación de coco, ideal para variar el sabor de tus meriendas.",
    rating:4.1, resenas:15,
    tamano:"100 g", sabor:"Coco", uso:"Snack entre comidas" },
- { id:8,  nombre:"Galletas Nutri Snacks", categoria:"snacks", precio:3500, img:"v_producto8.png", stock:40,
+
+ { id:8,  nombre:"Gereal Fit vainilla", categoria:"snacks", precio:3500, img:"v_producto8.png", stock:40,
    descripcion:"Snack crujiente bajo en azúcar, sabor canela.",
    detalle:"Versión canela de la línea Nutri Snacks, con textura crocante y bajo aporte calórico.",
    rating:4.0, resenas:12,
    tamano:"100 g", sabor:"Canela", uso:"Snack entre comidas" },
+
  { id:9,  nombre:"Chocolate Fit", categoria:"snacks", precio:3500, img:"v_producto9.png", stock:40,
    descripcion:"Chocolate con menos azúcar para los antojos dulces.",
    detalle:"Tableta de chocolate formulada con menor contenido de azúcar, perfecta para un antojo controlado.",
    rating:4.4, resenas:29,
    tamano:"80 g", sabor:"Chocolate oscuro", uso:"Consumo ocasional" },
- { id:10, nombre:"Barra Energética", categoria:"snacks", precio:2000, img:"producto10.png", stock:40,
+
+ { id:10, nombre:"Barras Energéticas", categoria:"snacks", precio:17000, img:"v_producto10.png", stock:40,
    descripcion:"Energía rápida antes o durante el entrenamiento.",
    detalle:"Barra a base de avena y frutos secos, pensada para dar un impulso de energía antes de entrenar.",
    rating:4.3, resenas:34,
    tamano:"40 g", sabor:"Frutos secos", uso:"Antes de entrenar" },
- { id:11, nombre:"Granola", categoria:"alimentos", precio:12000, img:"v_producto11.webp", stock:40,
+
+ { id:11, nombre:"Creatina", categoria:"alimentos", precio:22000, img:"v_producto11.png", stock:40,
    descripcion:"Mezcla de granola artesanal para un desayuno completo.",
    detalle:"Granola horneada con avena, semillas y frutos secos, ideal para acompañar yogurt o leche.",
    rating:4.6, resenas:52,
    tamano:"500 g", sabor:"Original", uso:"Desayuno o merienda" },
- { id:12, nombre:"FitNess Cereal Chocolate", categoria:"alimentos", precio:32000, img:"v_producto12.png", stock:20,
+
+ { id:12, nombre:"FitNess Cereal Chocolate", categoria:"alimentos", precio:5000, img:"v_producto12.webp", stock:20,
    descripcion:"Cereal fitness sabor chocolate, alto en fibra.",
    detalle:"Cereal integral con alto contenido de fibra y bajo índice glucémico, sabor chocolate.",
    rating:4.5, resenas:27,
    tamano:"400 g", sabor:"Chocolate", uso:"Desayuno" },
- { id:13, nombre:"FitNess Cereal Vainilla", categoria:"alimentos", precio:32000, img:"v_producto13.png", stock:20,
+
+ { id:13, nombre:"FitNess Cereal Vainilla", categoria:"alimentos", precio:5000, img:"v_producto13.png", stock:20,
    descripcion:"Cereal fitness sabor vainilla, alto en fibra.",
    detalle:"Versión vainilla del cereal FitNess, con la misma base integral y alto aporte de fibra.",
    rating:4.4, resenas:19,
    tamano:"400 g", sabor:"Vainilla", uso:"Desayuno" },
- { id:14, nombre:"Barras de Proteína", categoria:"proteinas", precio:28000, img:"v_producto14.webp", stock:40,
+
+ { id:14, nombre:"Barras de Proteína", categoria:"proteinas", precio:8000, img:"v_producto14.webp", stock:40,
    descripcion:"Caja de barras de proteína para tu día a día.",
    detalle:"Presentación económica en caja, con buen balance de proteína y sabor.",
    rating:4.2, resenas:23,
    tamano:"Caja x10", porciones:"10 unidades", sabor:"Variado", uso:"Snack post-entreno" },
- { id:15, nombre:"Creatina x4", categoria:"creatina", precio:18000, img:"v_producto15.jpeg", stock:40,
+
+ { id:15, nombre:"Cereal de proteina", categoria:"alimentos", precio:8000, img:"v_producto15.png", stock:40,
    descripcion:"Creatina de alta pureza en presentación económica.",
    detalle:"Fórmula de creatina de rápida absorción, ideal para quienes buscan mejorar su fuerza sin gastar de más.",
    rating:4.5, resenas:36,
    tamano:"250 g", porciones:"50 porciones", sabor:"Sin sabor", uso:"1 cucharada al día" },
- { id:16, nombre:"Barra de Proteína", categoria:"proteinas", precio:20000, img:"v_producto16.jpeg", stock:40,
-   descripcion:"Barra individual con buen aporte de proteína.",
+
+ { id:16, nombre:"Proteína whey advance", categoria:"proteinas", precio:20000, img:"v_producto16.png", stock:40,
+   descripcion:"Una buena proteína para mejorar el rendimiento.",
    detalle:"Barra compacta pensada para después del entrenamiento, con buen sabor y textura suave.",
    rating:4.3, resenas:20,
    tamano:"60 g", porciones:"1 unidad", sabor:"Chocolate y maní", uso:"Post-entreno" },
- { id:17, nombre:"Barra Tosh Chocolate", categoria:"snacks", precio:2000, img:"v_producto17.png", stock:40,
+
+ { id:17, nombre:"Barra Tosh Fresa", categoria:"snacks", precio:2000, img:"v_producto17.png", stock:40,
    descripcion:"Barra ligera sabor chocolate para cualquier momento.",
    detalle:"Snack bajo en calorías, ideal para acompañar el café de la tarde.",
    rating:4.1, resenas:14,
    tamano:"35 g", sabor:"Chocolate", uso:"Snack" },
- { id:18, nombre:"Barra Tosh Zero Fresa", categoria:"snacks", precio:2000, img:"v_producto18.png", stock:40,
+
+ { id:18, nombre:"Barra Tosh Zero Fresa", categoria:"snacks", precio:4000, img:"v_producto18.png", stock:40,
    descripcion:"Barra sin azúcar añadida sabor fresa.",
    detalle:"Versión zero azúcar, pensada para quienes cuidan su consumo diario.",
    rating:4.2, resenas:16,
    tamano:"35 g", sabor:"Fresa", uso:"Snack" },
- { id:19, nombre:"Barra Energética Frutas", categoria:"snacks", precio:2000, img:"v_producto19.png", stock:40,
+
+ { id:19, nombre:"Barra Fit frida", categoria:"snacks", precio:2500, img:"v_producto19.png", stock:40,
    descripcion:"Mezcla de frutas para un snack natural y energético.",
    detalle:"Barra a base de frutas deshidratadas, ideal para un impulso natural de energía.",
    rating:4.0, resenas:11,
    tamano:"35 g", sabor:"Frutos mixtos", uso:"Snack" },
- { id:20, nombre:"Bebida Suerox", categoria:"bebidas", precio:12000, img:"v_producto20.png", stock:40,
+
+ { id:20, nombre:"Bebida Suerox", categoria:"bebidas", precio:5000, img:"v_producto20.png", stock:40,
    descripcion:"Bebida hidratante con electrolitos para reponer energía.",
    detalle:"Bebida isotónica que ayuda a reponer electrolitos perdidos durante el entrenamiento intenso.",
    rating:4.6, resenas:47, badge:"Nuevo",
@@ -568,42 +587,83 @@ function cartSubtotal(){
  }, 0);
 }
 function addToCart(id, cantidad = 1){
- const p = getProduct(id);
- if(!p) return;
- if(p.stock <= 0){ showToast("Este producto está agotado", true); return; }
- const existing = cart.find(c => c.id === id);
- const currentQty = existing ? existing.cantidad : 0;
- if(currentQty + cantidad > p.stock){
-   showToast("Límite de stock alcanzado", true);
-   return;
- }
- if(existing) existing.cantidad += cantidad;
- else cart.push({ id, cantidad });
- saveCart();
- renderCart();
- showToast(`${p.nombre} agregada al carrito ✓`);
-}
+   const p = getProduct(id);
+   if(!p) return;
+   if(p.stock <= 0){
+       showToast("Este producto está agotado", true);
+       return;
+   }
+   if(cantidad > p.stock){
+       showToast("No hay suficiente stock", true);
+       return;
+   }
+   // Restar del stock
+   p.stock -= cantidad;
+   const existing = cart.find(c => c.id === id);
+   if(existing){
+       existing.cantidad += cantidad;
+   }else{
+       cart.push({ id, cantidad });
+   }
+   saveCart();
+   renderProducts();
+   renderCart();
+   // Si el modal está abierto, actualizarlo
+   if(currentPmProduct && currentPmProduct.id === id){
+       openProductModal(id);
+   }
+   showToast(`${p.nombre} agregada al carrito ✓`);
+   }
 function incrementItem(id){
- const p = getProduct(id);
- const item = cart.find(c => c.id === id);
- if(!p || !item) return;
- if(item.cantidad + 1 > p.stock){ showToast("Límite de stock alcanzado", true); return; }
- item.cantidad++;
- saveCart();
- renderCart();
+   const p = getProduct(id);
+   const item = cart.find(c => c.id === id);
+   if(!p || !item) return;
+   if(p.stock <= 0){
+       showToast("No quedan más unidades", true);
+       return;
+   }
+   p.stock--;
+   item.cantidad++;
+   saveCart();
+   renderProducts();
+   renderCart();
+   if(currentPmProduct && currentPmProduct.id === id){
+       openProductModal(id);
+   }
 }
 function decrementItem(id){
- const item = cart.find(c => c.id === id);
- if(!item) return;
- item.cantidad--;
- if(item.cantidad <= 0) removeFromCart(id, true);
- else { saveCart(); renderCart(); }
+   const p = getProduct(id);
+   const item = cart.find(c => c.id === id);
+   if(!item || !p) return;
+   item.cantidad--;
+   p.stock++;
+   if(item.cantidad <= 0){
+       removeFromCart(id, true);
+   }else{
+       saveCart();
+       renderProducts();
+       renderCart();
+   }
+   if(currentPmProduct && currentPmProduct.id === id){
+       openProductModal(id);
+   }
 }
 function removeFromCart(id, silent){
- cart = cart.filter(c => c.id !== id);
- saveCart();
- renderCart();
- if(!silent) showToast("Producto eliminado del carrito");
+   const item = cart.find(c => c.id === id);
+   const p = getProduct(id);
+   if(item && p){
+       p.stock += item.cantidad;
+   }
+   cart = cart.filter(c => c.id !== id);
+   saveCart();
+   renderProducts();
+   renderCart();
+   if(currentPmProduct && currentPmProduct.id === id){
+       openProductModal(id);
+   }
+   if(!silent){
+       showToast("Producto eliminado del carrito");
+   }
 }
 /* ---------------------------------------------------------------------
   4. ESTADO DE STOCK (etiqueta visual)
