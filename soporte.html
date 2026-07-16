@@ -458,7 +458,11 @@ footer{margin-top:20px;background:var(--bg-alt);border-top:1px solid var(--borde
 <img src="logoCRfit.png" alt="Logo Ag Fit Gym" class="brand-logo">
 <div class="logo-text">Ag Fit <span>Gym</span></div>
 </div>
-<button class="cat-toggle-btn" id="backToCatalogBtn" onclick="location.href='maquinas.html'"><i class="fa-solid fa-arrow-left"></i><span>Volver al catálogo</span></button>
+<button class="cat-toggle-btn" id="backToCatalogBtn">
+  <i class="fa-solid fa-arrow-left"></i>
+  <span>Volver al catálogo</span>
+</button>
+      
 <nav class="main-nav" id="mainNav">
 <a href="index.html">Inicio</a>
 <a href="rutinas.html">Rutinas</a>
@@ -466,14 +470,6 @@ footer{margin-top:20px;background:var(--bg-alt);border-top:1px solid var(--borde
 </nav>
 </div>
 </header>
-<div class="benefits">
-<div class="benefits-inner">
-<div class="benefit-item"><i class="fa-solid fa-truck-fast"></i> Envíos a toda Costa Rica</div>
-<div class="benefit-item"><i class="fa-solid fa-dumbbell"></i> Equipamiento profesional</div>
-<div class="benefit-item"><i class="fa-solid fa-shield-halved"></i> Compra 100% segura</div>
-<div class="benefit-item"><i class="fa-solid fa-headset"></i> Atención personalizada</div>
-</div>
-</div>
 <main class="support-wrap">
 <section class="chat-shell" id="chatShell">
 <!-- ===== Cabecera del agente ===== -->
@@ -1165,6 +1161,17 @@ if(!guardarConversacion){
    mostrarToast("Las conversaciones volverán a guardarse automáticamente.", "success", "fa-solid fa-floppy-disk");
 }
 });
+
+document.getElementById("backToCatalogBtn").addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (history.length > 1) {
+        history.back();
+    } else {
+        location.replace("maquinas.html");
+    }
+});
+
 /* =========================================================
  9) INICIALIZACIÓN
  ========================================================= */
