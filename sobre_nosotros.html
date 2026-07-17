@@ -231,9 +231,16 @@ transition:background .3s ease;min-width:0;
 .creador-info-box:nth-last-child(-n+2){border-bottom:none;}
 .creador-info-box:nth-child(3n){border-right:none;}
 @media(max-width:768px){
-.creador-info-box:nth-child(3n){border-right:1px solid rgba(255,255,255,.06);}
-.creador-info-box:nth-child(odd){border-right:none;}
-.creador-info-box:last-child{border-bottom:none;}
+.creador-info-grid{
+    grid-template-columns: 1fr;
+}
+.creador-info-box{
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.creador-info-box:last-child{
+    border-bottom: none;
+}
 }
 .creador-info-box:hover{background:rgba(29,185,84,.05);}
 .creador-info-box .icono-mini{
@@ -336,6 +343,22 @@ nav a{font-size:1.05rem;}
 .sobre-card{padding:22px;}
 .stats-wrap{grid-template-columns:1fr 1fr;}
 .stat .num{font-size:2.8rem;}
+
+/* ===== Soporte táctil para la galería ===== */
+.galeria-item.active img{
+   transform: scale(1.12);
+   filter: brightness(.75);
+}
+.galeria-item.active .overlay{
+   opacity: 1;
+}
+.galeria-item.active{
+   border-color: rgba(29,185,84,.4);
+   box-shadow: 0 22px 46px rgba(0,0,0,.5),
+               0 0 26px rgba(29,185,84,.1);
+   transform: translateY(-6px);
+}
+
 }
 @media (prefers-reduced-motion: reduce){
 *{animation:none !important;transition:none !important;}
@@ -475,7 +498,7 @@ nav a{font-size:1.05rem;}
 </div>
 <div class="creador-info-card reveal">
 <div class="creador-info-grid">
-<div class="creador-info-box">
+
 <div class="creador-info-box">
 <span class="icono-mini">🎓</span>
 <div><span class="etiqueta">Estudios</span><div class="valor">Desarrollo web, informática</div></div>
@@ -532,7 +555,7 @@ nav a{font-size:1.05rem;}
 <div class="overlay"><span>Ver máquinas</span><span class="flecha">→</span></div>
 </a>
 <a class="galeria-item reveal" href="mensajes.html">
-<img src="v_sobreN4.png"Mensajes Ag Fit Gym">
+<img src="v_sobreN4.png" alt="Mensajes Ag Fit Gym">
 <div class="overlay"><span>Ver Ag Fit IA</span><span class="flecha">→</span></div>
 </a>
 </div>
@@ -684,6 +707,25 @@ entries.forEach(entry => {
 });
 }, { threshold:0.5 });
 contadores.forEach(c => contadorObserver.observe(c));
+
+// ===== Hover en celulares para las tarjetas =====
+const galeriaItems = document.querySelectorAll(".galeria-item");
+galeriaItems.forEach(item => {
+   item.addEventListener("click", function(e){
+       if(window.innerWidth > 768) return;
+       if(!this.classList.contains("active")){
+           e.preventDefault();
+           galeriaItems.forEach(card => card.classList.remove("active"));
+           this.classList.add("active");
+       }
+   });
+});
+document.addEventListener("click", function(e){
+   if(window.innerWidth > 768) return;
+   if(!e.target.closest(".galeria-item")){
+       galeriaItems.forEach(card => card.classList.remove("active"));
+   }
+});
 </script>
 </body>
 </html>
