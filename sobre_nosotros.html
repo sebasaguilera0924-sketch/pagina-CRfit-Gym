@@ -3,431 +3,342 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sobre Nosotros | CRFit Gym</title>
+<title>Sobre Nosotros | Ag Fit Gym</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
 --verde:#1DB954;
 --verde-oscuro:#14a349;
---negro:#0a0a0a;
---panel:#141414;
+--verde-glow:rgba(29,185,84,.45);
+--negro:#070707;
+--negro2:#0c0c0c;
+--panel:#131313;
+--panel2:#171717;
 --panel-borde:#232323;
 --texto-tenue:#9a9a9a;
+--texto-tenue2:#787878;
 --eyebrow:.72rem;
 }
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-html{
-scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 body{
 font-family:'Inter',Helvetica,sans-serif;
 background:var(--negro);
 color:#fff;
 overflow-x:hidden;
 }
-h1,h2,h3{
-font-family:'Bebas Neue',Arial,sans-serif;
-letter-spacing:.5px;
-}
+h1,h2,h3{font-family:'Bebas Neue',Arial,sans-serif;letter-spacing:.5px;}
+img{max-width:100%;}
+::selection{background:var(--verde);color:#0a0a0a;}
 /* ===== HEADER ===== */
 header{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:78px;
-padding:0 50px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-background:rgba(10,10,10,.55);
-backdrop-filter:blur(14px);
--webkit-backdrop-filter:blur(14px);
-border-bottom:1px solid rgba(255,255,255,.06);
-z-index:1000;
+position:fixed;top:0;left:0;width:100%;height:78px;padding:0 50px;
+display:flex;align-items:center;justify-content:space-between;
+background:rgba(7,7,7,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+border-bottom:1px solid rgba(255,255,255,.06);z-index:1000;
 transition:background .3s ease, border-color .3s ease;
 }
-header.scrolled{
-background:rgba(10,10,10,.9);
-border-bottom-color:rgba(255,255,255,.1);
-}
-.logo{
-display:flex;
-align-items:center;
-gap:14px;
-}
-.logo img{
-height:44px;
-width:auto;
-display:block;
-}
-.logo strong{
-font-family:'Bebas Neue',Arial,sans-serif;
-font-size:1.3rem;
-letter-spacing:1px;
-color:#fff;
-}
-nav ul{
-list-style:none;
-display:flex;
-gap:38px;
-}
+header.scrolled{background:rgba(7,7,7,.92);border-bottom-color:rgba(255,255,255,.1);}
+.logo{display:flex;align-items:center;gap:14px;}
+.logo img{height:44px;width:auto;display:block;}
+.logo strong{font-family:'Bebas Neue',Arial,sans-serif;font-size:1.3rem;letter-spacing:1px;color:#fff;}
+nav ul{list-style:none;display:flex;gap:38px;}
 nav a{
-position:relative;
-color:#e6e6e6;
-text-decoration:none;
-font-weight:600;
-font-size:.92rem;
-letter-spacing:.3px;
-padding:6px 0;
-transition:color .25s ease;
+position:relative;color:#e6e6e6;text-decoration:none;font-weight:600;
+font-size:.92rem;letter-spacing:.3px;padding:6px 0;transition:color .25s ease;
 }
-nav a::after{
-content:"";
-position:absolute;
-left:0;
-bottom:0;
-width:0%;
-height:2px;
-background:var(--verde);
-transition:width .25s ease;
-}
-nav a:hover{
-color:var(--verde);
-}
-nav a:hover::after,
-nav a.activo::after{
-width:100%;
-}
-.menu-toggle{
-display:none;
-font-size:26px;
-cursor:pointer;
-background:none;
-border:none;
-color:#fff;
-}
-/* ===== HERO con scroll-scrub ===== */
-.hero{
-position:relative;
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-overflow:hidden;
-}
+nav a::after{content:"";position:absolute;left:0;bottom:0;width:0%;height:2px;background:var(--verde);transition:width .25s ease;}
+nav a:hover{color:var(--verde);}
+nav a:hover::after,nav a.activo::after{width:100%;}
+.menu-toggle{display:none;font-size:26px;cursor:pointer;background:none;border:none;color:#fff;}
+/* ===== HERO ===== */
+.hero{position:relative;height:100vh;min-height:680px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
 .hero-media{
-position:absolute;
-inset:-10% -10%;
-background:url('ss.sobreNs.jpg') center/cover no-repeat;
-will-change:transform, filter;
-transform:scale(1.05);
-transition:filter .2s linear;
+position:absolute;inset:-10% -10%;background:url('ss.sobreNs.jpg') center/cover no-repeat;
+will-change:transform, filter;transform:scale(1.05);transition:filter .2s linear;
 }
 .hero-overlay{
-position:absolute;
-inset:0;
-background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(10,10,10,.55) 55%, rgba(10,10,10,.97) 100%);
+position:absolute;inset:0;
+background:
+  radial-gradient(ellipse 90% 60% at 50% 100%, rgba(29,185,84,.14), transparent 60%),
+  linear-gradient(180deg, rgba(0,0,0,.4) 0%, rgba(7,7,7,.6) 50%, rgba(7,7,7,.98) 100%);
 z-index:1;
 }
-.hero-content{
-position:relative;
-z-index:2;
-will-change:transform, opacity;
-padding:0 20px;
+.hero-content{position:relative;z-index:2;will-change:transform, opacity;padding:0 20px;max-width:900px;}
+.eyebrow,.eyebrow-block{
+display:inline-block;font-size:var(--eyebrow);text-transform:uppercase;letter-spacing:3px;
+color:var(--verde);font-weight:700;margin-bottom:18px;
 }
-.hero-content .eyebrow{
-display:inline-block;
-font-size:var(--eyebrow);
-text-transform:uppercase;
-letter-spacing:3px;
-color:var(--verde);
-font-weight:700;
-margin-bottom:18px;
-}
-.hero h1{
-font-size:5.2rem;
-line-height:.95;
-color:#fff;
-}
+.eyebrow-block{margin-bottom:14px;}
+.eyebrow::before,.eyebrow-block::before{content:"— ";}
+.hero h1{font-size:7rem;line-height:.92;color:#fff;}
+.hero h1 .accent{color:var(--verde);}
 .hero p.sub{
-margin-top:18px;
-color:#c9c9c9;
-font-size:1.05rem;
-max-width:520px;
-margin-left:auto;
-margin-right:auto;
+margin-top:22px;color:#d4d4d4;font-size:1.2rem;font-weight:500;max-width:620px;margin-left:auto;margin-right:auto;
 }
+.hero p.desc{
+margin-top:20px;color:var(--texto-tenue);font-size:1rem;line-height:1.8;max-width:640px;
+margin-left:auto;margin-right:auto;
+}
+.hero-actions{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:38px;}
 .scroll-hint{
-position:absolute;
-bottom:36px;
-left:50%;
-transform:translateX(-50%);
-z-index:2;
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:8px;
-color:var(--texto-tenue);
-font-size:.75rem;
-letter-spacing:2px;
-text-transform:uppercase;
-opacity:.8;
+position:absolute;bottom:38px;left:50%;transform:translateX(-50%);z-index:2;opacity:.9;
 }
-.scroll-hint span{
-width:1px;
-height:34px;
-background:linear-gradient(to bottom, var(--verde), transparent);
-animation:bajar 1.8s ease-in-out infinite;
+.scroll-hint .rueda{
+width:26px;height:42px;border:1.5px solid rgba(255,255,255,.28);border-radius:20px;position:relative;
 }
-@keyframes bajar{
-0%{transform:scaleY(0); transform-origin:top;}
-50%{transform:scaleY(1); transform-origin:top;}
-51%{transform-origin:bottom;}
-100%{transform:scaleY(0); transform-origin:bottom;}
+.scroll-hint .rueda::before{
+content:"";position:absolute;top:8px;left:50%;width:4px;height:8px;background:var(--verde);
+border-radius:3px;transform:translateX(-50%);animation:bajar 1.8s ease-in-out infinite;
+box-shadow:0 0 10px rgba(29,185,84,.8);
 }
+@keyframes bajar{0%{opacity:0;top:8px;}30%{opacity:1;}100%{opacity:0;top:24px;}}
 /* ===== SECCIONES ===== */
-section{
-padding:130px 50px;
-max-width:1280px;
-margin:auto;
-}
-.reveal{
-opacity:0;
-transform:translateY(28px);
-transition:opacity .7s ease, transform .7s ease;
-}
-.reveal.visible{
-opacity:1;
-transform:translateY(0);
-}
-/* ===== SOBRE ===== */
-.eyebrow-block{
-font-size:var(--eyebrow);
-text-transform:uppercase;
-letter-spacing:3px;
-color:var(--verde);
-font-weight:700;
-margin-bottom:14px;
-display:block;
-}
+section{padding:150px 50px;max-width:1280px;margin:auto;}
+.section-alt{background:var(--negro2);max-width:100%;padding-left:0;padding-right:0;}
+.section-alt > .inner{max-width:1280px;margin:auto;padding:0 50px;}
+.section-head{max-width:680px;margin-bottom:64px;}
+.section-head h2{font-size:3rem;color:#fff;margin-top:6px;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+/* ===== QUE ES AG FIT ===== */
 .sobre-card{
-background:var(--panel);
-border:1px solid var(--panel-borde);
-padding:50px;
-border-radius:18px;
-margin-bottom:50px;
+background:linear-gradient(155deg,var(--panel),#101010);
+border:1px solid var(--panel-borde);padding:56px;border-radius:20px;margin-bottom:54px;
+position:relative;overflow:hidden;
 }
-.sobre-card h2{
-font-size:2.4rem;
-margin-bottom:18px;
-color:#fff;
+.sobre-card::before{
+content:"";position:absolute;top:-40%;right:-15%;width:420px;height:420px;
+background:radial-gradient(circle,var(--verde-glow),transparent 70%);opacity:.12;pointer-events:none;
 }
-.sobre-card p{
-color:var(--texto-tenue);
-line-height:1.75;
-font-size:1.05rem;
-max-width:800px;
-}
-/* GRID */
-.info-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:26px;
-}
+.sobre-card h2{font-size:2.6rem;margin-bottom:20px;color:#fff;}
+.sobre-card p{color:var(--texto-tenue);line-height:1.8;font-size:1.05rem;max-width:820px;margin-bottom:16px;}
+.sobre-card p:last-child{margin-bottom:0;}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px;}
 .info-box{
-position:relative;
-background:var(--panel);
-border:1px solid var(--panel-borde);
-padding:36px 30px;
-border-radius:16px;
-transform-style:preserve-3d;
-perspective:800px;
-transition:transform .5s cubic-bezier(.22,1,.36,1), border-color .3s ease, background .3s ease;
-overflow:hidden;
+position:relative;background:linear-gradient(160deg,#151515,#0f0f0f);border:1px solid var(--panel-borde);padding:40px 34px;
+border-radius:20px;transform-style:preserve-3d;perspective:800px;
+transition:transform .5s cubic-bezier(.22,1,.36,1), border-color .3s ease, box-shadow .3s ease;overflow:hidden;
+box-shadow:0 14px 34px rgba(0,0,0,.35);
 }
-.info-box.is-active{
-transition:transform .08s linear;
-}
+.info-box.is-active{transition:transform .08s linear;}
 .info-box::before{
-content:"";
-position:absolute;
-inset:0;
-background:radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(29,185,84,.16), transparent 55%);
-opacity:0;
-transition:opacity .3s ease;
-pointer-events:none;
+content:"";position:absolute;inset:0;
+background:radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(29,185,84,.18), transparent 55%);
+opacity:0;transition:opacity .3s ease;pointer-events:none;
 }
-.info-box:hover::before{
-opacity:1;
+.info-box:hover::before{opacity:1;}
+.info-box:hover{border-color:rgba(29,185,84,.45);box-shadow:0 20px 46px rgba(0,0,0,.5), 0 0 26px rgba(29,185,84,.1);}
+.info-box .icono{
+width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;
+background:rgba(29,185,84,.1);border:1px solid rgba(29,185,84,.28);font-size:1.5rem;margin-bottom:22px;
 }
-.info-box:hover{
-border-color:rgba(29,185,84,.4);
-background:#171717;
+.info-box h3{font-size:1.5rem;margin-bottom:12px;color:#fff;}
+.info-box p{color:var(--texto-tenue);line-height:1.65;font-size:.95rem;}
+/* ===== TARJETAS DE SERVICIOS (glass premium) ===== */
+.servicios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px;}
+.servicio-card{
+position:relative;padding:38px 32px 34px;border-radius:20px;overflow:hidden;
+background:linear-gradient(165deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+box-shadow:0 16px 40px rgba(0,0,0,.4);
+transition:transform .45s cubic-bezier(.22,1,.36,1), border-color .35s ease, box-shadow .35s ease;
 }
-.info-box .num{
-font-family:'Bebas Neue',sans-serif;
-font-size:.85rem;
-color:var(--verde);
-letter-spacing:2px;
-display:block;
-margin-bottom:14px;
+.servicio-card::after{
+content:"";position:absolute;inset:0;border-radius:20px;padding:1px;
+background:linear-gradient(140deg, rgba(29,185,84,0) 40%, rgba(29,185,84,.55), rgba(29,185,84,0) 60%);
+-webkit-mask-composite:xor;mask-composite:exclude;
+opacity:0;transition:opacity .4s ease;pointer-events:none;
 }
-.info-box h3{
-font-size:1.5rem;
-margin-bottom:12px;
-color:#fff;
+.servicio-card:hover{transform:translateY(-10px);border-color:rgba(29,185,84,.4);box-shadow:0 28px 60px rgba(0,0,0,.55), 0 0 34px rgba(29,185,84,.12);}
+.servicio-card:hover::after{opacity:1;}
+.servicio-card .icono{
+width:58px;height:58px;border-radius:15px;display:flex;align-items:center;justify-content:center;
+background:rgba(29,185,84,.1);border:1px solid rgba(29,185,84,.28);font-size:1.7rem;margin-bottom:24px;
+transition:transform .4s cubic-bezier(.22,1,.36,1), background .3s ease;overflow:hidden;
 }
-.info-box p{
-color:var(--texto-tenue);
-line-height:1.6;
-font-size:.95rem;
+.servicio-card .icono img{width:100%;height:100%;object-fit:cover;display:block;border-radius:14px;}
+.servicio-card:hover .icono{transform:scale(1.12) rotate(-4deg);background:rgba(29,185,84,.2);}
+.servicio-card h3{font-size:1.42rem;color:#fff;margin-bottom:10px;}
+.servicio-card p{color:var(--texto-tenue);font-size:.92rem;line-height:1.6;}
+.servicio-card .tag{
+position:absolute;top:24px;right:24px;font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;
+color:var(--verde);font-weight:700;opacity:.85;padding:5px 10px;border:1px solid rgba(29,185,84,.3);border-radius:20px;
 }
-/* ===== LIBRO / NEGOCIO ===== */
-.contenedor{
-display:flex;
-align-items:center;
-gap:70px;
-flex-wrap:wrap;
+/* ===== STATS ===== */
+.stats-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;}
+.stat{text-align:center;padding:20px;border-right:1px solid var(--panel-borde);}
+.stat:last-child{border-right:none;}
+.stat .num{
+font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--verde);line-height:1;
+display:flex;justify-content:center;align-items:baseline;gap:2px;
 }
-.libro{
-flex:1 1 380px;
-max-width:440px;
-perspective:1200px;
+.stat .label{margin-top:10px;color:var(--texto-tenue);font-size:.85rem;letter-spacing:1px;text-transform:uppercase;}
+/* ===== OFERTAS ===== */
+.ofertas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px;}
+.oferta-card{
+position:relative;padding:38px 32px;border-radius:20px;
+background:linear-gradient(160deg,#151515,#0e0e0e);border:1px solid var(--panel-borde);
+box-shadow:0 16px 40px rgba(0,0,0,.4);
+transition:transform .4s cubic-bezier(.22,1,.36,1), border-color .3s ease, box-shadow .3s ease;
 }
-.libro-tilt{
-position:relative;
-width:100%;
-border-radius:16px;
-transform-style:preserve-3d;
-transition:transform .6s cubic-bezier(.22,1,.36,1), box-shadow .6s ease;
-box-shadow:0 25px 60px rgba(0,0,0,.7);
+.oferta-card:hover{transform:translateY(-8px);border-color:rgba(29,185,84,.4);box-shadow:0 24px 54px rgba(0,0,0,.5), 0 0 30px rgba(29,185,84,.1);}
+.oferta-card.destacada{border-color:rgba(29,185,84,.5);background:linear-gradient(160deg,#16201a,#0e0e0e);}
+.oferta-card .ribbon{
+position:absolute;top:-1px;right:24px;background:var(--verde);color:#0a0a0a;font-size:.65rem;font-weight:800;
+letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:0 0 10px 10px;
 }
-.libro-tilt.is-active{
-transition:transform .08s linear;
+.oferta-card .icono{
+width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+background:rgba(29,185,84,.1);border:1px solid rgba(29,185,84,.28);font-size:1.5rem;margin-bottom:22px;
 }
-.libro-tilt img{
-width:100%;
-display:block;
-border-radius:16px;
-transform:translateZ(0);
+.oferta-card h3{font-size:1.5rem;color:#fff;margin-bottom:10px;}
+.oferta-card p{color:var(--texto-tenue);line-height:1.65;font-size:.94rem;}
+/* ===== SOBRE EL CREADOR ===== */
+.creador-hero{display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center;margin-bottom:70px;}
+.creador-foto-principal{
+position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/5;
+background:var(--panel);border:1px solid var(--panel-borde);box-shadow:0 20px 50px rgba(0,0,0,.45);
 }
-.libro-tilt::after{
-content:"";
-position:absolute;
-inset:0;
-border-radius:16px;
-background:radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(255,255,255,.28), transparent 45%);
-opacity:0;
-transition:opacity .3s ease;
-pointer-events:none;
+.creador-foto-principal img{width:100%;height:100%;object-fit:cover;display:block;}
+.foto-placeholder{
+width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+color:var(--texto-tenue2);font-size:.85rem;letter-spacing:1px;text-align:center;padding:20px;
 }
-.libro-tilt.is-active::after{
-opacity:1;
+.creador-foto-principal::after{
+content:"";position:absolute;inset:0;background:linear-gradient(0deg, rgba(7,7,7,.5), transparent 45%);pointer-events:none;
 }
-.libro-tilt:hover{
-box-shadow:0 35px 80px rgba(0,0,0,.85), 0 0 40px rgba(29,185,84,.15);
+.creador-mini-fotos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;}
+.creador-mini-fotos .foto-placeholder,
+.creador-mini-fotos img{border-radius:14px;aspect-ratio:1/1;width:100%;height:100%;object-fit:cover;display:block;}
+.creador-mini-fotos > div{background:var(--panel);border:1px solid var(--panel-borde);border-radius:14px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.4);}
+.creador-texto h2{font-size:2.8rem;color:#fff;margin-bottom:6px;}
+.creador-texto .rol{color:var(--verde);font-weight:700;font-size:1rem;letter-spacing:.5px;margin-bottom:24px;display:block;}
+.creador-texto p{color:var(--texto-tenue);line-height:1.8;font-size:1.02rem;margin-bottom:16px;}
+.creador-info-card{
+background:linear-gradient(160deg,#141414,#0e0e0e);border:1px solid var(--panel-borde);border-radius:22px;
+padding:10px 8px;box-shadow:0 16px 40px rgba(0,0,0,.4);overflow:hidden;
 }
-.texto{
-flex:1 1 380px;
-max-width:520px;
+.creador-info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+.creador-info-box{
+display:flex;align-items:flex-start;gap:16px;padding:24px 26px;
+border-bottom:1px solid rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.06);
+transition:background .3s ease;min-width:0;
 }
-.texto h2{
-font-size:2.3rem;
-color:#fff;
-margin-bottom:20px;
+.creador-info-box:nth-last-child(-n+2){border-bottom:none;}
+.creador-info-box:nth-child(3n){border-right:none;}
+@media(max-width:768px){
+.creador-info-box:nth-child(3n){border-right:1px solid rgba(255,255,255,.06);}
+.creador-info-box:nth-child(odd){border-right:none;}
+.creador-info-box:last-child{border-bottom:none;}
 }
-.texto p{
-color:var(--texto-tenue);
-line-height:1.75;
-font-size:1rem;
+.creador-info-box:hover{background:rgba(29,185,84,.05);}
+.creador-info-box .icono-mini{
+flex:none;width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+background:rgba(29,185,84,.1);border:1px solid rgba(29,185,84,.28);font-size:1.1rem;
 }
-.firma{
-display:block;
-margin-top:18px;
-color:#7d7d7d;
-font-size:.9rem;
-font-style:italic;
+.creador-info-box .etiqueta{font-size:.66rem;text-transform:uppercase;letter-spacing:2px;color:var(--verde);font-weight:700;display:block;margin-bottom:6px;}
+.creador-info-box .valor{color:#fff;font-size:1rem;font-weight:600;line-height:1.4;}
+.creador-info-box .valor.vacio{color:var(--texto-tenue2);font-weight:500;font-style:italic;font-size:.88rem;}
+.creador-relato{margin-top:60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;}
+.relato-box h3{font-size:1.5rem;color:#fff;margin-bottom:14px;}
+.relato-box p{color:var(--texto-tenue);line-height:1.8;font-size:.98rem;}
+/* ===== GALERIA ===== */
+.galeria-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;}
+.galeria-item{
+position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4;
+background:var(--panel);border:1px solid var(--panel-borde);cursor:pointer;
+display:block;text-decoration:none;color:inherit;
+transition:border-color .35s ease, box-shadow .35s ease, transform .35s ease;
+box-shadow:0 14px 34px rgba(0,0,0,.35);
 }
+.galeria-item:hover{border-color:rgba(29,185,84,.4);box-shadow:0 22px 46px rgba(0,0,0,.5), 0 0 26px rgba(29,185,84,.1);transform:translateY(-6px);}
+.galeria-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.22,1,.36,1), filter .4s ease;}
+.galeria-item:hover img{transform:scale(1.12);filter:brightness(.75);}
+.galeria-item .overlay{
+position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;padding:18px;
+background:linear-gradient(0deg, rgba(0,0,0,.8), transparent 55%);
+opacity:0;transition:opacity .4s ease;font-size:.85rem;color:#fff;font-weight:600;
+}
+.galeria-item:hover .overlay{opacity:1;}
+.galeria-item .overlay .flecha{
+flex:none;width:30px;height:30px;border-radius:50%;background:var(--verde);color:#0a0a0a;
+display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;
+}
+/* ===== FILOSOFIA ===== */
+.filosofia{
+background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(29,185,84,.08), transparent 60%), #0d0d0d;
+max-width:100%;padding:150px 50px;
+}
+.filosofia .inner{max-width:1280px;margin:auto;}
+.filosofia-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;background:var(--panel-borde);border-radius:18px;overflow:hidden;}
+.filosofia-item{background:#0d0d0d;padding:42px 30px;text-align:center;transition:background .3s ease;}
+.filosofia-item:hover{background:#131313;}
+.filosofia-item .num{font-family:'Bebas Neue',sans-serif;color:var(--verde);font-size:1rem;letter-spacing:2px;display:block;margin-bottom:16px;}
+.filosofia-item h3{font-size:1.6rem;color:#fff;margin-bottom:10px;}
+.filosofia-item p{color:var(--texto-tenue);font-size:.9rem;line-height:1.6;}
+/* ===== BOTONES ===== */
 .btn{
-padding:14px 30px;
-background:var(--verde);
-border-radius:30px;
-text-decoration:none;
-color:#0a0a0a;
-display:inline-block;
-margin-top:26px;
-font-weight:700;
-font-size:.92rem;
-letter-spacing:.3px;
+padding:16px 34px;background:var(--verde);border-radius:30px;text-decoration:none;color:#0a0a0a;
+display:inline-block;font-weight:700;font-size:.92rem;letter-spacing:.3px;border:none;cursor:pointer;
 transition:box-shadow .3s ease, transform .3s ease, background .3s ease;
 }
-.btn:hover{
-background:var(--verde-oscuro);
-box-shadow:0 0 26px rgba(29,185,84,.5);
-transform:translateY(-2px);
+.btn:hover{background:var(--verde-oscuro);box-shadow:0 0 26px rgba(29,185,84,.5);transform:translateY(-2px);}
+.btn-outline{
+padding:16px 34px;background:transparent;border:1.5px solid rgba(255,255,255,.25);border-radius:30px;
+text-decoration:none;color:#fff;display:inline-block;font-weight:700;font-size:.92rem;letter-spacing:.3px;
+transition:border-color .3s ease, background .3s ease, transform .3s ease;
 }
+.btn-outline:hover{border-color:var(--verde);background:rgba(29,185,84,.08);transform:translateY(-2px);}
 /* ===== FOOTER ===== */
-footer{
-padding:36px;
-text-align:center;
-background:#0f0f0f;
-border-top:1px solid var(--panel-borde);
-color:#777;
-font-size:.85rem;
-letter-spacing:.3px;
-}
+footer{padding:36px;text-align:center;background:#0a0a0a;border-top:1px solid var(--panel-borde);color:#777;font-size:.85rem;letter-spacing:.3px;}
 /* ===== RESPONSIVE ===== */
 @media(max-width:1024px){
 header{padding:0 30px;}
-section{padding:100px 30px;}
-.hero h1{font-size:3.6rem;}
+section{padding:110px 30px;}
+.section-alt > .inner,.filosofia .inner{padding:0 30px;}
+.filosofia{padding:110px 30px;}
+.hero h1{font-size:4.6rem;}
+.creador-hero{grid-template-columns:1fr;}
 }
 @media(max-width:768px){
 header{height:68px;padding:0 20px;}
 .logo img{height:36px;}
 nav{
-position:fixed;
-top:68px;
-left:-100%;
-width:100%;
-height:calc(100vh - 68px);
-background:#0a0a0a;
-display:flex;
-justify-content:center;
-align-items:center;
-transition:left .4s ease;
-z-index:999;
+  position:fixed;top:68px;left:-100%;width:100%;height:calc(100vh - 68px);
+  background:#070707;display:flex;justify-content:center;align-items:center;transition:left .4s ease;z-index:999;
 }
 nav.active{left:0;}
 nav ul{flex-direction:column;gap:30px;text-align:center;}
 nav a{font-size:1.2rem;}
 .menu-toggle{display:block;}
-.hero h1{font-size:2.6rem;}
-.hero p.sub{font-size:.95rem;}
-section{padding:80px 20px;}
-.sobre-card{padding:28px;}
-.sobre-card h2{font-size:1.8rem;}
-.info-grid{grid-template-columns:1fr;}
-.contenedor{flex-direction:column;text-align:center;gap:34px;}
-.texto{max-width:100%;}
-.btn{width:100%;max-width:260px;}
+.hero h1{font-size:3rem;}
+.hero p.sub{font-size:1rem;}
+section{padding:90px 20px;}
+.section-alt > .inner,.filosofia .inner{padding:0 20px;}
+.filosofia{padding:90px 20px;}
+.section-head h2{font-size:2.2rem;}
+.sobre-card{padding:30px;}
+.sobre-card h2{font-size:2rem;}
+.info-grid,.servicios-grid,.galeria-grid{grid-template-columns:1fr;}
+.stats-wrap{grid-template-columns:repeat(2,1fr);}
+.stat{border-right:none;border-bottom:1px solid var(--panel-borde);padding:26px 10px;}
+.creador-hero{gap:34px;}
+.creador-texto h2{font-size:2.2rem;}
+.creador-relato{grid-template-columns:1fr;gap:30px;}
 }
 @media(max-width:480px){
-.hero h1{font-size:2.1rem;}
+.hero h1{font-size:2.3rem;}
 nav a{font-size:1.05rem;}
 .sobre-card{padding:22px;}
-.texto p{font-size:.9rem;}
+.stats-wrap{grid-template-columns:1fr 1fr;}
+.stat .num{font-size:2.8rem;}
 }
 @media (prefers-reduced-motion: reduce){
-*{animation:none !important; transition:none !important;}
+*{animation:none !important;transition:none !important;}
 }
 </style>
 </head>
@@ -435,8 +346,8 @@ nav a{font-size:1.05rem;}
 <!-- HEADER -->
 <header id="siteHeader">
 <div class="logo">
-<img src="logoCRfit.png" alt="CRFit Gym">
-<strong>CRFit Gym</strong>
+<img src="logoCRfit.png" alt="Ag Fit Gym">
+<strong>Ag Fit Gym</strong>
 </div>
 <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú">☰</button>
 <nav id="siteNav">
@@ -444,7 +355,6 @@ nav a{font-size:1.05rem;}
 <li><a href="index.html">Inicio</a></li>
 <li><a href="rutinas.html">Rutinas</a></li>
 <li><a href="productos.html">Tienda</a></li>
-<li><a href="catalogo.html">Productos</a></li>
 <li><a href="sobre_nosotros.html" class="activo">Sobre nosotros</a></li>
 </ul>
 </nav>
@@ -455,63 +365,218 @@ nav a{font-size:1.05rem;}
 <div class="hero-overlay"></div>
 <div class="hero-content" id="heroContent">
 <span class="eyebrow">Nuestra historia</span>
-<h1>Sobre Nosotros</h1>
+<h1>Sobre <span class="accent">Nosotros</span></h1>
 <p class="sub">Rutinas, disciplina y una comunidad que entrena con propósito.</p>
+<p class="desc">
+    Conoce mucho más de nuestro sitio y de todas las partes que ofrece: rutinas, productos y máquinas.
+</p>
+<div class="hero-actions">
+<a href="#que-es" class="btn">Explorar el sitio</a>
+<a href="#creador" class="btn-outline">Sobre el creador</a>
 </div>
-<div class="scroll-hint"><span></span>Scroll</div>
 </div>
-<!-- SOBRE -->
-<section>
+<div class="scroll-hint"><div class="rueda"></div></div>
+</div>
+<!-- QUE ES AG FIT GYM -->
+<section id="que-es">
 <div class="sobre-card reveal">
-<span class="eyebrow-block">Quiénes somos</span>
+<span class="eyebrow-block">Qué es Ag Fit Gym</span>
 <h2>Entrenamiento con dirección</h2>
 <p>
-Somos CRFit: un sitio de rutinas y ejercicios que además cuenta con una tienda de productos fit
-y una tienda de máquinas de ejercicio, todo pensado para acompañarte en cada etapa de tu progreso.
+    Ag Fit Gym es una plataforma de entrenamiento que reúne rutinas, productos y herramientas de inteligencia
+    artificial en un mismo lugar, pensada para acompañarte en cada etapa de tu progreso físico.
 </p>
 </div>
 <div class="info-grid">
 <div class="info-box reveal">
-<span class="num">01</span>
-<h3>Misión</h3>
-<p>Transformar vidas a través de nuestro conocimiento de rutinas y alimentación fit.</p>
+<span class="icono">🎯</span>
+<h3>Objetivo</h3>
+<p>Ofrecer un espacio completo donde entrenar, aprender y equiparte sea simple, confiable y sin costo.</p>
 </div>
 <div class="info-box reveal">
-<span class="num">02</span>
-<h3>Visión</h3>
-<p>Ser el sitio de referencia para quienes buscan rutinas confiables y productos de calidad.</p>
+<span class="icono">💡</span>
+<h3>Beneficios</h3>
+<p>Rutinas verificadas, acompañamiento con IA y una tienda pensada para cada nivel de entrenamiento.</p>
 </div>
 <div class="info-box reveal">
-<span class="num">03</span>
-<h3>Valores</h3>
-<p>Disciplina, constancia y mentalidad fuerte en cada entrenamiento.</p>
+<span class="icono">🔥</span>
+<h3>Por qué elegirnos</h3>
+<p>Un proyecto en constante evolución, hecho por y para quienes entrenan con disciplina real.</p>
 </div>
 </div>
 </section>
-<!-- NEGOCIO -->
+<!-- TODO LO QUE OFRECE EL SITIO -->
+<section class="section-alt">
+<div class="inner">
+<div class="section-head reveal">
+<span class="eyebrow-block">Explora Ag Fit</span>
+<h2>Todo lo que ofrece el sitio</h2>
+</div>
+<div class="servicios-grid">
+<div class="servicio-card reveal">
+<span class="tag">Rutinas</span>
+<span class="icono"><img src="v_sobreN.png" alt="Rutinas profesionales"></span>
+<h3>Rutinas profesionales</h3>
+<p>Programas de entrenamiento estructurados por objetivo, nivel y disponibilidad de tiempo.</p>
+</div>
+<div class="servicio-card reveal">
+<span class="tag">Tienda</span>
+<span class="icono"><img src="v_sobreN2.png" alt="Tienda Fitness"></span>
+<h3>Tienda Fitness</h3>
+<p>Accesorios y suplementos seleccionados para acompañar tu entrenamiento diario.</p>
+</div>
+<div class="servicio-card reveal">
+<span class="tag">Catálogo</span>
+<span class="icono"><img src="v_sobreN3.png" alt="Catálogo de máquinas"></span>
+<h3>Catálogo de máquinas</h3>
+<p>Explora equipos de ejercicio con especificaciones claras antes de invertir en tu gimnasio.</p>
+</div>
+<div class="servicio-card reveal">
+<span class="tag">IA</span>
+<span class="icono"><img src="v_sobreN4.png" alt="IA de entrenamiento"></span>
+<h3>IA de entrenamiento</h3>
+<p>Recomendaciones inteligentes que se ajustan a tu progreso y objetivos personales.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ESTADISTICAS -->
 <section>
-<div class="contenedor reveal">
-<div class="libro">
-<div class="libro-tilt" id="libroTilt">
-<img src="ss.libro.png" alt="CRFit Gym">
+<div class="stats-wrap reveal">
+<div class="stat"><div class="num"><span class="contador" data-target="100">0</span>+</div><div class="label">Rutinas</div></div>
+<div class="stat"><div class="num"><span class="contador" data-target="40">0</span>+</div><div class="label">Productos</div></div>
+<div class="stat"><div class="num"><span class="contador" data-target="100">0</span>%</div><div class="label">Gratuito</div></div>
+</div>
+</section>
+
+
+</section>
+<!-- SOBRE EL CREADOR -->
+<section id="creador">
+<div class="section-head reveal">
+<span class="eyebrow-block">Sobre el creador</span>
+<h2>La persona detrás de Ag Fit Gym</h2>
+</div>
+<div class="creador-hero reveal">
+<div class="creador-foto-principal" id="fotoCreadorTilt">
+<img src="v_sobreNS.png" alt="Sebastian Salazar - Fundador de Ag Fit Gym">
+</div>
+<div class="creador-texto">
+<h2>Sebastian Salazar</h2>
+<span class="rol">Fundador de Ag Fit Gym</span>
+<p>Sebastian Salazar Aguilera es un estudiante de desarrollo web interesado en el fitness.</p>
+<p>Una de las razones de la creación del sitio web fue que se necesitaba de rutinas, productos y máquinas con un mejor
+   servicio en internet, y este sitio se basa en eso, también con nuestra IA que puede generar rutinas.</p>
+<div class="creador-mini-fotos">
+<div><img src="v_sobreNS2.png" alt="Ag Fit Gym"></div>
+<div><img src="v_sobreNS3.png" alt="Ag Fit Gym"></div>
 </div>
 </div>
-<div class="texto">
-<span class="eyebrow-block">Nuestro negocio</span>
-<h2>CRFit Gym</h2>
-<p>
-CRFit es una página de gimnasio enfocada en tu comodidad: rutinas, productos y ejercicios en un
-solo lugar. Estamos desarrollando nuevos apartados y, con el tiempo, seguiremos mejorando para
-traer nuevos productos y una mejor IA de ejercicio.
-</p>
-<span class="firma">— Sebastian Salazar</span>
-<a href="rutinas.html" class="btn">Próximamente</a>
+</div>
+<div class="creador-info-card reveal">
+<div class="creador-info-grid">
+<div class="creador-info-box">
+<div class="creador-info-box">
+<span class="icono-mini">🎓</span>
+<div><span class="etiqueta">Estudios</span><div class="valor">Desarrollo web, informática</div></div>
+</div>
+<div class="creador-info-box">
+<span class="icono-mini">⭐</span>
+<div><span class="etiqueta">Especialidad</span><div class="valor">Desarrollo web VSC 2026</div></div>
+</div>
+<div class="creador-info-box">
+<span class="icono-mini">📈</span>
+<div><span class="etiqueta">Experiencia</span><div class="valor">Un año creando sitios web</div></div>
+</div>
+<div class="creador-info-box">
+<span class="icono-mini">🎯</span>
+<div><span class="etiqueta">Objetivos</span><div class="valor">Mejorar el sitio web Ag Fit</div></div>
+</div>
+<div class="creador-info-box">
+<span class="icono-mini">💻</span>
+<div><span class="etiqueta">Tecnologías</span><div class="valor">HTML, CSS, JavaScript</div></div>
+</div>
+</div>
+</div>
+<div class="creador-relato reveal">
+<div class="relato-box">
+<h3>Historia del sitio</h3>
+<p>El sitio web fue creado en marzo de 2026. Ese mes comenzó la versión beta y, varios meses después, se está
+   trabajando en la versión 2.0, tratando de mejorar cada parte del sitio con un estilo profesional y moderno.</p>
+</div>
+<div class="relato-box">
+<h3>Futuros proyectos</h3>
+<p>Para el futuro está pensado crear un sitio web sobre ropa, pero se va a seguir trabajando en mejorar la estructura de Ag Fit Gym
+   con el paso del tiempo.</p>
+</div>
+</div>
+</section>
+<!-- GALERIA -->
+<section class="section-alt">
+<div class="inner">
+<div class="section-head reveal">
+<span class="eyebrow-block">Ag Fit</span>
+<h2>Partes de nuestro sitio</h2>
+</div>
+<div class="galeria-grid">
+<a class="galeria-item reveal" href="rutinas.html">
+<img src="v_sobreN.png" alt="Rutinas Ag Fit Gym">
+<div class="overlay"><span>Ver rutinas</span><span class="flecha">→</span></div>
+</a>
+<a class="galeria-item reveal" href="productos.html">
+<img src="v_sobreN2.png" alt="Tienda Ag Fit Gym">
+<div class="overlay"><span>Ver tienda</span><span class="flecha">→</span></div>
+</a>
+<a class="galeria-item reveal" href="maquinas.html">
+<img src="v_sobreN3.png" alt="Máquinas Ag Fit Gym">
+<div class="overlay"><span>Ver máquinas</span><span class="flecha">→</span></div>
+</a>
+<a class="galeria-item reveal" href="mensajes.html">
+<img src="v_sobreN4.png"Mensajes Ag Fit Gym">
+<div class="overlay"><span>Ver Ag Fit IA</span><span class="flecha">→</span></div>
+</a>
+</div>
+</div>
+</section>
+<!-- Proposito -->
+<section class="Proposito">
+<div class="inner">
+<div class="section-head reveal">
+<span class="eyebrow-block">Filosofía</span>
+<h2>Lo que nos mueve</h2>
+</div>
+<div class="filosofia-grid reveal">
+<div class="filosofia-item">
+<span class="num">01</span>
+<h3>Disciplina</h3>
+<p>El hábito diario por encima de la motivación pasajera.</p>
+</div>
+<div class="filosofia-item">
+<span class="num">02</span>
+<h3>Constancia</h3>
+<p>Los resultados llegan con el tiempo, no con el esfuerzo de un solo día.</p>
+</div>
+<div class="filosofia-item">
+<span class="num">03</span>
+<h3>Mentalidad</h3>
+<p>Entrenar la cabeza tanto como el cuerpo.</p>
+</div>
+<div class="filosofia-item">
+<span class="num">04</span>
+<h3>Superación</h3>
+<p>Compararte solo con la versión de ti de ayer.</p>
+</div>
+<div class="filosofia-item">
+<span class="num">05</span>
+<h3>Comunidad</h3>
+<p>Crecer acompañado de personas con el mismo propósito.</p>
+</div>
 </div>
 </div>
 </section>
 <!-- FOOTER -->
 <footer>
-<p>© 2026 Aguilera Fit Gym — Sebastian Salazar</p>
+<p>© 2026 Ag Fit Gym — Sebastian Salazar</p>
 </footer>
 <script>
 // Menú móvil
@@ -523,84 +588,102 @@ const header = document.getElementById('siteHeader');
 window.addEventListener('scroll', () => {
 header.classList.toggle('scrolled', window.scrollY > 40);
 }, { passive:true });
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 // ===== Scroll-scrub del hero =====
 const heroMedia = document.getElementById('heroMedia');
 const heroContent = document.getElementById('heroContent');
 const heroEl = document.getElementById('hero');
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function updateHeroScrub(){
 if(reduceMotion) return;
 const heroHeight = heroEl.offsetHeight;
 const progress = Math.min(Math.max(window.scrollY / heroHeight, 0), 1);
-// La imagen se escala y se oscurece a medida que se hace scroll
 const scale = 1.05 + progress * 0.35;
 const translateY = progress * 60;
 const blur = progress * 4;
 const brightness = 1 - progress * 0.55;
 heroMedia.style.transform = `scale(${scale}) translateY(${translateY}px)`;
 heroMedia.style.filter = `brightness(${brightness}) blur(${blur}px)`;
-// El texto se desvanece y sube ligeramente
 heroContent.style.transform = `translateY(${progress * -80}px)`;
 heroContent.style.opacity = 1 - progress * 1.3;
 }
-window.addEventListener('scroll', () => {
-requestAnimationFrame(updateHeroScrub);
-}, { passive:true });
+window.addEventListener('scroll', () => { requestAnimationFrame(updateHeroScrub); }, { passive:true });
 updateHeroScrub();
-// ===== Tilt 3D + brillo al tocar/pasar el mouse sobre imágenes y tarjetas =====
+// ===== Tilt 3D + brillo al pasar el mouse =====
 function activarTilt(el, intensidad){
-if(reduceMotion) return;
+if(!el || reduceMotion) return;
 function mover(x, y){
-const rect = el.getBoundingClientRect();
-const px = (x - rect.left) / rect.width;   // 0 a 1
-const py = (y - rect.top) / rect.height;   // 0 a 1
-const rotY = (px - 0.5) * intensidad;
-const rotX = (0.5 - py) * intensidad;
-el.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02,1.02,1.02)`;
-el.style.setProperty('--gx', `${px * 100}%`);
-el.style.setProperty('--gy', `${py * 100}%`);
-el.classList.add('is-active');
+  const rect = el.getBoundingClientRect();
+  const px = (x - rect.left) / rect.width;
+  const py = (y - rect.top) / rect.height;
+  const rotY = (px - 0.5) * intensidad;
+  const rotX = (0.5 - py) * intensidad;
+  el.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02,1.02,1.02)`;
+  el.style.setProperty('--gx', `${px * 100}%`);
+  el.style.setProperty('--gy', `${py * 100}%`);
+  el.classList.add('is-active');
 }
 function resetear(){
-el.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
-el.classList.remove('is-active');
+  el.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+  el.classList.remove('is-active');
 }
 el.addEventListener('mousemove', (e) => mover(e.clientX, e.clientY));
 el.addEventListener('mouseleave', resetear);
-el.addEventListener('touchmove', (e) => {
-const t = e.touches[0];
-if(t) mover(t.clientX, t.clientY);
-}, { passive:true });
+el.addEventListener('touchmove', (e) => { const t = e.touches[0]; if(t) mover(t.clientX, t.clientY); }, { passive:true });
 el.addEventListener('touchend', resetear);
 el.addEventListener('touchcancel', resetear);
 }
-activarTilt(document.getElementById('libroTilt'), 14);
+activarTilt(document.getElementById('fotoCreadorTilt'), 8);
 document.querySelectorAll('.info-box').forEach(box => activarTilt(box, 6));
 // ===== Parallax del hero según el cursor (desktop) =====
 if(!reduceMotion && window.matchMedia('(hover:hover)').matches){
 heroEl.addEventListener('mousemove', (e) => {
-const rect = heroEl.getBoundingClientRect();
-const px = (e.clientX - rect.left) / rect.width - 0.5;
-const py = (e.clientY - rect.top) / rect.height - 0.5;
-heroMedia.style.marginLeft = `${px * -30}px`;
-heroMedia.style.marginTop = `${py * -20}px`;
+  const rect = heroEl.getBoundingClientRect();
+  const px = (e.clientX - rect.left) / rect.width - 0.5;
+  const py = (e.clientY - rect.top) / rect.height - 0.5;
+  heroMedia.style.marginLeft = `${px * -30}px`;
+  heroMedia.style.marginTop = `${py * -20}px`;
 });
 heroEl.addEventListener('mouseleave', () => {
-heroMedia.style.marginLeft = '0px';
-heroMedia.style.marginTop = '0px';
+  heroMedia.style.marginLeft = '0px';
+  heroMedia.style.marginTop = '0px';
 });
 }
 // ===== Reveal al hacer scroll =====
 const revealEls = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
 entries.forEach(entry => {
-if(entry.isIntersecting){
-entry.target.classList.add('visible');
-observer.unobserve(entry.target);
-}
+  if(entry.isIntersecting){
+    entry.target.classList.add('visible');
+    observer.unobserve(entry.target);
+  }
 });
 }, { threshold:0.15 });
 revealEls.forEach(el => observer.observe(el));
+// ===== Contadores animados =====
+const contadores = document.querySelectorAll('.contador');
+function animarContador(el){
+const target = parseInt(el.dataset.target, 10);
+if(reduceMotion){ el.textContent = target; return; }
+const duracion = 1600;
+const inicio = performance.now();
+function paso(ahora){
+  const progreso = Math.min((ahora - inicio) / duracion, 1);
+  const facilitado = 1 - Math.pow(1 - progreso, 3);
+  el.textContent = Math.floor(facilitado * target);
+  if(progreso < 1) requestAnimationFrame(paso);
+  else el.textContent = target;
+}
+requestAnimationFrame(paso);
+}
+const contadorObserver = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+  if(entry.isIntersecting){
+    animarContador(entry.target);
+    contadorObserver.unobserve(entry.target);
+  }
+});
+}, { threshold:0.5 });
+contadores.forEach(c => contadorObserver.observe(c));
 </script>
 </body>
 </html>
