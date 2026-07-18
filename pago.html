@@ -3,345 +3,1065 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Pago | CRFit Gym</title>
+<title>Pago | Ag Fit Gym</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
-       * {
-           box-sizing: border-box;
-           margin: 0;
-           padding: 0;
-           font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
-       }
-       /* 🔥 FIX GLOBAL MOBILE */
-       html, body {
-           height: 100%;
-       }
-       body {
-           background: #0b0b0b;
-           color: white;
-           display: flex;
-           flex-direction: column;
-           overflow: hidden; /* 🔥 evita que todo se mueva */
-       }
-       /* HEADER */
-       header {
-           flex-shrink: 0;
-           background: #000;
-           padding: 15px 20px;
-           display: flex;
-           align-items: center;
-           justify-content: space-between;
-           box-shadow: 0 10px 30px rgba(0, 0, 0, .6);
-       }
-       .logo {
-           display: flex;
-           align-items: center;
-           gap: 10px;
-       }
-       .logo img {
-           height: 55px;
-       }
-       .logo span {
-           font-size: 1.2rem;
-           font-weight: bold;
-       }
-       /* 🔥 CONTENEDOR PRINCIPAL (SCROLL INTERNO) */
-       .checkout {
-           flex: 1;
-           overflow-y: auto; /* 🔥 solo aquí hay scroll */
-           padding: 20px;
-           display: grid;
-           grid-template-columns: 1fr 1fr;
-           gap: 25px;
-       }
-       /* BOXES */
-       .summary,
-       .payment {
-           background: #141414;
-           padding: 20px;
-           border-radius: 18px;
-           box-shadow: 0 15px 40px rgba(0, 0, 0, .7);
-       }
-       /* RESUMEN */
-       .item {
-           display: flex;
-           justify-content: space-between;
-           margin-bottom: 10px;
-           font-size: 14px;
-       }
-       .total {
-           margin-top: 15px;
-           font-size: 18px;
-           font-weight: bold;
-           display: flex;
-           justify-content: space-between;
-           color: #1db954;
-       }
-       /* FORM */
-       .input {
-           margin-bottom: 12px;
-       }
-       .input label {
-           font-size: 13px;
-           display: block;
-           margin-bottom: 4px;
-           color: #aaa;
-       }
-       .input input {
-           width: 100%;
-           padding: 14px;
-           border: none;
-           border-radius: 10px;
-           background: #1f1f1f;
-           color: white;
-           font-size: 16px; /* 🔥 evita zoom iPhone */
-       }
-       .row {
-           display: flex;
-           gap: 10px;
-       }
-       /* BOTÓN */
-       .pay-btn {
-           margin-top: 15px;
-           width: 100%;
-           padding: 16px;
-           border: none;
-           border-radius: 30px;
-           background: linear-gradient(135deg, #1db954, #1ed760);
-           font-size: 16px;
-           font-weight: bold;
-           cursor: pointer;
-           transition: .2s;
-       }
-       .pay-btn:active {
-           transform: scale(.96);
-       }
-       /* PROCESANDO */
-       .processing {
-           display: none;
-           flex: 1;
-           justify-content: center;
-           align-items: center;
-           flex-direction: column;
-       }
-       .spinner {
-           width: 60px;
-           height: 60px;
-           border: 5px solid #222;
-           border-top: 5px solid #1db954;
-           border-radius: 50%;
-           animation: spin 1s linear infinite;
-           margin: 20px auto;
-       }
-       @keyframes spin {
-           to {
-               transform: rotate(360deg)
-           }
-       }
-       /* RESULTADO */
-       .result {
-           display: none;
-           flex: 1;
-           overflow-y: auto;
-           padding: 20px;
-           text-align: center;
-       }
-       .result h2 {
-           color: #1db954;
-           font-size: 24px;
-           margin-bottom: 10px;
-       }
-       /* FACTURA */
-       .invoice {
-           margin-top: 20px;
-           max-width: 600px;
-           margin-left: auto;
-           margin-right: auto;
-           background: #141414;
-           padding: 20px;
-           border-radius: 18px;
-           text-align: left;
-       }
-       .invoice-item {
-           display: flex;
-           justify-content: space-between;
-           margin-bottom: 8px;
-           font-size: 14px;
-       }
-       .invoice-total {
-           margin-top: 10px;
-           font-size: 16px;
-           font-weight: bold;
-           color: #1db954;
-           display: flex;
-           justify-content: space-between;
-       }
-       /* LOGOS DE TARJETAS */
-       .card-logos {
-           display: flex;
-           justify-content: space-around;
-           margin-bottom: 20px;
-       }
-       .card-logos img {
-           height: 40px; /* Ajusta el tamaño según sea necesario */
-       }
-       /* 📱 MOBILE PERFECTO */
-       @media(max-width: 900px) {
-           .checkout {
-               grid-template-columns: 1fr;
-               padding: 15px;
-               gap: 15px;
-           }
-           header {
-               padding: 12px 15px;
-           }
-           .logo img {
-               height: 45px;
-           }
-           .summary,
-           .payment {
-               padding: 15px;
-           }
-           .row {
-               flex-direction: column;
-           }
-       }
+ :root{
+   --bg: #08090a;
+   --bg-elevated: #0f1112;
+   --panel: rgba(22,24,25,0.72);
+   --panel-solid: #141617;
+   --border: rgba(255,255,255,0.08);
+   --border-strong: rgba(255,255,255,0.14);
+   --text: #f4f5f6;
+   --text-dim: #9a9fa3;
+   --text-faint: #6b7074;
+   --green: #17c964;
+   --green-bright: #2eea7d;
+   --green-deep: #0e9a4b;
+   --red: #ff5c5c;
+   --radius-lg: 22px;
+   --radius-md: 14px;
+   --radius-sm: 9px;
+   --shadow-soft: 0 20px 50px rgba(0,0,0,.45);
+   --shadow-deep: 0 30px 80px rgba(0,0,0,.6);
+   --ease: cubic-bezier(.22,1,.36,1);
+ }
+ *{ box-sizing:border-box; margin:0; padding:0; }
+ html,body{ height:100%; }
+ body{
+   font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+   background:
+     radial-gradient(1100px 600px at 15% -10%, rgba(23,201,100,.10), transparent 60%),
+     radial-gradient(900px 500px at 100% 0%, rgba(23,201,100,.06), transparent 55%),
+     var(--bg);
+   color:var(--text);
+   display:flex;
+   flex-direction:column;
+   overflow:hidden;
+   -webkit-font-smoothing:antialiased;
+ }
+ h1,h2,h3,.brand,.mono{ font-family:'Manrope',sans-serif; }
+ .mono-num{ font-family:'JetBrains Mono',monospace; letter-spacing:.02em; }
+ ::selection{ background:rgba(23,201,100,.35); }
+ input:focus-visible, button:focus-visible, .method-card:focus-visible{
+   outline:2px solid var(--green-bright); outline-offset:2px;
+ }
+ /* ===== HEADER ===== */
+ header{
+   flex-shrink:0;
+   background:rgba(10,11,12,.85);
+   backdrop-filter:blur(20px) saturate(140%);
+   -webkit-backdrop-filter:blur(20px) saturate(140%);
+   border-bottom:1px solid var(--border);
+   padding:14px 26px;
+   display:flex;
+   align-items:center;
+   justify-content:space-between;
+   position:relative;
+   z-index:20;
+ }
+ .logo{ display:flex; align-items:center; gap:12px; }
+ .logo img{ height:42px; border-radius:8px; }
+ .logo span{ font-size:1.05rem; font-weight:800; letter-spacing:-.01em; }
+ .header-secure{
+   display:flex; align-items:center; gap:7px;
+   font-size:12.5px; color:var(--text-dim); font-weight:500;
+   background:rgba(23,201,100,.08);
+   border:1px solid rgba(23,201,100,.18);
+   padding:7px 13px; border-radius:100px;
+ }
+ .header-secure svg{ width:14px; height:14px; flex-shrink:0; }
+ .header-secure b{ color:var(--green-bright); font-weight:700; }
+ /* ===== SECURITY STRIP ===== */
+ .security-strip{
+   flex-shrink:0;
+   display:flex;
+   gap:22px;
+   justify-content:center;
+   flex-wrap:wrap;
+   padding:11px 20px;
+   background:linear-gradient(180deg, rgba(23,201,100,.05), transparent);
+   border-bottom:1px solid var(--border);
+   font-size:12px;
+   color:var(--text-faint);
+ }
+ .security-strip .s-item{ display:flex; align-items:center; gap:6px; }
+ .security-strip svg{ width:13px; height:13px; color:var(--green-bright); flex-shrink:0; }
+ /* ===== MAIN LAYOUT ===== */
+ .checkout{
+   flex:1;
+   overflow-y:auto;
+   -webkit-overflow-scrolling:touch;
+   padding:28px 26px 60px;
+   display:grid;
+   grid-template-columns:1fr 1.05fr;
+   align-items:start;
+   gap:26px;
+   max-width:1180px;
+   margin:0 auto;
+   width:100%;
+ }
+ .checkout::-webkit-scrollbar{ width:9px; }
+ .checkout::-webkit-scrollbar-thumb{ background:#232527; border-radius:10px; }
+ .checkout-col{ display:flex; flex-direction:column; min-width:0; }
+ section.panel{
+   background:var(--panel);
+   backdrop-filter:blur(18px);
+   -webkit-backdrop-filter:blur(18px);
+   border:1px solid var(--border);
+   border-radius:var(--radius-lg);
+   padding:24px;
+   box-shadow:var(--shadow-soft);
+   animation:rise .55s var(--ease) both;
+ }
+ @keyframes rise{ from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:translateY(0);} }
+ .panel + .panel{ margin-top:20px; }
+ .panel h2{
+   font-size:16.5px; font-weight:800; letter-spacing:-.01em;
+   display:flex; align-items:center; gap:9px;
+   margin-bottom:18px;
+ }
+ .panel h2 svg{ width:18px; height:18px; color:var(--green-bright); }
+ /* ===== PRODUCT CARD (sin imagen) ===== */
+ .product-card{
+   display:flex; flex-direction:column;
+ }
+ .product-meta{ flex:1; min-width:0; }
+ .product-badges{ display:flex; gap:6px; margin-bottom:10px; flex-wrap:wrap; }
+ .badge{
+   font-size:10.5px; font-weight:700; letter-spacing:.03em; text-transform:uppercase;
+   padding:4px 9px; border-radius:100px;
+ }
+ .badge.stock{ background:rgba(23,201,100,.14); color:var(--green-bright); border:1px solid rgba(23,201,100,.25); }
+ .badge.cat{ background:rgba(255,255,255,.06); color:var(--text-dim); border:1px solid var(--border); }
+ .product-name{ font-size:18px; font-weight:700; margin-bottom:6px; line-height:1.3; }
+ .product-desc{ font-size:12.5px; color:var(--text-faint); line-height:1.5; margin-bottom:12px; }
+ .product-price-row{ display:flex; align-items:baseline; gap:8px; }
+ .product-price{ font-size:22px; font-weight:800; color:var(--green-bright); }
+ /* ===== SUMMARY LINES ===== */
+ .sum-line{
+   display:flex; justify-content:space-between; align-items:center;
+   font-size:13.5px; color:var(--text-dim);
+   padding:10px 0;
+   border-bottom:1px solid var(--border);
+ }
+ .sum-line svg{ width:14px; height:14px; margin-right:7px; color:var(--text-faint); vertical-align:-2px; }
+ .sum-line .label{ display:flex; align-items:center; }
+ .sum-line .val{ color:var(--text); font-weight:600; }
+ .sum-line.free .val{ color:var(--green-bright); font-weight:700; }
+ .sum-total{
+   display:flex; justify-content:space-between; align-items:center;
+   margin-top:14px; padding-top:14px;
+   font-size:20px; font-weight:800;
+ }
+ .sum-total .val{ color:var(--green-bright); }
+ .sum-sub{ font-size:11.5px; color:var(--text-faint); margin-top:4px; text-align:right; }
+ .delivery-box{
+   margin-top:16px; padding:13px 14px;
+   background:rgba(23,201,100,.06);
+   border:1px solid rgba(23,201,100,.16);
+   border-radius:var(--radius-sm);
+   display:flex; gap:10px; align-items:flex-start;
+   font-size:12.5px; color:var(--text-dim);
+ }
+ .delivery-box svg{ width:16px; height:16px; color:var(--green-bright); flex-shrink:0; margin-top:1px; }
+ .delivery-box b{ color:var(--text); }
+ /* ===== TRUST GRID ===== */
+ .trust-grid{
+   display:grid; grid-template-columns:1fr 1fr; gap:10px;
+   margin-top:6px;
+ }
+ .trust-item{
+   display:flex; align-items:center; gap:8px;
+   font-size:12px; color:var(--text-dim);
+   background:rgba(255,255,255,.03);
+   border:1px solid var(--border);
+   padding:10px 11px; border-radius:var(--radius-sm);
+ }
+ .trust-item svg{ width:15px; height:15px; color:var(--green-bright); flex-shrink:0; }
+ /* ===== PAYMENT METHODS ===== */
+ .methods{
+   display:grid; grid-template-columns:repeat(3,1fr); gap:10px;
+   margin-bottom:20px;
+ }
+ .method-card{
+   background:rgba(255,255,255,.03);
+   border:1.5px solid var(--border);
+   border-radius:var(--radius-sm);
+   padding:12px 8px;
+   display:flex; flex-direction:column; align-items:center; gap:7px;
+   cursor:pointer;
+   transition:border-color .2s var(--ease), background .2s var(--ease), transform .15s var(--ease);
+   position:relative;
+ }
+ .method-card:hover{ border-color:var(--border-strong); transform:translateY(-2px); }
+ .method-card.active{
+   border-color:var(--green);
+   background:rgba(23,201,100,.08);
+   box-shadow:0 0 0 3px rgba(23,201,100,.12), 0 8px 20px rgba(23,201,100,.15);
+   animation:pulseSel .4s var(--ease);
+ }
+ @keyframes pulseSel{ 0%{ transform:scale(.94);} 60%{ transform:scale(1.02);} 100%{ transform:scale(1);} }
+ .method-card svg, .method-card .mlogo{ height:20px; }
+ .method-card span{ font-size:10.5px; font-weight:600; color:var(--text-dim); }
+ .method-card.active span{ color:var(--text); }
+ .method-check{
+   position:absolute; top:6px; right:6px; width:15px; height:15px;
+   background:var(--green); border-radius:50%;
+   display:none; align-items:center; justify-content:center;
+ }
+ .method-card.active .method-check{ display:flex; }
+ .method-check svg{ width:9px; height:9px; color:#04140a; }
+ .redirect-note{
+   display:none; margin:-6px 0 20px; padding:12px 14px;
+   background:rgba(255,255,255,.03); border:1px solid var(--border);
+   border-radius:var(--radius-sm); font-size:12.5px; color:var(--text-dim);
+   align-items:center; gap:9px;
+ }
+ .redirect-note.show{ display:flex; animation:fadeSlide .3s var(--ease); }
+ .redirect-note svg{ width:16px; height:16px; color:var(--green-bright); flex-shrink:0; }
+ /* ===== FORM ===== */
+ #cardFields{ transition:opacity .25s var(--ease), max-height .3s var(--ease); overflow:hidden; }
+ #cardFields.hidden{ opacity:0; max-height:0; pointer-events:none; }
+ .form-section-label{
+   font-size:11px; text-transform:uppercase; letter-spacing:.06em;
+   color:var(--text-faint); font-weight:700; margin:18px 0 10px;
+ }
+ .form-section-label:first-child{ margin-top:0; }
+ .field{ margin-bottom:14px; position:relative; }
+ .field label{
+   font-size:12.5px; color:var(--text-dim); font-weight:600;
+   display:block; margin-bottom:6px;
+ }
+ .field-input{
+   position:relative;
+   display:flex; align-items:center;
+ }
+ .field-input svg{
+   position:absolute; left:14px; width:16px; height:16px; color:var(--text-faint);
+   pointer-events:none; transition:color .2s;
+   z-index:1;
+ }
+ .field-input input{
+   width:100%;
+   padding:13px 14px 13px 40px;
+   border:1.5px solid var(--border);
+   border-radius:var(--radius-sm);
+   background:rgba(255,255,255,.03);
+   color:var(--text);
+   font-size:16px;
+   font-family:inherit;
+   transition:border-color .2s var(--ease), background .2s var(--ease), box-shadow .2s var(--ease);
+ }
+ .field-input input::placeholder{ color:var(--text-faint); }
+ .field-input input:focus{
+   outline:none;
+   border-color:var(--green);
+   background:rgba(23,201,100,.05);
+   box-shadow:0 0 0 4px rgba(23,201,100,.12);
+ }
+ .field-input input:focus ~ svg{ color:var(--green-bright); }
+ .field-input input.valid{ border-color:rgba(23,201,100,.5); }
+ .field-input input.invalid{ border-color:var(--red); }
+ .field-input input.invalid ~ svg{ color:var(--red); }
+ .card-brand-icon{
+   position:absolute; right:12px; font-size:11px; font-weight:800;
+   padding:3px 8px; border-radius:5px; letter-spacing:.02em;
+   opacity:0; transform:scale(.8); transition:all .25s var(--ease);
+ }
+ .card-brand-icon.show{ opacity:1; transform:scale(1); }
+ .card-brand-icon.visa{ background:#1a1f71; color:#fff; }
+ .card-brand-icon.mastercard{ background:#000; color:#fff; box-shadow:inset 0 0 0 1px #333; }
+ .card-brand-icon.amex{ background:#2e77bc; color:#fff; }
+ .error-msg{
+   font-size:11.5px; color:var(--red);
+   margin-top:5px; display:none; align-items:center; gap:5px;
+   animation:fadeSlide .2s var(--ease);
+ }
+ .error-msg.show{ display:flex; }
+ .error-msg svg{ width:12px; height:12px; flex-shrink:0; }
+ @keyframes fadeSlide{ from{ opacity:0; transform:translateY(-3px);} to{ opacity:1; transform:translateY(0);} }
+ .row2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+ .row3{ display:grid; grid-template-columns:1.4fr .8fr .8fr; gap:12px; }
+ .pay-btn{
+   margin-top:8px;
+   width:100%;
+   padding:17px;
+   border:none;
+   border-radius:100px;
+   background:linear-gradient(135deg, var(--green-deep), var(--green-bright));
+   color:#03170c;
+   font-size:15.5px;
+   font-weight:800;
+   letter-spacing:.01em;
+   cursor:pointer;
+   display:flex; align-items:center; justify-content:center; gap:9px;
+   box-shadow:0 14px 34px rgba(23,201,100,.28);
+   transition:transform .15s var(--ease), box-shadow .2s var(--ease), filter .2s;
+ }
+ .pay-btn svg{ width:17px; height:17px; }
+ .pay-btn:hover{ filter:brightness(1.06); box-shadow:0 16px 40px rgba(23,201,100,.4); }
+ .pay-btn:active{ transform:scale(.97); }
+ .pay-lock-note{
+   text-align:center; font-size:11.5px; color:var(--text-faint);
+   margin-top:12px; display:flex; align-items:center; justify-content:center; gap:6px;
+ }
+ .pay-lock-note svg{ width:12px; height:12px; }
+ /* ===== PROCESSING SCREEN ===== */
+ .processing{
+   display:none;
+   flex:1; overflow-y:auto;
+   align-items:center; justify-content:center;
+   flex-direction:column;
+   padding:30px;
+   text-align:center;
+ }
+ .processing.active{ display:flex; }
+ .proc-ring{
+   width:104px; height:104px; position:relative; margin-bottom:34px;
+ }
+ .proc-ring svg{ width:100%; height:100%; transform:rotate(-90deg); }
+ .proc-ring circle{
+   fill:none; stroke-width:5;
+ }
+ .proc-ring .track{ stroke:rgba(255,255,255,.08); }
+ .proc-ring .bar{
+   stroke:url(#procGrad);
+   stroke-linecap:round;
+   stroke-dasharray:301;
+   stroke-dashoffset:301;
+   transition:stroke-dashoffset .5s var(--ease);
+ }
+ .proc-ring .icon{
+   position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+ }
+ .proc-ring .icon svg.lock{ width:34px; height:34px; color:var(--green-bright); transform:none; animation:softPulse 1.6s ease-in-out infinite; }
+ @keyframes softPulse{ 0%,100%{ opacity:.75; transform:scale(1);} 50%{ opacity:1; transform:scale(1.08);} }
+ .proc-title{ font-size:19px; font-weight:800; margin-bottom:8px; min-height:26px; }
+ .proc-sub{ font-size:13px; color:var(--text-faint); margin-bottom:26px; }
+ .proc-steps{ display:flex; flex-direction:column; gap:11px; width:280px; text-align:left; }
+ .proc-step{
+   display:flex; align-items:center; gap:10px; font-size:12.5px; color:var(--text-faint);
+   transition:color .3s;
+ }
+ .proc-step .dot{
+   width:18px; height:18px; border-radius:50%; border:1.5px solid var(--border-strong);
+   display:flex; align-items:center; justify-content:center; flex-shrink:0;
+   transition:all .3s var(--ease);
+ }
+ .proc-step.done .dot{ background:var(--green); border-color:var(--green); }
+ .proc-step.done .dot svg{ width:9px; height:9px; color:#04140a; }
+ .proc-step.active{ color:var(--text); }
+ .proc-step.active .dot{ border-color:var(--green-bright); box-shadow:0 0 0 4px rgba(23,201,100,.15); }
+ .proc-step.done{ color:var(--text-dim); }
+ /* ===== RESULT SCREEN ===== */
+ .result{
+   display:none;
+   flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch;
+   padding:40px 20px 60px;
+ }
+ .result.active{ display:block; }
+ .result-inner{ max-width:560px; margin:0 auto; text-align:center; position:relative; }
+ .success-check{
+   width:88px; height:88px; margin:0 auto 22px;
+   border-radius:50%;
+   background:radial-gradient(circle at 30% 25%, var(--green-bright), var(--green-deep));
+   display:flex; align-items:center; justify-content:center;
+   box-shadow:0 0 0 10px rgba(23,201,100,.08), 0 20px 50px rgba(23,201,100,.35);
+   animation:popIn .55s var(--ease) both;
+ }
+ @keyframes popIn{ 0%{ transform:scale(0); opacity:0;} 70%{ transform:scale(1.12);} 100%{ transform:scale(1); opacity:1;} }
+ .success-check svg{ width:42px; height:42px; color:#03170c; stroke-dasharray:48; stroke-dashoffset:48; animation:drawCheck .5s .35s var(--ease) forwards; }
+ @keyframes drawCheck{ to{ stroke-dashoffset:0; } }
+ .result h2{ font-size:25px; font-weight:800; margin-bottom:8px; letter-spacing:-.01em; }
+ .result p.lead{ color:var(--text-dim); font-size:14px; margin-bottom:6px; }
+ .order-code{
+   display:inline-block; margin-top:10px; padding:7px 16px;
+   background:rgba(23,201,100,.08); border:1px solid rgba(23,201,100,.2);
+   border-radius:100px; font-size:13px; color:var(--green-bright); font-weight:700;
+ }
+ .invoice{
+   margin-top:30px;
+   background:var(--panel-solid);
+   border:1px solid var(--border);
+   border-radius:var(--radius-lg);
+   padding:26px;
+   text-align:left;
+   box-shadow:var(--shadow-deep);
+ }
+ .invoice-head{
+   display:flex; justify-content:space-between; align-items:flex-start;
+   padding-bottom:18px; margin-bottom:18px; border-bottom:1px dashed var(--border-strong);
+ }
+ .invoice-brand{ display:flex; align-items:center; gap:10px; }
+ .invoice-brand img{ height:34px; border-radius:7px; }
+ .invoice-brand b{ font-size:14.5px; font-weight:800; }
+ .invoice-status{
+   font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase;
+   background:rgba(23,201,100,.14); color:var(--green-bright);
+   border:1px solid rgba(23,201,100,.25);
+   padding:5px 11px; border-radius:100px;
+ }
+ .invoice-meta{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px; }
+ .invoice-meta div{ font-size:11.5px; color:var(--text-faint); }
+ .invoice-meta div b{ display:block; color:var(--text); font-size:13px; font-weight:600; margin-top:2px; }
+ .invoice-item{
+   display:flex; justify-content:space-between; align-items:center;
+   padding:10px 0; font-size:13px; color:var(--text-dim);
+   border-bottom:1px solid var(--border);
+ }
+ .invoice-item .val{ color:var(--text); font-weight:600; }
+ .invoice-total{
+   margin-top:12px; padding-top:14px; border-top:1px solid var(--border-strong);
+   font-size:17px; font-weight:800;
+   display:flex; justify-content:space-between; color:var(--green-bright);
+ }
+ .invoice-foot{
+   margin-top:22px; padding-top:18px; border-top:1px dashed var(--border-strong);
+   display:flex; justify-content:space-between; align-items:center; gap:16px;
+ }
+ .qr-deco{
+   width:64px; height:64px; border-radius:8px; flex-shrink:0;
+   background:#fff; padding:5px;
+   display:grid; grid-template-columns:repeat(6,1fr); grid-template-rows:repeat(6,1fr); gap:2px;
+ }
+ .qr-deco i{ background:#08090a; border-radius:1px; }
+ .invoice-foot-note{ font-size:10.5px; color:var(--text-faint); line-height:1.5; }
+ .result-actions{ display:flex; flex-direction:column; gap:10px; margin-top:26px; }
+ .btn{
+   padding:15px; border-radius:100px; border:none; font-size:14.5px; font-weight:700;
+   cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;
+   transition:transform .15s var(--ease), filter .2s;
+ }
+ .btn svg{ width:16px; height:16px; }
+ .btn:active{ transform:scale(.97); }
+ .btn-primary{ background:linear-gradient(135deg, var(--green-deep), var(--green-bright)); color:#03170c; }
+ .btn-primary:hover{ filter:brightness(1.06); }
+ .btn-ghost{ background:rgba(255,255,255,.05); color:var(--text); border:1px solid var(--border-strong); }
+ .btn-ghost:hover{ background:rgba(255,255,255,.08); }
+ /* confetti */
+ .confetti-piece{
+   position:fixed; top:-10px; width:8px; height:14px; z-index:999; pointer-events:none;
+   animation:confettiFall linear forwards;
+ }
+ @keyframes confettiFall{
+   to{ transform:translateY(110vh) rotate(540deg); opacity:.2; }
+ }
+ /* ===== RESPONSIVE ===== */
+ @media(max-width:980px){
+   .checkout{ grid-template-columns:1fr; padding:18px 16px 50px; gap:16px; }
+   section.panel{ padding:19px; }
+   .row3{ grid-template-columns:1fr 1fr; }
+   .row3 .field:first-child{ grid-column:1 / -1; }
+   .security-strip{ gap:14px; padding:9px 14px; }
+   .trust-grid{ grid-template-columns:1fr; }
+   .invoice-meta{ grid-template-columns:1fr 1fr; }
+ }
+ @media(max-width:480px){
+   .logo span{ display:none; }
+   .header-secure span{ display:none; }
+   .header-secure{ padding:8px; }
+   .methods{ grid-template-columns:repeat(3,1fr); }
+   .row2{ grid-template-columns:1fr; }
+   .proc-steps{ width:100%; }
+   .invoice{ padding:18px; }
+   .invoice-foot{ flex-direction:column; align-items:flex-start; }
+ }
 </style>
 </head>
 <body>
+<!-- SVG defs (icons reused + gradient) -->
+<svg width="0" height="0" style="position:absolute">
+<defs>
+<linearGradient id="procGrad" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#17c964"/>
+<stop offset="100%" stop-color="#2eea7d"/>
+</linearGradient>
+</defs>
+</svg>
 <header>
 <div class="logo">
-<img src="logoCRfit.png">
-<span>CRFit Gym</span>
+<img src="logoCRfit.png" alt="Ag Fit Gym" onerror="this.style.display='none'">
+<span>Ag Fit Gym</span>
+</div>
+<div class="header-secure">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+<span>Pago <b>100% seguro</b></span>
 </div>
 </header>
-<!-- CHECKOUT -->
+<div class="security-strip">
+<div class="s-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>SSL de 256 bits</div>
+<div class="s-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5l-8-3Z"/></svg>Compra 100% segura</div>
+<div class="s-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 12.5 11 14l4-4"/></svg>Protección antifraude</div>
+<div class="s-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1.5"/></svg>Cifrado bancario</div>
+</div>
+<!-- ===== CHECKOUT ===== -->
 <div class="checkout" id="checkout">
-<div class="summary">
-<h2>Resumen del pedido</h2>
-<div class="item">
-<span id="productName"></span>
-<span id="productPrice"></span>
+<!-- LEFT: SUMMARY -->
+<div class="checkout-col">
+<section class="panel">
+<h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg>Tu producto</h2>
+<div class="product-card">
+<div class="product-meta">
+<div class="product-badges">
+<span class="badge cat" id="productCat">Equipo de gimnasio</span>
+<span class="badge stock" id="productStock">● En stock</span>
 </div>
-<div class="item">
-<span>Impuesto (13%)</span>
-<span id="tax"></span>
+<div class="product-name" id="productName">—</div>
+<div class="product-desc">Producto original Ag Fit Gym, listo para entrega o retiro en tienda. Incluye garantía oficial del fabricante.</div>
+<div class="product-price-row">
+<span class="product-price" id="productPriceBig">—</span>
 </div>
-<div class="total">
+</div>
+</div>
+</section>
+<section class="panel">
+<h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 14h6M9 18h4M4 4h16v16H4z"/></svg>Resumen del pedido</h2>
+<div class="sum-line">
+<span class="label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/></svg>SKU</span>
+<span class="val mono-num" id="sku">—</span>
+</div>
+<div class="sum-line">
+<span class="label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Cantidad</span>
+<span class="val">1 unidad</span>
+</div>
+<div class="sum-line">
+<span class="label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Subtotal</span>
+<span class="val" id="subtotal">—</span>
+</div>
+<div class="sum-line">
+<span class="label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18M3 9h18M3 15h12M3 21h6"/></svg>Impuesto (13%)</span>
+<span class="val" id="tax">—</span>
+</div>
+<div class="sum-line free">
+<span class="label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="7" width="15" height="13" rx="2"/><path d="M16 11h3l3 3v6h-6"/><circle cx="6" cy="20" r="1.6"/><circle cx="17.5" cy="20" r="1.6"/></svg>Envío</span>
+<span class="val">Gratis</span>
+</div>
+<div class="sum-total">
 <span>Total</span>
-<span id="total"></span>
+<span class="val" id="total">—</span>
+</div>
+<div class="sum-sub">Impuestos incluidos · Pedido <span id="orderPreview" class="mono-num">—</span></div>
+<div class="delivery-box">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+<div><b>Entrega digital inmediata.</b> Recibirás tu comprobante y confirmación por correo en los próximos minutos. Garantía oficial de 12 meses incluida.</div>
+</div>
+</section>
+</div>
+<!-- RIGHT: PAYMENT -->
+<div class="checkout-col">
+<section class="panel">
+<h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="15" rx="2.5"/><path d="M2 10h20"/></svg>Método de pago</h2>
+<div class="methods" id="methods">
+<div class="method-card active" data-method="card" tabindex="0">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="15" rx="2.5"/><path d="M2 10h20"/></svg>
+<span>Tarjeta</span>
+<div class="method-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-9"/></svg></div>
+</div>
+<div class="method-card" data-method="paypal" tabindex="0">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 19 9 5h5c2.5 0 4 1.4 4 3.4 0 3-2.2 4.9-5.5 4.9H10L9 19H7Z"/></svg>
+<span>PayPal</span>
+<div class="method-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-9"/></svg></div>
+</div>
+<div class="method-card" data-method="applepay" tabindex="0">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20a7 7 0 0 0 7-7V9a3 3 0 0 0-3-3h-1V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2H9a3 3 0 0 0-3 3v4a7 7 0 0 0 7 7Z"/></svg>
+<span>Apple Pay</span>
+<div class="method-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-9"/></svg></div>
+</div>
+<div class="method-card" data-method="googlepay" tabindex="0">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+<span>Google Pay</span>
+<div class="method-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-9"/></svg></div>
+</div>
+<div class="method-card" data-method="mastercard-quick" tabindex="0">
+<svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="12" r="6" fill="#eb001b"/><circle cx="15" cy="12" r="6" fill="#f79e1b" fill-opacity=".85"/></svg>
+<span>Mastercard</span>
+<div class="method-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-9"/></svg></div>
+</div>
+<div class="method-card" data-method="visa-quick" tabindex="0">
+<svg viewBox="0 0 24 24" fill="none" stroke="#1a1f71" stroke-width="2.4"><path d="M4 12h16M4 12c0-2 3-2 3-4M20 12c0 2-3 2-3 4"/></svg>
+<span>Visa</span>
+<div class="method-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-9"/></svg></div>
 </div>
 </div>
-<div class="payment">
-<h2>Información de pago</h2>
-<div class="card-logos">
-<img src="visa.png" alt="Visa">
-<img src="mastercard.png" alt="Mastercard">
-<img src="paypal.png" alt="PayPal">
+<div class="redirect-note" id="redirectNote">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+<span id="redirectText">Serás redirigido para completar el pago de forma segura.</span>
 </div>
-<div class="input">
-<label>Nombre en la tarjeta</label>
-<input type="text" required>
+<div id="cardFields">
+<div class="form-section-label">Datos personales</div>
+<div class="row2">
+<div class="field">
+<label>Nombre</label>
+<div class="field-input">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>
+<input type="text" id="firstName" placeholder="Ana" autocomplete="given-name">
 </div>
-<div class="input">
-<label>Número de tarjeta</label>
-<input type="text" required>
+<div class="error-msg" id="err-firstName"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Ingresa tu nombre</div>
 </div>
-<div class="row">
-<div class="input">
-<label>Expiración</label>
-<input type="text" placeholder="MM/AA" required>
+<div class="field">
+<label>Apellido</label>
+<div class="field-input">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>
+<input type="text" id="lastName" placeholder="Rodríguez" autocomplete="family-name">
 </div>
-<div class="input">
-<label>CVV</label>
-<input type="text" required>
+<div class="error-msg" id="err-lastName"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Ingresa tu apellido</div>
 </div>
 </div>
-<div class="input">
+<div class="row2">
+<div class="field">
 <label>Correo electrónico</label>
-<input type="email" required>
+<div class="field-input">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 6 8 7 8-7"/></svg>
+<input type="email" id="email" placeholder="ana@correo.com" autocomplete="email">
 </div>
-<button class="pay-btn" onclick="pagar()">
-           Pagar ahora
+<div class="error-msg" id="err-email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Correo inválido</div>
+</div>
+<div class="field">
+<label>Teléfono</label>
+<div class="field-input">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.3a2 2 0 0 1 2.1-.5c1 .3 2 .5 3 .7a2 2 0 0 1 1.7 2Z"/></svg>
+<input type="tel" id="phone" placeholder="8888 8888" autocomplete="tel">
+</div>
+<div class="error-msg" id="err-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Ingresa un teléfono válido</div>
+</div>
+</div>
+<div class="form-section-label">Dirección de facturación</div>
+<div class="row2">
+<div class="field">
+<label>País</label>
+<div class="field-input">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg>
+<input type="text" id="country" placeholder="Costa Rica" autocomplete="country-name">
+</div>
+<div class="error-msg" id="err-country"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Ingresa tu país</div>
+</div>
+<div class="field">
+<label>Provincia</label>
+<div class="field-input">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+<input type="text" id="province" placeholder="Cartago" autocomplete="address-level1">
+</div>
+<div class="error-msg" id="err-province"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Ingresa tu provincia</div>
+</div>
+</div>
+<div class="row2">
+<div class="field">
+<label>Dirección</label>
+<div class="field-input">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10 12 3l9 7v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2Z"/></svg>
+<input type="text" id="address" placeholder="100m norte del parque" autocomplete="street-address">
+</div>
+<div class="error-msg" id="err-address"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Ingresa tu dirección</div>
+</div>
+<div class="field">
+<label>Código postal</label>
+<div class="field-input">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h10M7 13h6"/></svg>
+<input type="text" id="zip" placeholder="30101" inputmode="numeric" maxlength="6" autocomplete="postal-code">
+</div>
+<div class="error-msg" id="err-zip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Código postal inválido</div>
+</div>
+</div>
+<div class="form-section-label">Datos de la tarjeta</div>
+<div class="field">
+<label>Nombre en la tarjeta</label>
+<div class="field-input">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>
+<input type="text" id="cardName" placeholder="ANA RODRIGUEZ" autocomplete="cc-name" style="text-transform:uppercase">
+</div>
+<div class="error-msg" id="err-cardName"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Ingresa el nombre tal como aparece en la tarjeta</div>
+</div>
+<div class="field">
+<label>Número de tarjeta</label>
+<div class="field-input">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="15" rx="2.5"/><path d="M2 10h20"/></svg>
+<input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" inputmode="numeric" maxlength="19" autocomplete="cc-number">
+<span class="card-brand-icon" id="cardBrandTag">•••</span>
+</div>
+<div class="error-msg" id="err-cardNumber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Número de tarjeta inválido</div>
+</div>
+<div class="row3">
+<div class="field">
+<label>&nbsp;</label>
+</div>
+<div class="field">
+<label>Expiración</label>
+<div class="field-input">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg>
+<input type="text" id="expiry" placeholder="MM/AA" inputmode="numeric" maxlength="5" autocomplete="cc-exp">
+</div>
+<div class="error-msg" id="err-expiry"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Fecha inválida</div>
+</div>
+<div class="field">
+<label>CVV</label>
+<div class="field-input">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><rect x="14" y="13" width="4" height="3" rx=".5" fill="currentColor" stroke="none"/></svg>
+<input type="text" id="cvv" placeholder="123" inputmode="numeric" maxlength="4" autocomplete="cc-csc">
+</div>
+<div class="error-msg" id="err-cvv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>CVV inválido</div>
+</div>
+</div>
+</div>
+<button class="pay-btn" id="payBtn">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+<span id="payBtnText">Pagar ahora</span>
 </button>
+<div class="pay-lock-note">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+       Tu información está cifrada y protegida
+</div>
+</section>
 </div>
 </div>
-<!-- PROCESANDO -->
+<!-- ===== PROCESSING ===== -->
 <div class="processing" id="processing">
-<h2>Procesando pago...</h2>
-<div class="spinner"></div>
+<div class="proc-ring">
+<svg viewBox="0 0 110 110">
+<circle class="track" cx="55" cy="55" r="48"/>
+<circle class="bar" id="procBar" cx="55" cy="55" r="48"/>
+</svg>
+<div class="icon"><svg class="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
 </div>
-<!-- RESULTADO -->
+<div class="proc-title" id="procTitle">Conectando con el banco…</div>
+<div class="proc-sub">No cierres ni recargues esta página</div>
+<div class="proc-steps" id="procSteps"></div>
+</div>
+<!-- ===== RESULT ===== -->
 <div class="result" id="result">
-<h2>🎉 ¡Pago realizado con éxito!</h2>
-<p>Gracias por comprar en CRFit Gym.</p>
+<div class="result-inner">
+<div class="success-check">
+<svg viewBox="0 0 24 24" fill="none" stroke="#03170c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 5 5 9-10"/></svg>
+</div>
+<h2>¡Pago realizado con éxito!</h2>
+<p class="lead">Gracias por comprar en Ag Fit Gym. Enviamos la confirmación a tu correo.</p>
+<div class="order-code mono-num" id="orderBig">#000000</div>
 <div class="invoice">
-<h3>Factura</h3>
-<div class="invoice-item">
-<span>Producto</span>
-<span id="invoiceProduct"></span>
+<div class="invoice-head">
+<div class="invoice-brand">
+<img src="logoCRfit.png" alt="" onerror="this.style.display='none'">
+<div>
+<b>Ag Fit Gym</b>
+<div style="font-size:11px;color:var(--text-faint)">Factura electrónica</div>
 </div>
-<div class="invoice-item">
-<span>Precio</span>
-<span id="invoicePrice"></span>
 </div>
-<div class="invoice-item">
-<span>Impuesto</span>
-<span id="invoiceTax"></span>
+<span class="invoice-status">Pagado</span>
 </div>
+<div class="invoice-meta">
+<div>N.º de factura<b class="mono-num" id="invNumber">—</b></div>
+<div>N.º de pedido<b class="mono-num" id="invOrder">—</b></div>
+<div>Fecha<b id="invDate">—</b></div>
+<div>Hora<b id="invTime">—</b></div>
+<div>Método de pago<b id="invMethod">—</b></div>
+<div>Correo<b id="invEmail">—</b></div>
+</div>
+<div class="invoice-item"><span>Producto</span><span class="val" id="invoiceProduct">—</span></div>
+<div class="invoice-item"><span>Cantidad</span><span class="val">1</span></div>
+<div class="invoice-item"><span>Subtotal</span><span class="val" id="invoiceSubtotal">—</span></div>
+<div class="invoice-item"><span>Impuesto (13%)</span><span class="val" id="invoiceTax">—</span></div>
+<div class="invoice-item"><span>Envío</span><span class="val" style="color:var(--green-bright)">Gratis</span></div>
 <div class="invoice-total">
 <span>Total pagado</span>
-<span id="invoiceTotal"></span>
+<span id="invoiceTotal">—</span>
 </div>
-<div class="invoice-item">
-<span>Pedido</span>
-<span id="order"></span>
+<div class="invoice-foot">
+<div class="invoice-foot-note">
+         Documento generado automáticamente.<br>
+         Garantía oficial de 12 meses. Conserva esta factura.
 </div>
-<div class="invoice-item">
-<span>Fecha</span>
-<span id="date"></span>
+<div class="qr-deco" id="qrDeco"></div>
+</div>
+</div>
+<div class="result-actions">
+<button class="btn btn-primary" id="downloadInvoiceBtn">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-4-4m4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+       Descargar factura
+</button>
+<button class="btn btn-ghost" id="continueBtn">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h2l2.6 12.4A2 2 0 0 0 8.6 17H18a2 2 0 0 0 2-1.6L21.5 7H6"/></svg>
+       Seguir comprando
+</button>
+<button class="btn btn-ghost" id="catalogBtn">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 19-7-7 7-7M5 12h14"/></svg>
+       Volver al catálogo
+</button>
 </div>
 </div>
 </div>
 <script>
-   const params = new URLSearchParams(window.location.search);
-   const producto = params.get("producto");
-   const precio = Number(params.get("precio"));
-   const impuesto = Math.round(precio * 0.13);
-   const totalPago = precio + impuesto;
-   productName.textContent = producto;
-   productPrice.textContent = "₡" + precio.toLocaleString();
-   tax.textContent = "₡" + impuesto.toLocaleString();
-   total.textContent = "₡" + totalPago.toLocaleString();
-   function pagar() {
-       const inputs = document.querySelectorAll(".payment input");
-       let valido = true;
-       inputs.forEach(input => {
-           if (input.value.trim() === "") {
-               input.style.border = "2px solid red";
-               valido = false;
-           } else {
-               input.style.border = "none";
-           }
-       });
-       if (!valido) {
-           alert("⚠️ Por favor completa toda la información");
-           return;
-       }
-       /* SI TODO ESTÁ BIEN */
-       checkout.style.display = "none";
-       processing.style.display = "block";
-       setTimeout(() => {
-           processing.style.display = "none";
-           result.style.display = "block";
-           invoiceProduct.textContent = producto;
-           invoicePrice.textContent = "₡" + precio.toLocaleString();
-           invoiceTax.textContent = "₡" + impuesto.toLocaleString();
-           invoiceTotal.textContent = "₡" + total.toLocaleString();
-           order.textContent = "#" + Math.floor(Math.random() * 900000 + 100000);
-           const hoy = new Date();
-           date.textContent = hoy.toLocaleDateString();
-       }, 2500);
+(function(){
+ "use strict";
+ /* ============ 1. DATOS DEL PRODUCTO ============ */
+ const params = new URLSearchParams(window.location.search);
+ const producto  = params.get("producto")  || localStorage.getItem("agfit_producto")  || "Producto Ag Fit Gym";
+ const precio    = Number(params.get("precio")) || Number(localStorage.getItem("agfit_precio")) || 0;
+ const categoria = params.get("categoria") || localStorage.getItem("agfit_categoria") || "Equipo de gimnasio";
+ const impuesto  = Math.round(precio * 0.13);
+ const totalPago = precio + impuesto;
+ const sku = "AGF-" + Math.floor(1000 + Math.random() * 9000);
+ const orderNumber = "#" + Math.floor(100000 + Math.random() * 900000);
+ const fmt = (n) => "₡" + n.toLocaleString("es-CR");
+ document.getElementById("productName").textContent = producto;
+ document.getElementById("productPriceBig").textContent = fmt(precio);
+ document.getElementById("productCat").textContent = categoria;
+ document.getElementById("sku").textContent = sku;
+ document.getElementById("subtotal").textContent = fmt(precio);
+ document.getElementById("tax").textContent = fmt(impuesto);
+ document.getElementById("total").textContent = fmt(totalPago);
+ document.getElementById("orderPreview").textContent = orderNumber;
+ /* ============ 2. MÉTODOS DE PAGO ============ */
+ const methods = document.querySelectorAll(".method-card");
+ const cardFields = document.getElementById("cardFields");
+ const redirectNote = document.getElementById("redirectNote");
+ const redirectText = document.getElementById("redirectText");
+ const payBtnText = document.getElementById("payBtnText");
+ let selectedMethod = "card";
+ const redirectLabels = {
+   paypal: "Serás redirigido a PayPal para completar tu pago de forma segura.",
+   applepay: "Confirma tu compra con Face ID o Touch ID en Apple Pay.",
+   googlepay: "Confirma tu compra con tu cuenta de Google Pay.",
+   "mastercard-quick": "Pago rápido con tu tarjeta Mastercard guardada.",
+   "visa-quick": "Pago rápido con tu tarjeta Visa guardada."
+ };
+ methods.forEach(card => {
+   card.addEventListener("click", () => selectMethod(card));
+   card.addEventListener("keydown", e => { if(e.key === "Enter" || e.key === " ") { e.preventDefault(); selectMethod(card); } });
+ });
+ function selectMethod(card){
+   methods.forEach(m => m.classList.remove("active"));
+   card.classList.add("active");
+   selectedMethod = card.dataset.method;
+   if(selectedMethod === "card"){
+     cardFields.classList.remove("hidden");
+     redirectNote.classList.remove("show");
+     payBtnText.textContent = "Pagar ahora";
+   } else {
+     cardFields.classList.add("hidden");
+     redirectText.textContent = redirectLabels[selectedMethod] || "Serás redirigido para completar el pago.";
+     redirectNote.classList.add("show");
+     payBtnText.textContent = "Continuar";
    }
+ }
+ /* ============ 3. MÁSCARAS Y DETECCIÓN DE TARJETA ============ */
+ const cardNumberEl = document.getElementById("cardNumber");
+ const cardBrandTag = document.getElementById("cardBrandTag");
+ const expiryEl = document.getElementById("expiry");
+ const cvvEl = document.getElementById("cvv");
+ cardNumberEl.addEventListener("input", () => {
+   let digits = cardNumberEl.value.replace(/\D/g, "").slice(0, 16);
+   cardNumberEl.value = digits.replace(/(.{4})/g, "$1 ").trim();
+   cardBrandTag.classList.remove("show", "visa", "mastercard", "amex");
+   if(digits.startsWith("4")){
+     cardBrandTag.textContent = "VISA"; cardBrandTag.classList.add("show","visa");
+   } else if(/^5[1-5]/.test(digits) || /^2[2-7]/.test(digits)){
+     cardBrandTag.textContent = "MC"; cardBrandTag.classList.add("show","mastercard");
+   } else if(/^3[47]/.test(digits)){
+     cardBrandTag.textContent = "AMEX"; cardBrandTag.classList.add("show","amex");
+     cvvEl.maxLength = 4;
+   } else {
+     cvvEl.maxLength = 3;
+   }
+ });
+ expiryEl.addEventListener("input", () => {
+   let v = expiryEl.value.replace(/\D/g, "").slice(0, 4);
+   if(v.length >= 3) v = v.slice(0,2) + "/" + v.slice(2);
+   expiryEl.value = v;
+ });
+ cvvEl.addEventListener("input", () => {
+   cvvEl.value = cvvEl.value.replace(/\D/g, "").slice(0, cvvEl.maxLength);
+ });
+ ["firstName","lastName","cardName"].forEach(id=>{
+   const el = document.getElementById(id);
+   if(el) el.addEventListener("input", () => { if(id==="cardName") el.value = el.value.toUpperCase(); });
+ });
+ document.getElementById("zip").addEventListener("input", function(){
+   this.value = this.value.replace(/\D/g, "").slice(0,6);
+ });
+ document.getElementById("phone").addEventListener("input", function(){
+   this.value = this.value.replace(/[^\d\s-]/g, "");
+ });
+ /* ============ 4. VALIDACIÓN EN TIEMPO REAL ============ */
+ const validators = {
+   firstName: v => v.trim().length >= 2,
+   lastName: v => v.trim().length >= 2,
+   email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+   phone: v => v.replace(/\D/g,"").length >= 8,
+   country: v => v.trim().length >= 2,
+   province: v => v.trim().length >= 2,
+   address: v => v.trim().length >= 4,
+   zip: v => v.trim().length >= 4,
+   cardName: v => v.trim().length >= 3,
+   cardNumber: v => v.replace(/\s/g,"").length >= 15,
+   expiry: v => /^\d{2}\/\d{2}$/.test(v),
+   cvv: v => v.length >= 3
+ };
+ function attachLiveValidation(id){
+   const el = document.getElementById(id);
+   if(!el) return;
+   el.addEventListener("blur", () => validateField(id));
+   el.addEventListener("input", () => {
+     if(el.classList.contains("invalid")) validateField(id);
+   });
+ }
+ function validateField(id){
+   const el = document.getElementById(id);
+   const err = document.getElementById("err-" + id);
+   const ok = validators[id](el.value);
+   el.classList.toggle("valid", ok);
+   el.classList.toggle("invalid", !ok);
+   if(err) err.classList.toggle("show", !ok);
+   return ok;
+ }
+ Object.keys(validators).forEach(attachLiveValidation);
+ /* ============ 5. FLUJO DE PAGO ============ */
+ const checkoutEl = document.getElementById("checkout");
+ const strip = document.querySelector(".security-strip");
+ const processingEl = document.getElementById("processing");
+ const resultEl = document.getElementById("result");
+ const payBtn = document.getElementById("payBtn");
+ const procSteps = [
+   "Conectando con el banco…",
+   "Verificando tarjeta…",
+   "Validando identidad…",
+   "Autorizando pago…",
+   "Generando factura…",
+   "Finalizando compra…"
+ ];
+ const procStepsEl = document.getElementById("procSteps");
+ const procTitleEl = document.getElementById("procTitle");
+ const procBar = document.getElementById("procBar");
+ const CIRC = 301;
+ procSteps.forEach((label, i) => {
+   const row = document.createElement("div");
+   row.className = "proc-step";
+row.id = "pstep-" + i;
+   row.innerHTML = '<span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-9"/></svg></span><span>' + label + '</span>';
+   procStepsEl.appendChild(row);
+ });
+ payBtn.addEventListener("click", () => {
+   if(selectedMethod === "card"){
+     const fields = Object.keys(validators);
+     let allValid = true;
+     fields.forEach(id => { if(!validateField(id)) allValid = false; });
+     if(!allValid){
+       const firstInvalid = document.querySelector(".field-input input.invalid");
+       if(firstInvalid) firstInvalid.scrollIntoView({behavior:"smooth", block:"center"});
+       return;
+     }
+   }
+   runPayment();
+ });
+ function runPayment(){
+   checkoutEl.style.display = "none";
+   strip.style.display = "none";
+   processingEl.classList.add("active");
+   let i = 0;
+   procBar.style.strokeDashoffset = CIRC;
+   const total = procSteps.length;
+   function nextStep(){
+     if(i > 0) document.getElementById("pstep-" + (i-1)).classList.replace("active","done");
+     if(i < total){
+       const row = document.getElementById("pstep-" + i);
+       row.classList.add("active");
+       procTitleEl.textContent = procSteps[i];
+       const progress = ((i+1) / total) * CIRC;
+       procBar.style.strokeDashoffset = CIRC - progress;
+       i++;
+       setTimeout(nextStep, 480 + Math.random()*260);
+     } else {
+       setTimeout(showResult, 400);
+     }
+   }
+   nextStep();
+ }
+ function showResult(){
+   processingEl.classList.remove("active");
+   resultEl.classList.add("active");
+   const email = document.getElementById("email").value || "cliente@correo.com";
+   const methodLabels = {
+     card: "Tarjeta terminada en " + (cardNumberEl.value.replace(/\s/g,"").slice(-4) || "••••"),
+     paypal: "PayPal", applepay: "Apple Pay", googlepay: "Google Pay",
+     "mastercard-quick": "Mastercard", "visa-quick": "Visa"
+   };
+   const now = new Date();
+   document.getElementById("invNumber").textContent = "F-" + now.getFullYear() + "-" + Math.floor(10000+Math.random()*89999);
+   document.getElementById("invOrder").textContent = orderNumber;
+   document.getElementById("orderBig").textContent = orderNumber;
+   document.getElementById("invDate").textContent = now.toLocaleDateString("es-CR");
+   document.getElementById("invTime").textContent = now.toLocaleTimeString("es-CR");
+   document.getElementById("invMethod").textContent = methodLabels[selectedMethod] || "Tarjeta";
+   document.getElementById("invEmail").textContent = email;
+   document.getElementById("invoiceProduct").textContent = producto;
+   document.getElementById("invoiceSubtotal").textContent = fmt(precio);
+   document.getElementById("invoiceTax").textContent = fmt(impuesto);
+   document.getElementById("invoiceTotal").textContent = fmt(totalPago);
+   buildQrDeco();
+   launchConfetti();
+ }
+ function buildQrDeco(){
+   const qr = document.getElementById("qrDeco");
+   qr.innerHTML = "";
+   for(let n=0;n<36;n++){
+     const cell = document.createElement("i");
+     if(Math.random() > 0.52) cell.style.background = "#08090a"; else cell.style.background = "transparent";
+     qr.appendChild(cell);
+   }
+ }
+ function launchConfetti(){
+   const colors = ["#17c964","#2eea7d","#ffffff","#0e9a4b"];
+   for(let n=0; n<70; n++){
+     const piece = document.createElement("div");
+     piece.className = "confetti-piece";
+     piece.style.left = Math.random()*100 + "vw";
+     piece.style.background = colors[Math.floor(Math.random()*colors.length)];
+     piece.style.animationDuration = (2.2 + Math.random()*1.8) + "s";
+     piece.style.opacity = String(0.7 + Math.random()*0.3);
+     piece.style.borderRadius = Math.random() > 0.5 ? "50%" : "2px";
+     document.body.appendChild(piece);
+     setTimeout(() => piece.remove(), 4200);
+   }
+ }
+ /* ============ 6. ACCIONES FINALES ============ */
+ document.getElementById("downloadInvoiceBtn").addEventListener("click", () => {
+   const now = new Date();
+   const text =
+`AG FIT GYM — FACTURA ELECTRÓNICA
+================================
+N.º factura: ${document.getElementById("invNumber").textContent}
+N.º pedido:  ${orderNumber}
+Fecha:       ${now.toLocaleDateString("es-CR")} ${now.toLocaleTimeString("es-CR")}
+Método:      ${document.getElementById("invMethod").textContent}
+Correo:      ${document.getElementById("invEmail").textContent}
+Producto:    ${producto}
+Cantidad:    1
+Subtotal:    ${fmt(precio)}
+Impuesto:    ${fmt(impuesto)}
+Envío:       Gratis
+--------------------------------
+TOTAL PAGADO: ${fmt(totalPago)}
+Estado: PAGADO
+Garantía oficial de 12 meses.
+Gracias por tu compra en Ag Fit Gym.`;
+   const blob = new Blob([text], {type:"text/plain;charset=utf-8"});
+   const url = URL.createObjectURL(blob);
+   const a = document.createElement("a");
+   a.href = url;
+   a.download = "factura-" + orderNumber.replace("#","") + ".txt";
+   document.body.appendChild(a);
+   a.click();
+   a.remove();
+   URL.revokeObjectURL(url);
+ });
+ document.getElementById("continueBtn").addEventListener("click", () => {
+   window.location.href = "maquinas.html";
+ });
+ document.getElementById("catalogBtn").addEventListener("click", () => {
+   window.location.href = "maquinas.html";
+ });
+})();
 </script>
 </body>
 </html>

@@ -270,10 +270,44 @@
  .toast .dotc{ width:8px; height:8px; border-radius:50%; background:var(--accent); flex-shrink:0; }
  .toast.warn .dotc{ background:var(--warn); }
  /* ============ RESPONSIVE ============ */
- @media(max-width:860px){
-     nav.menu{ display:none; }
-     .menu-toggle-mobile{ display:block; }
- }
+ @media (max-width:860px){
+   .menu-toggle-mobile{
+       display:block;
+       margin-left:auto;
+       z-index:1101;
+   }
+   nav.menu{
+       display:flex;
+       flex-direction:column;
+       position:absolute;
+       top:100%;
+       left:0;
+       width:100%;
+       background:rgba(10,10,11,.98);
+       backdrop-filter:blur(20px);
+       -webkit-backdrop-filter:blur(20px);
+       border-top:1px solid var(--border);
+       border-bottom:1px solid var(--border);
+       padding:12px;
+       gap:6px;
+       opacity:0;
+       visibility:hidden;
+       transform:translateY(-12px);
+       transition:.30s ease;
+       pointer-events:none;
+   }
+   nav.menu.show-mobile{
+       opacity:1;
+       visibility:visible;
+       transform:translateY(0);
+       pointer-events:auto;
+   }
+   nav.menu a{
+       width:100%;
+       padding:14px 16px;
+       border-radius:12px;
+   }
+}
  @media(max-width:640px){
      .top{ flex-wrap:wrap; padding:12px 16px; }
      .brand{ order:1; }
@@ -321,7 +355,11 @@
      🛒 Carrito
 <span class="cart-badge" id="cartBadge">0</span>
 </button>
-<button class="menu-toggle-mobile" aria-label="Abrir menú" onclick="document.querySelector('nav.menu').classList.toggle('show-mobile')">☰</button>
+<button
+  class="menu-toggle-mobile"
+  id="menuBtn"
+  aria-label="Abrir menu">☰
+</button>
 </div>
 <div class="categories" id="categories" role="tablist" aria-label="Categorías de productos"></div>
 </header>
@@ -428,6 +466,7 @@
 /* ---------------------------------------------------------------------
   1. FUENTE ÚNICA DE DATOS: catálogo de productos
 --------------------------------------------------------------------- */
+
 const PRODUCTS = [
  { id:1,  nombre:"Proteína Whey", categoria:"proteinas", precio:32000, img:"v_producto.png", stock:40,
    descripcion:"Proteína de alta calidad para apoyar la recuperación muscular después de entrenar.",
@@ -459,11 +498,11 @@ const PRODUCTS = [
    rating:4.3, resenas:22,
    tamano:"120 g", sabor:"Avena y miel", uso:"Snack entre comidas" },
 
- { id:6,  nombre:"Galletas Nutri Snacks", categoria:"snacks", precio:5000, img:"v_producto5.png", stock:40,
-   descripcion:"Snack crujiente bajo en azúcar para tu rutina diaria.",
-   detalle:"Presentación individual, fáciles de llevar en el bolso del gimnasio o la oficina.",
+ { id:6,  nombre:"Creatina k", categoria:"creatina", precio:20000, img:"v_producto5.png", stock:20,
+   descripcion:"Creatina k buena para el entrenamiento.",
+   detalle:"Creatina k para mejorar cada dia, consumir 5 g al dia.",
    rating:4.2, resenas:18,
-   tamano:"100 g", sabor:"Chocolate", uso:"Snack entre comidas" },
+   tamano:"100 g", sabor:"Sin sabor", uso:"Un vaso con agua" },
 
  { id:7,  nombre:"Galletas Nutri Snacks", categoria:"snacks", precio:4500, img:"v_producto7.png", stock:40,
    descripcion:"Snack crujiente bajo en azúcar, sabor coco.",
@@ -989,6 +1028,21 @@ function init(){
 }
 init();
 
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.querySelector("nav.menu");
+menuBtn.addEventListener("click", () => {
+   mobileMenu.classList.toggle("show-mobile");
+   menuBtn.textContent =
+       mobileMenu.classList.contains("show-mobile")
+       ? "✕"
+       : "☰";
+});
+document.querySelectorAll("nav.menu a").forEach(link => {
+   link.addEventListener("click", () => {
+       mobileMenu.classList.remove("show-mobile");
+       menuBtn.textContent = "☰";
+   });
+});
 </script>
 </body>
 </html>

@@ -1149,7 +1149,7 @@ main section.visible{ opacity:1; transform:translateY(0); }
 <a class="btn-ghost" onclick="go('sobre_nosotros.html')" role="link" tabindex="0">Conocer más</a>
 </div>
 </div>
-<div class="hero-scrolldown" aria-hidden="true"><span></span>Scroll</div>
+<div class="hero-scrolldown" aria-hidden="true"><span></span></div>
 </section>
 
 <main id="main-content">
@@ -1215,7 +1215,7 @@ main section.visible{ opacity:1; transform:translateY(0); }
 </div>
 <textarea id="reviewText" maxlength="500" rows="3" placeholder="Contanos cómo fue tu experiencia entrenando en Aguilera Fit..." aria-label="Escribí tu opinión"></textarea>
 <div class="review-compose-foot">
-<span class="review-char-count" id="reviewCharCount">0 / 500</span>
+<span class="review-char-count" id="reviewCharCount">0 / 250</span>
 <button class="btn-login" id="reviewSubmitBtn" onclick="submitReview()">Publicar opinión</button>
 </div>
 </div>
@@ -1253,7 +1253,7 @@ main section.visible{ opacity:1; transform:translateY(0); }
 <div class="footer-col footer-contact">
 <h4>Contacto</h4>
 <p>📍 Costa Rica</p>
-<p>📧 contacto@Aguilerafitgym.com</p>
+<p>📧 AguileraFitGym@gmail.com</p>
 <p>📞 +506 2781-6187</p>
 </div>
 </div>
@@ -2005,13 +2005,13 @@ sections.forEach(sec => staggerObserver.observe(sec));
 const SEED_REVIEWS = [
 { id:"seed-1", nombre:"Marco Diaz", usuario:"marco.diaz", foto:"", rating:5,
  texto:"Llevo ocho meses entrenando en Aguilera Fit y es el primer gimnasio donde de verdad siento que las rutinas están hechas para mí, no copiadas de internet.",
- fecha:"2026-02-14T10:00:00.000Z", seed:true },
+ fecha:"2026-05-20T10:00:00.000Z", seed:true },
 { id:"seed-2", nombre:"Dilan Leiton", usuario:"dilan.leiton", foto:"", rating:5,
  texto:"Las máquinas están siempre en buen estado y el ambiente motiva. Pasé de entrenar por obligación a esperar con ganas el día del gimnasio.",
  fecha:"2026-04-02T10:00:00.000Z", seed:true },
 { id:"seed-3", nombre:"Giova Serrano", usuario:"giova.serrano", foto:"", rating:4,
  texto:"Empecé sin saber nada de pesas. El equipo de Aguilera Fit me armó una rutina clara y hoy entreno con seguridad y buenos resultados.",
- fecha:"2026-05-20T10:00:00.000Z", seed:true }
+ fecha:"2026-02-14T10:00:00.000Z", seed:true }
 ];
 let reviewsSort = "recientes";
 let selectedRating = 0;
